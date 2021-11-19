@@ -40,6 +40,13 @@
 <meta http-equiv="expires" content="0" />
 <meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<!--제이쿼리-->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -88,7 +95,14 @@
 	      </stripes:link>
 	</c:if>
 </c:if> <img align="middle" src="../images/separator.gif" /> <a
-	href="../help.html">?</a></div>
+	href="../help.html">?</a>
+	<img align="middle" src="../images/separator.gif" />
+	<stripes:link
+			beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
+			event="viewBoard">
+		Board
+	</stripes:link>
+</div>
 </div>
 
 <div id="Search">

@@ -163,3 +163,12 @@ CREATE TABLE sequence
     nextid             int          not null,
     constraint pk_sequence primary key (name)
 );
+
+create table board(
+    bnum int identity ,
+    userid varchar(80) not null,
+    title varchar(80) not null,
+    content varchar(600) not null,
+    date datetime,
+    constraint pk_bnum primary key (bnum)
+);

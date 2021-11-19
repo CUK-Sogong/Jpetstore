@@ -115,3 +115,14 @@ INSERT INTO inventory (itemid, qty ) VALUES ('EST-26',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-27',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-28',10000);
 
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','공지사항','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','안녕하세요','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','3','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','4','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','5','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','6','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','7','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','8','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','9','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','10','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('관리자','11','소공 화이팅',NOW());
