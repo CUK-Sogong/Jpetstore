@@ -30,4 +30,6 @@ public interface LineItemMapper {
 
   void insertLineItem(LineItem lineItem);
 
+  List<LineItem> getPopularList();
+
 }

@@ -98,6 +98,12 @@
 	href="../help.html">?</a>
 	<img align="middle" src="../images/separator.gif" />
 	<stripes:link
+			beanclass="org.mybatis.jpetstore.web.actions.OrderActionBean"
+			event="viewPopularPets">
+		Popular Pets
+	</stripes:link>
+	<img align="middle" src="../images/separator.gif" />
+	<stripes:link
 			beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
 			event="viewBoard">
 		Board
