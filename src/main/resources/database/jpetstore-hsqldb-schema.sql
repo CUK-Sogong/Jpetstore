@@ -172,3 +172,39 @@ create table board(
     date datetime,
     constraint pk_bnum primary key (bnum)
 );
+
+create table usersale
+(
+    sid       INT PRIMARY KEY,
+    suserId   VARCHAR(80)  NOT NULL,
+    scategory VARCHAR(10)  NOT NULL,
+    sname     VARCHAR(10)  NOT NULL,
+    sdesc     VARCHAR(10)  NOT NULL,
+    sgender   INT          NOT NULL,
+    sage      INT          NOT NULL,
+    scharge   INT          NOT NULL,
+    sprice    INT null,
+    sarea     VARCHAR(80)  NOT NULL,
+    simg1     VARCHAR(255) NOT NULL,
+    simg2     VARCHAR(255) null,
+    simg3     VARCHAR(255) null,
+    sstatus   INT DEFAULT 1,
+    sread     INT          NOT NULL,
+    snote     varchar(255) NOT NULL
+);
+
+create table useradopt
+(
+    aid     int PRIMARY KEY,
+    asid    INT,
+    auserid VARCHAR(80) NOT NULL,
+    aarea   VARCHAR(80) NOT NULL,
+    asalary INT         NOT NULL,
+    ahome   VARCHAR(80) NOT NULL,
+    afamnum INT         NOT NULL,
+    apets   VARCHAR(80),
+    apetexp int         NOT NULL,
+    anote   VARCHAR(255),
+    astatus INT default 2,
+    constraint fk_sa_ad_1 foreign key (asid) references usersale (sid)
+);
