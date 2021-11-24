@@ -26,6 +26,7 @@ import org.mybatis.jpetstore.mapper.ItemMapper;
 import org.mybatis.jpetstore.mapper.LineItemMapper;
 import org.mybatis.jpetstore.mapper.OrderMapper;
 import org.mybatis.jpetstore.mapper.SequenceMapper;
+import org.mybatis.jpetstore.domain.LineItem;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -125,5 +126,10 @@ public class OrderService {
     sequenceMapper.updateSequence(parameterObject);
     return sequence.getNextId();
   }
+
+  /**
+   * Gets the Popular Pets.
+   */
+  public List<LineItem> getPopularList() { return lineItemMapper.getPopularList(); }
 
 }

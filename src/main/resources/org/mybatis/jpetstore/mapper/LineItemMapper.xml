@@ -39,4 +39,21 @@
     VALUES (#{orderId}, #{lineNumber}, #{itemId}, #{quantity}, #{unitPrice})
   </insert>
 
+  <select id="getPopularList" resultType="LineItem">
+    SELECT
+      L.ITEMID,
+      SUM(L.QUANTITY) AS QUANTITY,
+      P.NAME AS "item.product.name",
+      I.ATTR1 as "item.attribute1"
+    FROM
+      LINEITEM L,
+      ITEM I,
+      PRODUCT P
+    WHERE
+      L.ITEMID = I.ITEMID AND
+      I.PRODUCTID = P.PRODUCTID
+    GROUP BY L.ITEMID, P.NAME, I.ATTR1
+    ORDER BY QUANTITY DESC
+  </select>
 </mapper>
+
