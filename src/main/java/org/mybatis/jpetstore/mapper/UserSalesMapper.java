@@ -23,5 +23,7 @@ public interface UserSalesMapper {
 
     UserSale getSalesListByUsername(String username);
 
-    UserSale getSaleInfo(int asid);
+    UserSale getSales(int asid);
+
+    void updateSales(UserSale userSale);
 }

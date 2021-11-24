@@ -47,6 +47,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private UserAdopt userAdopt;
     private int asid;
     private int aid;
+    private int sid;
 
     private Account account = new Account();
 
@@ -74,6 +75,10 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setAid(int aid) { this.aid = aid; }
 
+    public int getSid() { return sid; }
+
+    public void setSid(int sid) { this.sid = sid; }
+
     /**
      * View Sales List
      *
@@ -99,8 +104,19 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution newSale(){
+    public Resolution insertSalesForm(){
+        return new ForwardResolution(INSERT_SALES);
+    }
+
+    /**
+     * Insert Sales
+     *
+     * @return the resolution
+     */
+    public Resolution insertSales(){
         HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
 
         if (getUserSale() != null) {
             userSalesService.insertSale(userSale);
@@ -113,8 +129,32 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution editSalesForm(){
-        return new ForwardResolution(EDIT_SALES);
+    public Resolution updateSalesForm(){ return new ForwardResolution(EDIT_SALES); }
+
+    /**
+     * Edit Sales
+     *
+     * @return the resolution
+     */
+    public Resolution updateSales(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
+
+        userSalesService.updateSales(userSale);
+        userSalesList = userSalesService.getSalesList();
+        return new ForwardResolution(INFO_SALES);
+    }
+
+    /**
+     * Edit Sales
+     *
+     * @return the resolution
+     */
+    public Resolution deleteSales(){
+        userSalesService.deleteAdopt(sid);
+        userSalesList = userSalesService.getSalesList();
+        return new ForwardResolution(SALES_LIST);
     }
 
     /**
@@ -122,8 +162,12 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution infoSales(){
-        userSale = userSalesService.getSaleInfo(asid);
+    public Resolution viewSales(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
+
+        userSale = userSalesService.getSales(asid);
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -169,6 +213,11 @@ public class UserSalesActionBean extends AbstractActionBean {
         return new ForwardResolution(VIEW_ADOPT_ADT);
     }
 
+    /**
+     * Delete Adopt
+     *
+     * @return the resolution
+     */
     public Resolution deleteAdopt(){
         userSalesService.deleteAdopt(userAdopt.getAsid());
         userAdoptsList = userSalesService.getAdoptList();
