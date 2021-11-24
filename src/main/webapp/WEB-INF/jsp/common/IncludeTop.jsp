@@ -110,8 +110,8 @@
 	</stripes:link>
 	<img align="middle" src="../images/separator.gif" />
 	<stripes:link
-			beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
-			event="viewBoard">
+			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+			event="viewSalesList">
 		UserSales
 	</stripes:link>
 </div>

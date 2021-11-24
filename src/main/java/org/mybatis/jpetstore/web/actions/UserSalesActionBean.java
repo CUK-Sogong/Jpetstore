@@ -52,9 +52,13 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     private Account account = new Account();
 
-    public List<UserSale> getUserSaleList() { return userSalesList; }
+    public List<UserSale> getUserSalesList() { return userSalesList; }
 
-    public void setUserSaleList(List<UserSale> userSaleList) { this.userSalesList = userSaleList; }
+    public void setUserSalesList(List<UserSale> userSalesList) { this.userSalesList = userSalesList; }
+
+    public List<UserAdopt> getUserAdoptsList() { return userAdoptsList; }
+
+    public void setUserAdoptsList(List<UserAdopt> userAdoptsList) { this.userAdoptsList = userAdoptsList; }
 
     public Account getAccount() { return account; }
 
@@ -125,6 +129,7 @@ public class UserSalesActionBean extends AbstractActionBean {
 
         userSale.setSuserId(account.getUsername());
         userSalesService.insertSale(userSale);
+        userSale = userSalesService.getSales(sid);
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -301,5 +306,13 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public void clear() {
         userSale = new UserSale();
+    }
+
+    public ForwardResolution insertSales2(){
+        return new ForwardResolution(INFO_SALES);
+    }
+
+    public Resolution viewAdoptListAdt2(){
+        return new ForwardResolution(VIEW_ADOPT_LIST_ADT);
     }
 }
