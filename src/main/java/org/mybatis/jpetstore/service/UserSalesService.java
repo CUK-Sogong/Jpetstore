@@ -66,6 +66,15 @@ public class UserSalesService {
         return userSalesMapper.getSalesList();
     }
 
+    public void insertSale(UserSale userSale) {
+        userSale.setsId(getNextId("salesnum"));
+        userSalesMapper.insertSale(userSale);
+    }
+
+    public UserSale getSaleInfo(int asid) {
+        return userSalesMapper.getSaleInfo(asid);
+    }
+
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
         if (sequence == null) {
@@ -76,7 +85,4 @@ public class UserSalesService {
         sequenceMapper.updateSequence(parameterObject);
         return sequence.getNextId();
     }
-
-
-
 }

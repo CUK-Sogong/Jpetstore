@@ -7,6 +7,8 @@ public interface UserSalesMapper {
 
     List<UserSale> getSalesList();
 
+    void insertSale(UserSale userSale);
+
     void insertAdopt(UserAdopt userAdopt);
 
     void updateAdopt(UserAdopt userAdopt);
@@ -20,4 +22,6 @@ public interface UserSalesMapper {
     UserAdopt getAdopt(int asid);
 
     UserSale getSalesListByUsername(String username);
+
+    UserSale getSaleInfo(int asid);
 }

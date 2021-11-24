@@ -28,4 +28,12 @@
         FROM usersale
     </select>
 
+    <insert id="insertSale">
+        insert into usersale values ()
+    </insert>
+
+    <select id="getSaleInfo" resultType="UserSale">
+        SELECT * from usersale where sid = #{asid}
+    </select>
+
 </mapper>

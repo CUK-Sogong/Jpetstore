@@ -99,16 +99,13 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution insertSalesForm(){
+    public Resolution newSale(){
         HttpSession session = context.getRequest().getSession();
-        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
 
-        clear();
-        if (accountBean == null || !accountBean.isAuthenticated()) {
-            setMessage("You must sign on before attempting to submit.  Please sign on and try submitting again.");
-            return new ForwardResolution(AccountActionBean.class);
+        if (getUserSale() != null) {
+            userSalesService.insertSale(userSale);
         }
-        return new ForwardResolution(INSERT_SALES);
+        return new ForwardResolution(INFO_SALES);
     }
 
     /**
@@ -126,6 +123,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution infoSales(){
+        userSale = userSalesService.getSaleInfo(asid);
         return new ForwardResolution(INFO_SALES);
     }
 
