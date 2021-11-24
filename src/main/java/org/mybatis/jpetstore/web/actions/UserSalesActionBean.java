@@ -48,6 +48,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int asid;
     private int aid;
     private int sid;
+    private int check;
 
     private Account account = new Account();
 
@@ -78,6 +79,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public int getSid() { return sid; }
 
     public void setSid(int sid) { this.sid = sid; }
+
+    public int getCheck() { return check; }
+
+    public void setCheck(int check) { this.check = check; }
 
     /**
      * View Sales List
@@ -118,9 +123,8 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         Account account = accountBean.getAccount();
 
-        if (getUserSale() != null) {
-            userSalesService.insertSale(userSale);
-        }
+        userSale.setSuserId(account.getUsername());
+        userSalesService.insertSale(userSale);
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -167,7 +171,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         Account account = accountBean.getAccount();
 
-        userSale = userSalesService.getSales(asid);
+        userSale = userSalesService.getSales(sid);
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -256,7 +260,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         Account account = accountBean.getAccount();
-        userSale = userSalesService.getSalesListByUsername(account.getUsername());
+        userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }
 
@@ -268,6 +272,28 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewAdoptSl(){
         userAdopt = userSalesService.getAdopt(asid);
         return new ForwardResolution(VIEW_ADOPT_SL);
+    }
+
+    /**
+     * Accept Adopt
+     *
+     * @return the resolution
+     */
+    public Resolution acceptAdopt(){
+        userSalesService.acceptAdopt();
+        userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
+        return new ForwardResolution(VIEW_ADOPT_LIST_SL);
+    }
+
+    /**
+     * Refusal Adopt
+     *
+     * @return the resolution
+     */
+    public Resolution refusalAdopt(){
+        userSalesService.refusalAdopt();
+        userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
+        return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }
 
     /**

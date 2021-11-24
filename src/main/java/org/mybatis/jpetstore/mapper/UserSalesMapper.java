@@ -21,9 +21,13 @@ public interface UserSalesMapper {
 
     UserAdopt getAdopt(int asid);
 
-    UserSale getSalesListByUsername(String username);
+    List<UserSale> getSalesListByUsername(String username);
 
-    UserSale getSales(int asid);
+    UserSale getSales(int sid);
 
     void updateSales(UserSale userSale);
+
+    void acceptAdopt(); // astatus 1로 바꿔주기, sstatus 0으로 바꿔주기
+
+    void refusalAdopt(); // astatus 0으로 바꿔주기
 }

@@ -61,7 +61,7 @@ public class UserSalesService {
         return userSalesMapper.getAdopt(asid);
     }
 
-    public UserSale getSalesListByUsername(String username) {
+    public List<UserSale> getSalesListByUsername(String username) {
         return userSalesMapper.getSalesListByUsername(username);
     }
 
@@ -77,8 +77,16 @@ public class UserSalesService {
         userSalesMapper.updateSales(userSale);
     }
 
-    public UserSale getSales(int asid) {
-        return userSalesMapper.getSales(asid);
+    public UserSale getSales(int sid) {
+        return userSalesMapper.getSales(sid);
+    }
+
+    public void acceptAdopt() {
+        userSalesMapper.acceptAdopt();
+    }
+
+    public void refusalAdopt() {
+        userSalesMapper.refusalAdopt();
     }
 
     public int getNextId(String name) {
@@ -91,6 +99,7 @@ public class UserSalesService {
         sequenceMapper.updateSequence(parameterObject);
         return sequence.getNextId();
     }
+
 
 
 }

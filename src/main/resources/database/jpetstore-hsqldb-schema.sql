@@ -178,7 +178,6 @@ create table usersale
     sid       INT PRIMARY KEY,
     suserId   VARCHAR(80)  NOT NULL,
     scategory VARCHAR(10)  NOT NULL,
-    sname     VARCHAR(10)  NOT NULL,
     sdesc     VARCHAR(10)  NOT NULL,
     sgender   INT          NOT NULL,
     sage      INT          NOT NULL,
