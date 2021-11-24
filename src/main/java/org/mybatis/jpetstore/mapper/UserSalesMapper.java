@@ -1,11 +1,13 @@
 package org.mybatis.jpetstore.mapper;
 import org.mybatis.jpetstore.domain.UserAdopt;
+import java.util.List;
 import org.mybatis.jpetstore.domain.UserSale;
 
-import java.util.List;
+public interface UserSalesMapper {
 
-public interface UserSalesMapper
-{
+    List<UserSale> getSalesList();
+
+    void insertSale(UserSale userSale);
 
     void insertAdopt(UserAdopt userAdopt);
 
@@ -20,4 +22,8 @@ public interface UserSalesMapper
     UserAdopt getAdopt(int asid);
 
     UserSale getSalesListByUsername(String username);
+
+    UserSale getSales(int asid);
+
+    void updateSales(UserSale userSale);
 }
