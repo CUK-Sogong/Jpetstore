@@ -45,6 +45,8 @@ public class UserSalesActionBean extends AbstractActionBean {
     private List<UserAdopt> userAdoptsList;
     private UserSale userSale;
     private UserAdopt userAdopt;
+    private int asid;
+    private int aid;
 
     private Account account = new Account();
 
@@ -63,6 +65,14 @@ public class UserSalesActionBean extends AbstractActionBean {
     public UserAdopt getUserAdopt() { return userAdopt; }
 
     public void setUserAdopt(UserAdopt userAdopt) { this.userAdopt = userAdopt; }
+
+    public int getAsid() { return asid; }
+
+    public void setAsid(int asid) { this.asid = asid; }
+
+    public int getAid() { return aid; }
+
+    public void setAid(int aid) { this.aid = aid; }
 
     /**
      * View Sales List
@@ -124,12 +134,26 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution insertAdoptForm(){
-        return new ForwardResolution(INSERT_ADOPT);
+    public Resolution insertAdoptForm(){ return new ForwardResolution(INSERT_ADOPT); }
+
+    /**
+     * Insert Adopt
+     *
+     * @return the resolution
+     */
+    public Resolution insertAdopt(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
+
+        userAdopt.setAuserid(account.getUsername());
+        userAdopt.setAsid(userSale.getsId());
+        userSalesService.insertAdopt(userAdopt);
+        return new ForwardResolution(VIEW_ADOPT_ADT);
     }
 
     /**
-     * Insert Adopt Form
+     * Update Adopt Form
      *
      * @return the resolution
      */
@@ -138,11 +162,31 @@ public class UserSalesActionBean extends AbstractActionBean {
     }
 
     /**
+     * Update Adopt
+     *
+     * @return the resolution
+     */
+    public Resolution updateAdopt(){
+        userSalesService.updateAdopt(userAdopt);
+        return new ForwardResolution(VIEW_ADOPT_ADT);
+    }
+
+    public Resolution deleteAdopt(){
+        userSalesService.deleteAdopt(userAdopt.getAsid());
+        userAdoptsList = userSalesService.getAdoptList();
+        return new ForwardResolution(VIEW_ADOPT_LIST_ADT);
+    }
+
+    /**
      * View Adopt List For Adopter
      *
      * @return the resolution
      */
     public Resolution viewAdoptListAdt(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
+        userAdoptsList = userSalesService.getAdoptListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_ADT);
     }
 
@@ -152,6 +196,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution viewAdoptAdt(){
+        userAdopt = userSalesService.getAdopt(aid);
         return new ForwardResolution(VIEW_ADOPT_ADT);
     }
 
@@ -161,6 +206,10 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution viewAdoptListSl(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        Account account = accountBean.getAccount();
+        userSale = userSalesService.getSalesListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }
 
@@ -170,6 +219,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution viewAdoptSl(){
+        userAdopt = userSalesService.getAdopt(asid);
         return new ForwardResolution(VIEW_ADOPT_SL);
     }
 
