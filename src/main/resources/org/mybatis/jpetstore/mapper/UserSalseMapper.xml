@@ -22,6 +22,10 @@
 <mapper namespace="org.mybatis.jpetstore.mapper.UserSalesMapper">
     <cache />
 
-
+    <select id="getSalesList" resultType="UserSale">
+        SELECT
+            *
+        FROM usersale
+    </select>
 
 </mapper>

@@ -1,10 +1,12 @@
 package org.mybatis.jpetstore.web.actions;
 
 import java.util.List;
+import java.util.Arrays;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
+import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import org.mybatis.jpetstore.domain.Account;
@@ -39,16 +41,16 @@ public class UserSalesActionBean extends AbstractActionBean {
     @SpringBean
     private transient UserSalesService userSalesService;
 
-    private List<UserSale> userSaleList;
+    private List<UserSale> userSalesList;
     private List<UserAdopt> userAdoptsList;
     private UserSale userSale;
     private UserAdopt userAdopt;
 
     private Account account = new Account();
 
-    public List<UserSale> getUserSaleList() { return userSaleList; }
+    public List<UserSale> getUserSaleList() { return userSalesList; }
 
-    public void setUserSaleList(List<UserSale> userSaleList) { this.userSaleList = userSaleList; }
+    public void setUserSaleList(List<UserSale> userSaleList) { this.userSalesList = userSaleList; }
 
     public Account getAccount() { return account; }
 
@@ -69,6 +71,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     @DefaultHandler
     public Resolution viewSalesList() {
+        userSalesList = userSalesService.getSalesList();
         return new ForwardResolution(SALES_LIST);
     }
 
@@ -87,6 +90,14 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertSalesForm(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+
+        clear();
+        if (accountBean == null || !accountBean.isAuthenticated()) {
+            setMessage("You must sign on before attempting to submit.  Please sign on and try submitting again.");
+            return new ForwardResolution(AccountActionBean.class);
+        }
         return new ForwardResolution(INSERT_SALES);
     }
 
@@ -160,5 +171,12 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution viewAdoptSl(){
         return new ForwardResolution(VIEW_ADOPT_SL);
+    }
+
+    /**
+     * Clear.
+     */
+    public void clear() {
+        userSale = new UserSale();
     }
 }
