@@ -9,7 +9,6 @@ public class UserSale implements Serializable {
     private int sId;
     private String suserId;
     private String scategory;
-    private String sname;
     private String sdesc;
     private int sgender;
     private int sage;
@@ -46,14 +45,6 @@ public class UserSale implements Serializable {
 
     public void setScategory(String scategory) {
         this.scategory = scategory;
-    }
-
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
     }
 
     public String getSdesc() {
