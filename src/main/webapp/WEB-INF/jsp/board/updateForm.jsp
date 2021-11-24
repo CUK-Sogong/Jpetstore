@@ -19,11 +19,11 @@
   <table>
     <tr>
       <td>제목 : </td>
-      <td><stripes:text name="board.title" style="width:500px;"/></td>
+      <td><stripes:text name="board.title" style="width:500px;" /></td>
     </tr>
     <tr>
       <td>내용 : </td>
-      <td><stripes:textarea id="test" name="board.content" style="width:500px;height:200px;"/>
+      <td><stripes:textarea id="test" name="board.content" style="width:500px;height:200px;" />
         <div id="test_cnt">(0 / 500)</div>
 
         <script>

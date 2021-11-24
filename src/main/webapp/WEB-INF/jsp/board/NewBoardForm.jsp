@@ -12,7 +12,7 @@
 
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
-        focus="" acceptcharset="UTF-8" >
+        focus="" acceptcharset="UTF-8"  >
 
     <h2>글쓰기</h2>
 
