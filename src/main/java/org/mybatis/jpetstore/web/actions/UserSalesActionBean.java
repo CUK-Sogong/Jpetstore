@@ -54,6 +54,14 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setAccount(Account account) { this.account = account; }
 
+    public UserSale getUserSale() { return userSale; }
+
+    public void setUserSale(UserSale userSale) { this.userSale = userSale; }
+
+    public UserAdopt getUserAdopt() { return userAdopt; }
+
+    public void setUserAdopt(UserAdopt userAdopt) { this.userAdopt = userAdopt; }
+
     /**
      * View Sales List
      *
