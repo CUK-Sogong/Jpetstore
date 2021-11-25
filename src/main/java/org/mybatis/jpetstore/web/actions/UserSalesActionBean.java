@@ -1,10 +1,9 @@
 package org.mybatis.jpetstore.web.actions;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
 
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import net.sourceforge.stripes.action.*;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
@@ -13,6 +12,10 @@ import org.mybatis.jpetstore.domain.Account;
 import org.mybatis.jpetstore.service.UserSalesService;
 import org.mybatis.jpetstore.service.AccountService;
 import net.sourceforge.stripes.integration.spring.SpringBean;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
+
 import javax.servlet.http.HttpSession;
 
 /**

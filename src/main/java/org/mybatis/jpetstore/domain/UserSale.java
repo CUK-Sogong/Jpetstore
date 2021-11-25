@@ -19,7 +19,7 @@ public class UserSale implements Serializable {
     private int scharge;
     private BigDecimal sprice;
     private String sarea;
-    private FileBean simg1;
+    private String simg1;
     private String simg2;
     private String simg3;
     private int sstatus;
@@ -30,7 +30,9 @@ public class UserSale implements Serializable {
         return sid;
     }
 
-    public void setsid(int sid) { this.sid = sid; }
+    public void setsid(int sid) {
+        this.sid = sid;
+    }
 
     public String getsuserid() {
         return suserid;
@@ -84,15 +86,13 @@ public class UserSale implements Serializable {
         return sarea;
     }
 
-    public void setSarea(String sarea) {
-        this.sarea = sarea;
-    }
+    public void setSarea(String sarea) { this.sarea = sarea; }
 
-    public FileBean getSimg1() {
+    public String getSimg1() {
         return simg1;
     }
 
-    public void setSimg1(FileBean simg1) {
+    public void setSimg1(String simg1) {
         this.simg1 = simg1;
     }
 
