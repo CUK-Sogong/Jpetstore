@@ -78,7 +78,8 @@
             scharge = #{scharge},
             sprice = #{sprice},
             sarea = #{sarea},
-            snote = #{snote}
+            snote = #{snote},
+            sstatus = #{sstatus}
         WHERE sid = #{sid}
     </update>
 
