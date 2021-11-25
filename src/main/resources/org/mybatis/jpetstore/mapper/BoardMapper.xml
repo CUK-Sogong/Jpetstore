@@ -71,5 +71,16 @@
         WHERE bnum=#{boardId}
     </delete>
 
+    <select id="getBoardListByPage" resultType="Board">
+        SELECT
+            bnum ,
+            userid,
+            title,
+            date
+        FROM BOARD
+        ORDER BY bnum
+        LIMIT #{page},10
+    </select>
+
 
 </mapper>

@@ -40,6 +40,8 @@ public class BoardService {
         return boardMapper.getBoardList();
     }
 
+    public List<Board> getBoardListByPage(int page) { return boardMapper.getBoardListByPage(page); };
+
     public Board getBoardByBnum(int boardId) { return boardMapper.getBoardByBnum(boardId);
     }
     @Transactional
