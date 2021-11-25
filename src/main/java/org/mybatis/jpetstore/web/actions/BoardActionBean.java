@@ -87,11 +87,17 @@ public class BoardActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         Account account = accountBean.getAccount();
 
-        board.setUserId(account.getUsername());
+        if(board == null || board.getTitle() == null || board.getContent() == null || board.getTitle().length() < 1 || board.getContent().length() < 1){
+            setMessage("제목 또는 내용을 입력하지 않았습니다.");
+            return new ForwardResolution(NEW_BOARD);
+        }
+        else {
+            board.setUserId(account.getUsername());
 
-        boardService.insertBoard(board);
-        board = boardService.getNewBoard(account.getUsername());
-        return new ForwardResolution(BOARD);
+            boardService.insertBoard(board);
+            board = boardService.getNewBoard(account.getUsername());
+            return new ForwardResolution(BOARD);
+        }
     }
 
     public ForwardResolution deleteBoard(){
@@ -105,9 +111,15 @@ public class BoardActionBean extends AbstractActionBean {
     }
 
     public ForwardResolution updateBoard(){
-        boardService.updateBoard(board);
-        board = boardService.getUpdateBoard(boardId);
-        return new ForwardResolution(BOARD);
+        if(board == null || board.getTitle() == null || board.getContent() == null || board.getTitle().length() < 1 || board.getContent().length() < 1){
+            setMessage("제목 또는 내용을 입력하지 않았습니다.");
+            return new ForwardResolution(UPDATE);
+        }
+        else {
+            boardService.updateBoard(board);
+            board = boardService.getUpdateBoard(boardId);
+            return new ForwardResolution(BOARD);
+        }
     }
 
 

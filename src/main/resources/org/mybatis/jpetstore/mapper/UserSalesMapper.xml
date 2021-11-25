@@ -37,4 +37,8 @@
         SELECT * from usersale where sid = #{asid}
     </select>
 
+    <insert id="insertSale" parameterType="UserSale">
+        INSERT INTO usersale
+        values(#sId, #suserId, '강아지', #sdesc, '암컷', #sage, 1, #sprice, '경기도', '1','1','1',1,#snote)
+    </insert>
 </mapper>
