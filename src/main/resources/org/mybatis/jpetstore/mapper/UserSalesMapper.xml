@@ -26,6 +26,11 @@
         SELECT
             *
         FROM usersale
+        WHERE SCATEGORY LIKE #{param1} AND
+              SCHARGE LIKE #{param2}
+        ORDER BY
+            CASE WHEN #{param3} = 0 THEN sid END ASC,
+            CASE WHEN #{param3} = 1 THEN sid END DESC
     </select>
 
     <insert id="insertSale" parameterType="UserSale">
