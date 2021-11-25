@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div></br></br>
 <head>
     <style>
         ul {
@@ -57,9 +62,6 @@
         focus="" acceptcharset="UTF-8"  >
 
     <h2>입양 신청서 정보</h2>
-    <div>
-        <button onclick="history.back()">Back</button>
-    </div>
     <table align="center">
         <tr>
             <td>입양자 정보</td>

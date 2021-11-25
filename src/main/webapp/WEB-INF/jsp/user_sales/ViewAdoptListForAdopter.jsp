@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div></br></br>
 <html>
 <body>
 <h2>입양 신청 목록</h2>
-<div>
-    <button onclick="history.back()">Back</button>
-</div>
+
 <table border align="center">
     <tr>
         <th>입양 번호</th>
