@@ -52,9 +52,9 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     private Account account = new Account();
 
-    public List<UserSale> getUserSaleList() { return userSalesList; }
+    public List<UserSale> getUserSalesList() { return userSalesList; }
 
-    public void setUserSaleList(List<UserSale> userSaleList) { this.userSalesList = userSaleList; }
+    public void setUserSalesList(List<UserSale> userSaleList) { this.userSalesList = userSaleList; }
 
     public Account getAccount() { return account; }
 
