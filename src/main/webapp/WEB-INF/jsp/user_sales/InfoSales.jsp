@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div><br/><br/>
 <head>
     <style>
         ul {
@@ -45,6 +50,7 @@
 
 
 <h2>분양정보</h2>
+
 <hr>
 
 <table align="center" border>
@@ -73,21 +79,21 @@
         <td>${actionBean.userSale.sage}</td>
     </tr>
     <tr>
-        <td>분양가</td>
-        <td>${actionBean.userSale.sprice}</td>
+        <td>분양구분</td>
+        <td>
+            <c:if test="${actionBean.userSale.scharge==0}">
+            무료
+            </c:if>
+            <c:if test="${actionBean.userSale.scharge==1}">
+            유료
+            </c:if>
+        </td>
         <td>분양지역</td>
         <td>${actionBean.userSale.sarea}</td>
     </tr>
     <tr>
-        <td>분양구분</td>
-        <td>
-        <c:if test="${actionBean.userSale.scharge==0}">
-            무료
-        </c:if>
-            <c:if test="${actionBean.userSale.scharge==1}">
-                유료
-            </c:if>
-        </td>
+        <td>분양가</td>
+        <td>${actionBean.userSale.sprice} $</td>
         <td>특이사항</td>
         <td>${actionBean.userSale.snote}</td>
     </tr>
@@ -122,7 +128,9 @@
     <c:if test="${sessionScope.accountBean != null}">
         <c:if test="${sessionScope.accountBean.authenticated}">
             <c:if test="${!sessionScope.accountBean.account.username.equals(actionBean.userSale.suserid)}">
-                <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                <c:if test="${actionBean.userSale.sstatus == 1}">
+                    <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                </c:if>
             </c:if>
         </c:if>
     </c:if>

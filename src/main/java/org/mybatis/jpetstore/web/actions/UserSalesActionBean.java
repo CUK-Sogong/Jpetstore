@@ -132,6 +132,8 @@ public class UserSalesActionBean extends AbstractActionBean {
         return new ForwardResolution(SALES_LIST);
     }
 
+
+
     /**
      * Select Sales Form
      *
@@ -170,16 +172,22 @@ public class UserSalesActionBean extends AbstractActionBean {
         account = accountBean.getAccount();
 
         userSale.setsuserid(account.getUsername());
-        if(check==0)
-        {
+        if (check == 0) {
             userSale.setScharge(0);
             userSale.setSprice(BigDecimal.ZERO);
-        }
-        else
+        } else
             userSale.setScharge(1);
-        userSalesService.insertSale(userSale);
-        userSale = userSalesService.getSalesRecent();
-        return new ForwardResolution(INFO_SALES);
+        if(userSale.getSdesc() == null || userSale.getSprice() == null || userSale.getSnote() == null
+                || userSale.getSdesc().length() < 1  || userSale.getSnote().length() < 1){
+            setMessage("필수항목을 입력해 주세요!");
+            return new ForwardResolution(INSERT_SALES);
+        }
+        else {
+            userSalesService.insertSale(userSale);
+            userSale = userSalesService.getSalesRecent();
+            return new ForwardResolution(INFO_SALES);
+        }
+
     }
 
     /**
@@ -199,9 +207,17 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
 
-        userSalesService.updateSales(userSale);
-        userSalesList = userSalesService.getSalesListAll();;
-        return new ForwardResolution(INFO_SALES);
+
+        if(userSale.getSdesc() == null || userSale.getSprice() == null || userSale.getSnote() == null
+                || userSale.getSdesc().length() < 1  || userSale.getSnote().length() < 1){
+            setMessage("필수항목을 입력해 주세요!");
+            return new ForwardResolution(EDIT_SALES);
+        }
+        else {
+            userSalesService.updateSales(userSale);
+            userSalesList = userSalesService.getSalesListAll();
+            return new ForwardResolution(INFO_SALES);
+        }
     }
 
     /**
@@ -250,11 +266,19 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
 
-        userAdopt.setAuserid(account.getUsername());
-        userAdopt.setAsid(userSale.getsid());
-        userSalesService.insertAdopt(userAdopt);
-        userAdopt = userSalesService.getAdoptRecent();
-        return new ForwardResolution(VIEW_ADOPT_ADT);
+
+        if(userAdopt.getApets() == null || userAdopt.getAnote() == null
+                || userAdopt.getApets().length() < 1  || userAdopt.getAnote().length() < 1){
+            setMessage("필수항목을 입력해 주세요!");
+            return new ForwardResolution(INSERT_ADOPT);
+        }
+        else {
+            userAdopt.setAuserid(account.getUsername());
+            userAdopt.setAsid(userSale.getsid());
+            userSalesService.insertAdopt(userAdopt);
+            userAdopt = userSalesService.getAdoptRecent();
+            return new ForwardResolution(VIEW_ADOPT_ADT);
+        }
     }
 
     /**
@@ -353,6 +377,9 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution acceptAdopt(){
         userSalesService.acceptAdopt(aid);
+        userSale = userSalesService.getSales(userSalesService.getAdopt(aid).getAsid());
+        userSale.setSstatus(0);
+        userSalesService.updateSales(userSale);
         userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }
