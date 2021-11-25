@@ -89,7 +89,6 @@
 </ul>
 
 <hr>
-
 <table align="center" >
     <tr>
         <th>번호</th>
