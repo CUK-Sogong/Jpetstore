@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<br>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div></br></br>
 <head>
     <style>
         ul {
@@ -43,6 +48,7 @@
         focus="" acceptcharset="UTF-8"  >
 
 <h2>분양등록</h2>
+
 <hr>
 
 <table align="center">
@@ -73,6 +79,7 @@
             <stripes:select name="userSale.sgender">
                 <stripes:option>수컷</stripes:option>
                 <stripes:option>암컷</stripes:option>
+                <stripes:option>중성화</stripes:option>
             </stripes:select>
         </td>
     </tr>

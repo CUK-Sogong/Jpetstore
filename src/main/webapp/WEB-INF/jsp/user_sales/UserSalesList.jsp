@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../common/IncludeTop.jsp"%>
-
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">
+    Return to MAIN MENU
+</stripes:link></div><br/><br/>
 <jsp:useBean id="catalog"
              class="org.mybatis.jpetstore.web.actions.CatalogActionBean" />
 
@@ -84,7 +87,9 @@
     </stripes:link>
     </li>
 </ul>
+
 <hr>
+
 <table align="center" >
     <tr>
         <th>번호</th>
