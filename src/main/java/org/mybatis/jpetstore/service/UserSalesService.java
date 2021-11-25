@@ -45,8 +45,8 @@ public class UserSalesService {
         userSalesMapper.updateAdopt(userAdopt);
     }
     @Transactional
-    public void deleteAdopt(int asid) {
-        userSalesMapper.deleteAdopt(asid);
+    public void deleteAdopt(int aid) {
+        userSalesMapper.deleteAdopt(aid);
     }
     @Transactional
     public List<UserAdopt> getAdoptList() {
@@ -57,8 +57,8 @@ public class UserSalesService {
         return userSalesMapper.getAdoptListByUsername(username);
     }
 
-    public UserAdopt getAdopt(int asid) {
-        return userSalesMapper.getAdopt(asid);
+    public UserAdopt getAdopt(int aid) {
+        return userSalesMapper.getAdopt(aid);
     }
 
     public List<UserSale> getSalesListByUsername(String username) {
@@ -78,6 +78,10 @@ public class UserSalesService {
         userSalesMapper.updateSales(userSale);
     }
 
+    public void deleteSales(int sid) {
+        userSalesMapper.deleteSales(sid);
+    }
+
     public UserSale getSales(int sid) {
         return userSalesMapper.getSales(sid);
     }
@@ -85,12 +89,20 @@ public class UserSalesService {
         return userSalesMapper.getSalesRecent();
     }
 
-    public void acceptAdopt() {
-        userSalesMapper.acceptAdopt();
+    public UserAdopt getAdoptRecent() {
+        return userSalesMapper.getAdoptRecent();
     }
 
-    public void refusalAdopt() {
-        userSalesMapper.refusalAdopt();
+    public List<UserAdopt> getAdoptListBySid(int sid) {
+        return userSalesMapper.getAdoptListBySid(sid);
+    }
+
+    public void acceptAdopt(int aid) {
+        userSalesMapper.acceptAdopt(aid);
+    }
+
+    public void refusalAdopt(int aid) {
+        userSalesMapper.refusalAdopt(aid);
     }
 
     public int getNextId(String name) {

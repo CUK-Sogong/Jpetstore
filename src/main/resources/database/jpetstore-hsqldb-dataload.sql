@@ -128,6 +128,3 @@ INSERT INTO Board (userId,title,content,date) VALUES ('관리자','8','소공 �
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','9','소공 화이팅',NOW());
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','10','소공 화이팅',NOW());
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','11','소공 화이팅',NOW());
-
-INSERT INTO usersale (sid,suserId,scategory,sdesc,sgender,sage,scharge,sprice,sarea,simg1,simg2,simg3,sstatus,snote)
-VALUES (1,'관리자','강아지','푸들',1,1,1,10,'경기도','1','1','1',1,'qwerty');

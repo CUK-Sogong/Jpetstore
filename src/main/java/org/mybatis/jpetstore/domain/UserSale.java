@@ -10,7 +10,7 @@ public class UserSale implements Serializable {
     private String suserid;
     private String scategory;
     private String sdesc;
-    private int sgender;
+    private String sgender;
     private int sage;
     private int scharge;
     private BigDecimal sprice;
@@ -54,11 +54,11 @@ public class UserSale implements Serializable {
         this.sdesc = sdesc;
     }
 
-    public int getSgender() {
+    public String getSgender() {
         return sgender;
     }
 
-    public void setSgender(int sgender) {
+    public void setSgender(String sgender) {
         this.sgender = sgender;
     }
 

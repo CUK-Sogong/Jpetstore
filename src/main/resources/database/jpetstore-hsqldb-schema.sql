@@ -179,7 +179,7 @@ create table usersale
     suserId   VARCHAR(80)  NOT NULL,
     scategory VARCHAR(10)  NOT NULL,
     sdesc     VARCHAR(10)  NOT NULL,
-    sgender   INT          NOT NULL,
+    sgender   VARCHAR(10)  NOT NULL,
     sage      INT          NOT NULL,
     scharge   INT          NOT NULL,
     sprice    INT null,

@@ -57,7 +57,7 @@
     <tr>
         <td>품종</td>
         <td>${actionBean.userSale.sdesc}</td>
-        <td>나이</td>
+        <td>개월 수</td>
         <td>${actionBean.userSale.sage}</td>
     </tr>
     <tr>
@@ -68,7 +68,16 @@
     </tr>
     <tr>
         <td>분양구분</td>
-        <td>${actionBean.userSale.scharge}</td>
+        <td>
+        <c:if test="${actionBean.userSale.scharge==0}">
+            무료
+        </c:if>
+            <c:if test="${actionBean.userSale.scharge==1}">
+                유료
+            </c:if>
+        </td>
+        <td>특이사항</td>
+        <td>${actionBean.userSale.snote}</td>
     </tr>
     <tr>
         <td>사진1</td>
@@ -84,9 +93,28 @@
     </tr>
 </table>
 <div style="text-align: center">
-    <stripes:submit name="deleteSales" value="삭제"/>
-    <stripes:submit name="updateSalesForm" value="수정"/>
-    <stripes:submit name="insertAdoptForm" value="입양신청"/>
+    <c:if test="${sessionScope.accountBean != null}">
+        <c:if test="${sessionScope.accountBean.authenticated}">
+            <c:if test="${sessionScope.accountBean.account.username.equals(actionBean.userSale.suserid)}">
+                <stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="updateSalesForm">
+                    수정
+                    <stripes:param name="sid" value="${actionBean.userSale.sid}" />
+                </stripes:link>
+                <stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="deleteSales">
+                    삭제
+                    <stripes:param name="sid" value="${actionBean.userSale.sid}" />
+                </stripes:link>
+            </c:if>
+        </c:if>
+    </c:if>
+    <c:if test="${sessionScope.accountBean != null}">
+        <c:if test="${sessionScope.accountBean.authenticated}">
+            <c:if test="${!sessionScope.accountBean.account.username.equals(actionBean.userSale.suserid)}">
+                <stripes:submit name="insertAdoptForm" value="입양신청"/>
+            </c:if>
+        </c:if>
+    </c:if>
+
 </div>
 </stripes:form>
 </div>

@@ -47,7 +47,7 @@
 	<br/>
 	<stripes:link
 			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-			event="viewAdoptListSl">My Sales</stripes:link>
+			event="viewSalesListSl">My Sales</stripes:link>
 	<br/>
 	<stripes:link
 			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"

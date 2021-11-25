@@ -30,7 +30,7 @@
 
     <insert id="insertSale" parameterType="UserSale">
         INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
-            values(#{sid}, #{suserid}, '강아지', #{sdesc}, 1, #{sage}, 1, #{sprice}, '경기도', '1','1','1',1,#{snote})
+            values(#{sid}, #{suserid}, #{scategory}, #{sdesc}, #{sgender}, #{sage}, #{scharge}, #{sprice}, #{sarea}, '1','1','1',1,#{snote})
     </insert>
 
     <select id="getSaleInfo" resultType="UserSale">
@@ -42,13 +42,63 @@
     </select>
 
     <select id="getSalesRecent" resultType="UserSale">
-        SELECT * from usersale where sid = (SELECT MAX(sid) from usersale);
+        SELECT * from usersale where sid = (SELECT MAX(sid) from usersale)
     </select>
 
+    <delete id="deleteSales" parameterType="int">
+        DELETE FROM usersale
+        WHERE sid = #{sid}
+    </delete>
 
+    <insert id="insertAdopt" parameterType="UserAdopt">
+        INSERT INTO useradopt
+            VALUES(#{aid},#{asid},#{auserid},#{aarea},#{asalary},#{ahome},#{afamnum},#{apets},#{apetexp},#{anote},2)
+    </insert>
 
-<!--    <insert id="insertSale" parameterType="UserSale">-->
-<!--        INSERT INTO usersale-->
-<!--        values(#sId, #suserId, '강아지', #sdesc, '암컷', #sage, 1, #sprice, '경기도', '1','1','1',1,#snote)-->
-<!--    </insert>-->
+    <delete id="deleteAdopt" parameterType="int">
+        DELETE FROM useradopt
+        WHERE aid = #{aid}
+    </delete>
+
+    <select id="getAdoptRecent" resultType="UserAdopt">
+        SELECT * from useradopt where aid = (SELECT MAX(aid) from useradopt)
+    </select>
+
+    <update id="updateSales" parameterType="UserSale">
+        UPDATE usersale SET
+            scategory = #{scategory},
+            sdesc = #{sdesc},
+            sgender = #{sgender},
+            sage = #{sage},
+            scharge = #{scharge},
+            sprice = #{sprice},
+            sarea = #{sarea},
+            snote = #{snote}
+        WHERE sid = #{sid}
+    </update>
+
+    <select id="getAdoptListByUsername" resultType="UserAdopt">
+        SELECT * FROM useradopt where auserid = #{username}
+    </select>
+    <select id="getSalesListByUsername" resultType="UserSale">
+        SELECT * FROM usersale where suserid = #{username}
+    </select>
+
+    <select id="getAdopt" resultType="UserAdopt">
+        SELECT * from useradopt where aid = #{aid}
+    </select>
+    <select id="getAdoptListBySid" resultType="UserAdopt">
+        SELECT * FROM useradopt where asid = #{sid}
+    </select>
+
+    <update id="acceptAdopt" parameterType="int">
+        UPDATE useradopt SET
+        astatus = 1
+        WHERE aid = #{aid}
+    </update>
+    <update id="refusalAdopt" parameterType="int">
+        UPDATE useradopt SET
+            astatus = 0
+        WHERE aid = #{aid}
+    </update>
 </mapper>
