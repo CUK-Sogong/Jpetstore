@@ -117,18 +117,28 @@ INSERT INTO inventory (itemid, qty ) VALUES ('EST-26',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-27',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-28',10000);
 
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','공지사항','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','안녕하세요','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','3','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','4','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','5','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','6','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','7','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','8','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','9','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','10','소공 화이팅',NOW());
-INSERT INTO Board (userId,title,content,date) VALUES ('관리자','11','소공 화이팅',NOW());
-
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','1','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','2','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','3','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','4','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','5','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','6','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','7','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','8','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','9','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','10','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','11','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','12','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','13','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','14','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','15','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','16','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','17','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','18','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','19','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','20','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','21','소공 화이팅',NOW());
+INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','22','소공 화이팅',NOW());
 
 INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
 values(1, 'j2ee', '고양이', 'persian cat', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello');

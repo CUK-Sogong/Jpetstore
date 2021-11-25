@@ -46,6 +46,9 @@ public class BoardActionBean extends AbstractActionBean {
     private int boardId;
     private Board board;
     private List<Board> boardList;
+    private List<Board> pageList;
+    private int size;
+    private int page=0;
 
     public int getBoardId() {
         return boardId;
@@ -67,9 +70,25 @@ public class BoardActionBean extends AbstractActionBean {
         this.board = board;
     }
 
+    public int getSize() { return size; }
+
+    public void setSize(int size) { this.size = size; }
+
+    public int getPage() { return page; }
+
+    public void setPage(int page) { this.page = page; }
+
+    public List<Board> getPageList() { return pageList; }
+
+    public void setPageList(List<Board> pageList) { this.pageList = pageList; }
+
     @DefaultHandler
     public ForwardResolution viewBoard(){
         boardList = boardService.getBoardList();
+        pageList = boardService.getBoardListByPage(page*10);
+        size = boardList.size()/10;
+        if(boardList.size()%10!=0)
+            size++;
         return new ForwardResolution(BOARDLIST);
     }
 
@@ -103,7 +122,7 @@ public class BoardActionBean extends AbstractActionBean {
     public ForwardResolution deleteBoard(){
         boardService.deleteBoard(boardId);
         boardList = boardService.getBoardList();
-        return new ForwardResolution(BOARDLIST);
+        return viewBoard();
     }
 
     public ForwardResolution updateBoardForm(){
