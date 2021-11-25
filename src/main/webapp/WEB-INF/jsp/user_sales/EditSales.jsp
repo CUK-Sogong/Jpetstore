@@ -100,6 +100,7 @@
                 <c:if test="${actionBean.check==1}">
                     <stripes:text name="userSale.sprice" />
                 </c:if>
+
             </td>
         </tr>
         <tr>

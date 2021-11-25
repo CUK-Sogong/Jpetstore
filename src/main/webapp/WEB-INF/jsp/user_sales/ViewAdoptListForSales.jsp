@@ -28,12 +28,6 @@
             <td>${actionBean.userSale.sage}</td>
         </tr>
         <tr>
-            <td>분양가</td>
-            <td>${actionBean.userSale.sprice}</td>
-            <td>분양지역</td>
-            <td>${actionBean.userSale.sarea}</td>
-        </tr>
-        <tr>
             <td>분양구분</td>
             <td>
                 <c:if test="${actionBean.userSale.scharge==0}">
@@ -43,6 +37,12 @@
                     유료
                 </c:if>
             </td>
+            <td>분양지역</td>
+            <td>${actionBean.userSale.sarea}</td>
+        </tr>
+        <tr>
+            <td>분양가</td>
+            <td>${actionBean.userSale.sprice}</td>
             <td>특이사항</td>
             <td>${actionBean.userSale.snote}</td>
         </tr>
