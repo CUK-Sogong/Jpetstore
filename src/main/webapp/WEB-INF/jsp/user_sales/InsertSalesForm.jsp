@@ -78,7 +78,7 @@
     </tr>
     <tr>
         <td>개월 수</td>
-        <td><stripes:text name="userSale.sage" formatType="null" /></td>
+        <td><stripes:text name="userSale.sage" /></td>
     </tr>
     <tr>
         <td>분양구분</td>
