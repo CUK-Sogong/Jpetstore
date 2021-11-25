@@ -48,66 +48,80 @@
 <table align="center">
     <tr>
         <td>분양자 정보</td>
-<%--        <td>${actionBean.UserSale.suserid}</td>--%>
+        <td>${actionBean.account.username}</td>
     </tr>
     <tr>
         <td>종류</td>
         <td>
-            <select class ="category1">
-                <option value="">강아지</option>
-                <option value="">고양이</option>
-                <option value="">물고기</option>
-                <option value="">새</option>
-                <option value="">파충류</option>
-                <option value="">기타</option>
-            </select>
+            <stripes:select name="userSale.scategory">
+                <stripes:option>강아지</stripes:option>
+                <stripes:option>고양이</stripes:option>
+                <stripes:option>물고기</stripes:option>
+                <stripes:option>새</stripes:option>
+                <stripes:option>파충류</stripes:option>
+                <stripes:option>기타</stripes:option>
+            </stripes:select>
         </td>
     </tr>
     <tr>
         <td>품종</td>
-        <td><stripes:text name="UserSale.sdesc" /></td>
+        <td><stripes:text name="userSale.sdesc" /></td>
     </tr>
     <tr>
         <td>성별</td>
         <td>
-<%--            <stripes:select name="account.languagePreference">--%>
-<%--                <stripes:options-collection collection="${actionBean.languages}" />--%>
-<%--            </stripes:select>--%>
+            <stripes:select name="userSale.sgender">
+                <stripes:option>수컷</stripes:option>
+                <stripes:option>암컷</stripes:option>
+            </stripes:select>
         </td>
     </tr>
     <tr>
         <td>개월수</td>
-        <td><stripes:text name="UserSale.sage" /></td>
+        <td><stripes:text name="userSale.sage" /></td>
     </tr>
     <tr>
         <td>분양구분</td>
-        <td>유료 / 무료</td>
+        <td>
+        <c:if test="${actionBean.check==0}">
+            무료
+        </c:if>
+            <c:if test="${actionBean.check==1}">
+                유료
+            </c:if>
+        </td>
     </tr>
     <tr>
         <td>분양가</td>
-        <td><stripes:text name="UserSale.sprice" /></td>
+        <td>
+            <c:if test="${actionBean.check==0}">
+                0
+            </c:if>
+            <c:if test="${actionBean.check==1}">
+                <stripes:text name="userSale.sprice" />
+            </c:if>
+        </td>
     </tr>
     <tr>
         <td>분양지역</td>
         <td>
-            <select class ="category1">
-                <option value="">서울특별시</option>
-                <option value="">경기도</option>
-                <option value="">대전광역시</option>
-                <option value="">부산광역시</option>
-                <option value="">광주광역시</option>
-                <option value="">대구광역시</option>
-                <option value="">울산광역시</option>
-                <option value="">강원도</option>
-                <option value="">충청북도</option>
-                <option value="">충청남도</option>
-                <option value="">경상북도</option>
-                <option value="">경상남도</option>
-                <option value="">전라북도</option>
-                <option value="">전라남도</option>
-                <option value="">제주도</option>
-
-            </select>
+                <stripes:select name="userSale.sarea">
+                    <stripes:option>서울특별시</stripes:option>
+                    <stripes:option>경기도</stripes:option>
+                    <stripes:option>대전광역시</stripes:option>
+                    <stripes:option>부산광역시</stripes:option>
+                    <stripes:option>광주광역시</stripes:option>
+                    <stripes:option>대구광역시</stripes:option>
+                    <stripes:option>울산광역시</stripes:option>
+                    <stripes:option>강원도</stripes:option>
+                    <stripes:option>충청북도</stripes:option>
+                    <stripes:option>충청남도</stripes:option>
+                    <stripes:option>경상북도</stripes:option>
+                    <stripes:option>경상남도</stripes:option>
+                    <stripes:option>전라북도</stripes:option>
+                    <stripes:option>전라남도</stripes:option>
+                    <stripes:option>제주도</stripes:option>
+                </stripes:select>
         </td>
     </tr>
     <tr>
@@ -124,10 +138,10 @@
     </tr>
     <tr>
         <td>특이사항</td>
-        <td><stripes:text name="UserSale.snote" /></td>
+        <td><stripes:text name="userSale.snote" /></td>
     </tr>
 </table>
-<stripes:submit name="insertSales2" value="작성"/>
+<stripes:submit name="insertSales" value="작성"/>
 </stripes:form>
 </div>
 <%@ include file="../common/IncludeBottom.jsp"%>

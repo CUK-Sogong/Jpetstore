@@ -70,7 +70,7 @@ public class UserSalesService {
     }
 
     public void insertSale(UserSale userSale) {
-        userSale.setsId(getNextId("salesnum"));
+        userSale.setsid(getNextId("salesnum"));
         userSalesMapper.insertSale(userSale);
     }
     public void updateSales(UserSale userSale) {

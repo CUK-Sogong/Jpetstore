@@ -1,5 +1,7 @@
 package org.mybatis.jpetstore.web.actions;
 
+import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -114,6 +116,9 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertSalesForm(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        account = accountBean.getAccount();
         return new ForwardResolution(INSERT_SALES);
     }
 
@@ -123,11 +128,15 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertSales(){
-        HttpSession session = context.getRequest().getSession();
-        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
 
-        userSale.setSuserId(account.getUsername());
+        userSale.setSuserid(account.getUsername());
+        if(check==0)
+        {
+            userSale.setScharge(0);
+            userSale.setSprice(BigDecimal.ZERO);
+        }
+        else
+            userSale.setScharge(1);
         userSalesService.insertSale(userSale);
         userSale = userSalesService.getSales(sid);
         return new ForwardResolution(INFO_SALES);
@@ -148,7 +157,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution updateSales(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
+        account = accountBean.getAccount();
 
         userSalesService.updateSales(userSale);
         userSalesList = userSalesService.getSalesList();
@@ -174,7 +183,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSales(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
+        account = accountBean.getAccount();
 
         userSale = userSalesService.getSales(sid);
         return new ForwardResolution(INFO_SALES);
@@ -185,7 +194,12 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution insertAdoptForm(){ return new ForwardResolution(INSERT_ADOPT); }
+    public Resolution insertAdoptForm(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        account = accountBean.getAccount();
+        return new ForwardResolution(INSERT_ADOPT);
+    }
 
     /**
      * Insert Adopt
@@ -195,10 +209,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution insertAdopt(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
+        account = accountBean.getAccount();
 
         userAdopt.setAuserid(account.getUsername());
-        userAdopt.setAsid(userSale.getsId());
+        userAdopt.setAsid(userSale.getsid());
         userSalesService.insertAdopt(userAdopt);
         return new ForwardResolution(VIEW_ADOPT_ADT);
     }
@@ -241,7 +255,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewAdoptListAdt(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
+        account = accountBean.getAccount();
         userAdoptsList = userSalesService.getAdoptListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_ADT);
     }
@@ -264,7 +278,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewAdoptListSl(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        Account account = accountBean.getAccount();
+        account = accountBean.getAccount();
         userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }

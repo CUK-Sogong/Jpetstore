@@ -48,7 +48,7 @@
             <stripes:link
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="insertSalesForm" >
-<%--                <stripes:param name="asid" value="0" />--%>
+                <stripes:param name="check" value="0" />
                 무료분양
             </stripes:link>
         </td>
@@ -56,7 +56,7 @@
             <stripes:link
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="insertSalesForm">
-<%--                <stripes:param name="asid" value="${UserSale.sId}" />--%>
+                <stripes:param name="check" value="1" />
                 유료분양
             </stripes:link>
         </td>
