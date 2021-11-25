@@ -91,10 +91,10 @@
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.check==0}">
+                <c:if test="${actionBean.userSale.sstatus==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.check==1}">
+                <c:if test="${actionBean.userSale.sstatus==1}">
                     유료
                 </c:if>
             </td>
@@ -102,13 +102,13 @@
         <tr>
             <td>분양가</td>
             <td>
-                <c:if test="${actionBean.check==0}">
+                <c:if test="${actionBean.userSale.sstatus==0}">
                     0
                 </c:if>
-                <c:if test="${actionBean.check==1}">
+                <c:if test="${actionBean.userSale.sstatus==1}">
                     <stripes:text name="userSale.sprice" />
                 </c:if>
-
+                단위 : $
             </td>
         </tr>
         <tr>

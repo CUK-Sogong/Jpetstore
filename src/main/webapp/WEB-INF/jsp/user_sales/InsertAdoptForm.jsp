@@ -160,7 +160,7 @@
         </tr>
         <tr>
             <td>분양가</td>
-            <td>${actionBean.userSale.sprice}</td>
+            <td>${actionBean.userSale.sprice} $</td>
             <td>특이사항</td>
             <td>${actionBean.userSale.snote}</td>
         </tr>

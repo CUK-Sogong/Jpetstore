@@ -107,6 +107,7 @@
             <c:if test="${actionBean.check==1}">
                 <stripes:text name="userSale.sprice" />
             </c:if>
+             단위 : $
         </td>
     </tr>
     <tr>
