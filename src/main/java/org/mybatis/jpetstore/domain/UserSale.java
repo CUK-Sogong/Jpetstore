@@ -6,12 +6,11 @@ import java.math.BigDecimal;
 public class UserSale implements Serializable {
     private static final long serialVersionUID = -2254024898221315127L;
 
-    private int sId;
-    private String suserId;
+    private int sid;
+    private String suserid;
     private String scategory;
-    private String sname;
     private String sdesc;
-    private int sgender;
+    private String sgender;
     private int sage;
     private int scharge;
     private BigDecimal sprice;
@@ -20,24 +19,23 @@ public class UserSale implements Serializable {
     private String simg2;
     private String simg3;
     private int sstatus;
-    private int sread;
     private String snote;
 
 
-    public int getsId() {
-        return sId;
+    public int getsid() {
+        return sid;
     }
 
-    public void setsId(int sId) {
-        this.sId = sId;
+    public void setsid(int sid) {
+        this.sid = sid;
     }
 
-    public String getSuserId() {
-        return suserId;
+    public String getsuserid() {
+        return suserid;
     }
 
-    public void setSuserId(String suserId) {
-        this.suserId = suserId;
+    public void setsuserid(String suserid) {
+        this.suserid = suserid;
     }
 
     public String getScategory() {
@@ -48,14 +46,6 @@ public class UserSale implements Serializable {
         this.scategory = scategory;
     }
 
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
     public String getSdesc() {
         return sdesc;
     }
@@ -64,11 +54,11 @@ public class UserSale implements Serializable {
         this.sdesc = sdesc;
     }
 
-    public int getSgender() {
+    public String getSgender() {
         return sgender;
     }
 
-    public void setSgender(int sgender) {
+    public void setSgender(String sgender) {
         this.sgender = sgender;
     }
 
@@ -126,14 +116,6 @@ public class UserSale implements Serializable {
 
     public void setSstatus(int sstatus) {
         this.sstatus = sstatus;
-    }
-
-    public int getSread() {
-        return sread;
-    }
-
-    public void setSread(int sread) {
-        this.sread = sread;
     }
 
     public String getSnote() {

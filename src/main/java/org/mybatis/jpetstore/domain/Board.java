@@ -1,5 +1,7 @@
 package org.mybatis.jpetstore.domain;
 
+import net.sourceforge.stripes.validation.Validate;
+
 import java.io.Serializable;
 import java.util.Date;
 

@@ -178,9 +178,8 @@ create table usersale
     sid       INT PRIMARY KEY,
     suserId   VARCHAR(80)  NOT NULL,
     scategory VARCHAR(10)  NOT NULL,
-    sname     VARCHAR(10)  NOT NULL,
-    sdesc     VARCHAR(10)  NOT NULL,
-    sgender   INT          NOT NULL,
+    sdesc     VARCHAR(80)  NOT NULL,
+    sgender   VARCHAR(10)  NOT NULL,
     sage      INT          NOT NULL,
     scharge   INT          NOT NULL,
     sprice    INT null,
@@ -189,7 +188,6 @@ create table usersale
     simg2     VARCHAR(255) null,
     simg3     VARCHAR(255) null,
     sstatus   INT DEFAULT 1,
-    sread     INT          NOT NULL,
     snote     varchar(255) NOT NULL
 );
 

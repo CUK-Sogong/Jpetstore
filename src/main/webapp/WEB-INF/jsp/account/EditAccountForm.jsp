@@ -43,6 +43,17 @@
 
 </stripes:form> <stripes:link
 	beanclass="org.mybatis.jpetstore.web.actions.OrderActionBean"
-	event="listOrders">My Orders</stripes:link></div>
+	event="listOrders">My Orders</stripes:link>
+	<br/>
+	<stripes:link
+			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+			event="viewSalesListSl">My Sales</stripes:link>
+	<br/>
+	<stripes:link
+			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+			event="viewAdoptListAdt">My Adopts</stripes:link>
+
+
+</div>
 
 <%@ include file="../common/IncludeBottom.jsp"%>
