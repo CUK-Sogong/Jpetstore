@@ -85,11 +85,11 @@
     </tr>
     <c:forEach var="UserSale" items="${actionBean.userSalesList}">
         <tr>
-            <td>${UserSale.sId}</td>
+            <td>${UserSale.sid}</td>
             <td><stripes:link
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="viewSales">
-                <stripes:param name="asid" value="${UserSale.sId}" />
+                <stripes:param name="sid" value="${UserSale.sid}" />
                 ${UserSale.sdesc}
             </stripes:link></td>
             <td>

@@ -29,16 +29,26 @@
     </select>
 
     <insert id="insertSale" parameterType="UserSale">
-        INSERT INTO usersale
-            values(#sId, #suserId, '강아지', #sdesc, '암컷', #sage, 1, #srpice, '경기도', '1','1','1',1,#snote)
+        INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
+            values(#{sid}, #{suserid}, '강아지', #{sdesc}, 1, #{sage}, 1, #{sprice}, '경기도', '1','1','1',1,#{snote})
     </insert>
 
     <select id="getSaleInfo" resultType="UserSale">
         SELECT * from usersale where sid = #{asid}
     </select>
 
-    <insert id="insertSale" parameterType="UserSale">
-        INSERT INTO usersale
-        values(#sId, #suserId, '강아지', #sdesc, '암컷', #sage, 1, #sprice, '경기도', '1','1','1',1,#snote)
-    </insert>
+    <select id="getSales" resultType="UserSale">
+        SELECT * from usersale where sid = #{sid}
+    </select>
+
+    <select id="getSalesRecent" resultType="UserSale">
+        SELECT * from usersale where sid = (SELECT MAX(sid) from usersale);
+    </select>
+
+
+
+<!--    <insert id="insertSale" parameterType="UserSale">-->
+<!--        INSERT INTO usersale-->
+<!--        values(#sId, #suserId, '강아지', #sdesc, '암컷', #sage, 1, #sprice, '경기도', '1','1','1',1,#snote)-->
+<!--    </insert>-->
 </mapper>

@@ -69,8 +69,9 @@ public class UserSalesService {
         return userSalesMapper.getSalesList();
     }
 
+
     public void insertSale(UserSale userSale) {
-        userSale.setsId(getNextId("salesnum"));
+        userSale.setsid(getNextId("salesnum"));
         userSalesMapper.insertSale(userSale);
     }
     public void updateSales(UserSale userSale) {
@@ -79,6 +80,9 @@ public class UserSalesService {
 
     public UserSale getSales(int sid) {
         return userSalesMapper.getSales(sid);
+    }
+    public UserSale getSalesRecent() {
+        return userSalesMapper.getSalesRecent();
     }
 
     public void acceptAdopt() {

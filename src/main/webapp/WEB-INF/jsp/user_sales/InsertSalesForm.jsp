@@ -48,7 +48,7 @@
 <table align="center">
     <tr>
         <td>분양자 정보</td>
-<%--        <td>${actionBean.UserSale.suserid}</td>--%>
+        <td>${actionBean.account.username}</td>
     </tr>
     <tr>
         <td>종류</td>
@@ -65,7 +65,7 @@
     </tr>
     <tr>
         <td>품종</td>
-        <td><stripes:text name="UserSale.sdesc" /></td>
+        <td><stripes:text name="userSale.sdesc" /></td>
     </tr>
     <tr>
         <td>성별</td>
@@ -77,7 +77,7 @@
     </tr>
     <tr>
         <td>개월수</td>
-        <td><stripes:text name="UserSale.sage" /></td>
+        <td><stripes:text name="userSale.sage" /></td>
     </tr>
     <tr>
         <td>분양구분</td>
@@ -85,7 +85,7 @@
     </tr>
     <tr>
         <td>분양가</td>
-        <td><stripes:text name="UserSale.sprice" /></td>
+        <td><stripes:text name="userSale.sprice" /></td>
     </tr>
     <tr>
         <td>분양지역</td>
@@ -124,10 +124,10 @@
     </tr>
     <tr>
         <td>특이사항</td>
-        <td><stripes:text name="UserSale.snote" /></td>
+        <td><stripes:text name="userSale.snote" /></td>
     </tr>
 </table>
-<stripes:submit name="insertSales2" value="작성"/>
+<stripes:submit name="insertSales" value="작성"/>
 </stripes:form>
 </div>
 <%@ include file="../common/IncludeBottom.jsp"%>
