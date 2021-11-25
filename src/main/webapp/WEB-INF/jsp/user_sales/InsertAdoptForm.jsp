@@ -52,13 +52,18 @@
     });
 </script>--%>
 
+
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
         focus="" acceptcharset="UTF-8"  >
 
 <h2>입양신청</h2>
 <hr>
-
+    <div id="BackLink"><stripes:link
+            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+            event="viewSalesList">
+        Return to SALES LIST
+    </stripes:link></div>
 <table align="center">
     <tr>
         <td>입양자 정보</td>

@@ -2,6 +2,9 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 <body>
 <h2>분양 등록 목록</h2>
+<div>
+    <button onclick="history.back()">Back</button>
+</div>
 <table border align="center">
     <tr>
         <th>분양 번호</th>

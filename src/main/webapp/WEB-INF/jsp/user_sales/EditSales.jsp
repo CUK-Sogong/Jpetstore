@@ -38,13 +38,16 @@
         td{text-align:center}
     </style>
 </head>
+
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
         focus="" acceptcharset="UTF-8"  >
 
     <h2>분양 수정</h2>
     <hr>
-
+    <div>
+        <button onclick="history.back()">Back</button>
+    </div>
     <table align="center">
         <tr>
             <td>분양자 정보</td>

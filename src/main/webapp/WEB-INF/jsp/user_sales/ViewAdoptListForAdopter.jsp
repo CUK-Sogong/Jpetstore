@@ -3,6 +3,9 @@
 <html>
 <body>
 <h2>입양 신청 목록</h2>
+<div>
+    <button onclick="history.back()">Back</button>
+</div>
 <table border align="center">
     <tr>
         <th>입양 번호</th>

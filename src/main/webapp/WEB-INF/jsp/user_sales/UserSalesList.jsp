@@ -84,7 +84,12 @@
     </stripes:link>
     </li>
 </ul>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">
+    Return to MAIN MENU
+</stripes:link></div>
 <hr>
+
 <table align="center" >
     <tr>
         <th>번호</th>
