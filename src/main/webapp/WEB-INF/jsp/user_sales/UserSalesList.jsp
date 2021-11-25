@@ -89,7 +89,7 @@
             <td><stripes:link
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="viewSales">
-                <stripes:param name="asid" value="${UserSale.sid}" />
+                <stripes:param name="sid" value="${UserSale.sid}" />
                 ${UserSale.sdesc}
             </stripes:link></td>
             <td>

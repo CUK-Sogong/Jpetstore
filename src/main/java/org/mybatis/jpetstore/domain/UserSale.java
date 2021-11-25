@@ -26,15 +26,15 @@ public class UserSale implements Serializable {
         return sid;
     }
 
-    public void setsid(int sId) {
-        this.sid = sId;
+    public void setsid(int sid) {
+        this.sid = sid;
     }
 
-    public String getSuserid() {
+    public String getsuserid() {
         return suserid;
     }
 
-    public void setSuserid(String suserid) {
+    public void setsuserid(String suserid) {
         this.suserid = suserid;
     }
 

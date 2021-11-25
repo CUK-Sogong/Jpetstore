@@ -105,23 +105,24 @@
     <tr>
         <td>분양지역</td>
         <td>
-                <stripes:select name="userSale.sarea">
-                    <stripes:option>서울특별시</stripes:option>
-                    <stripes:option>경기도</stripes:option>
-                    <stripes:option>대전광역시</stripes:option>
-                    <stripes:option>부산광역시</stripes:option>
-                    <stripes:option>광주광역시</stripes:option>
-                    <stripes:option>대구광역시</stripes:option>
-                    <stripes:option>울산광역시</stripes:option>
-                    <stripes:option>강원도</stripes:option>
-                    <stripes:option>충청북도</stripes:option>
-                    <stripes:option>충청남도</stripes:option>
-                    <stripes:option>경상북도</stripes:option>
-                    <stripes:option>경상남도</stripes:option>
-                    <stripes:option>전라북도</stripes:option>
-                    <stripes:option>전라남도</stripes:option>
-                    <stripes:option>제주도</stripes:option>
-                </stripes:select>
+            <select class ="category1">
+                <option value="">서울특별시</option>
+                <option value="">경기도</option>
+                <option value="">대전광역시</option>
+                <option value="">부산광역시</option>
+                <option value="">광주광역시</option>
+                <option value="">대구광역시</option>
+                <option value="">울산광역시</option>
+                <option value="">강원도</option>
+                <option value="">충청북도</option>
+                <option value="">충청남도</option>
+                <option value="">경상북도</option>
+                <option value="">경상남도</option>
+                <option value="">전라북도</option>
+                <option value="">전라남도</option>
+                <option value="">제주도</option>
+
+            </select>
         </td>
     </tr>
     <tr>

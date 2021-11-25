@@ -116,6 +116,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertSalesForm(){
+        clear();
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
@@ -128,8 +129,11 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertSales(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        account = accountBean.getAccount();
 
-        userSale.setSuserid(account.getUsername());
+        userSale.setsuserid(account.getUsername());
         if(check==0)
         {
             userSale.setScharge(0);
@@ -138,7 +142,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         else
             userSale.setScharge(1);
         userSalesService.insertSale(userSale);
-        userSale = userSalesService.getSales(sid);
+        userSale = userSalesService.getSalesRecent();
         return new ForwardResolution(INFO_SALES);
     }
 

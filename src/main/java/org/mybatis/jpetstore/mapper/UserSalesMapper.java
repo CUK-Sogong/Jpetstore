@@ -25,6 +25,8 @@ public interface UserSalesMapper {
 
     UserSale getSales(int sid);
 
+    UserSale getSalesRecent();
+
     void updateSales(UserSale userSale);
 
     void acceptAdopt(); // astatus 1로 바꿔주기, sstatus 0으로 바꿔주기
