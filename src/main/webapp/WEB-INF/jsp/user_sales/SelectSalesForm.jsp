@@ -56,7 +56,7 @@
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="insertSalesForm" >
                 <stripes:param name="check" value="0" />
-                무료분양
+                <img src="../images/freesale.gif" height="300" width="300"/>
             </stripes:link>
         </td>
         <td>
@@ -64,7 +64,8 @@
                     beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
                     event="insertSalesForm">
                 <stripes:param name="check" value="1" />
-                유료분양
+                <img  src="../images/notfreesale.gif" height="300" width="300" />
+
             </stripes:link>
         </td>
     </tr>
