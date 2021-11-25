@@ -22,12 +22,19 @@
 <mapper namespace="org.mybatis.jpetstore.mapper.UserSalesMapper">
     <cache />
 
+    <select id="getSalesListAll" resultType="UserSale">
+        SELECT
+            *
+        FROM usersale
+    </select>
+
     <select id="getSalesList" resultType="UserSale">
         SELECT
             *
         FROM usersale
         WHERE SCATEGORY LIKE #{param1} AND
-              SCHARGE LIKE #{param2}
+              SCHARGE LIKE #{param2} AND
+              SDESC LIKE #{param4}
         ORDER BY
             CASE WHEN #{param3} = 0 THEN sid END ASC,
             CASE WHEN #{param3} = 1 THEN sid END DESC

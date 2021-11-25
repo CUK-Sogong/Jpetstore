@@ -58,6 +58,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private String f_category = "%";
     private String f_charge = "%";
     private int f_order = 0;
+    private String f_search;
 
     private Account account = new Account();
 
@@ -109,18 +110,27 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_order(int f_order) { this.f_order = f_order; }
 
+    public String getF_search() { return f_search; }
+
+    public void setF_search(String f_search) { this.f_search = f_search; }
+
     /**
      * View Sales List
      *
      * @return the resolution
      */
     @DefaultHandler
-    public Resolution viewSalesList() {
-        userSalesList = userSalesService.getSalesList(f_category,f_charge,f_order);
+    public Resolution viewSalesListAll() {
+        clear();
+        userSalesList = userSalesService.getSalesListAll();
         return new ForwardResolution(SALES_LIST);
     }
 
-
+    public Resolution viewSalesList() {
+        if(f_search==null) f_search = "";
+        userSalesList = userSalesService.getSalesList(f_category,f_charge,f_order,"%" + f_search.toLowerCase() + "%");
+        return new ForwardResolution(SALES_LIST);
+    }
 
     /**
      * Select Sales Form
@@ -190,7 +200,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         account = accountBean.getAccount();
 
         userSalesService.updateSales(userSale);
-        userSalesList = userSalesService.getSalesList("%","%",0);
+        userSalesList = userSalesService.getSalesListAll();;
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -201,7 +211,8 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution deleteSales(){
         userSalesService.deleteSales(sid);
-        userSalesList = userSalesService.getSalesList("%", "%",0);
+        clear();
+        userSalesList = userSalesService.getSalesListAll();;
         return new ForwardResolution(SALES_LIST);
     }
 
@@ -362,5 +373,9 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public void clear() {
         userSale = new UserSale();
+        f_category = "%";
+        f_charge = "%";
+        f_order = 0;
+        f_search = "";
     }
 }
