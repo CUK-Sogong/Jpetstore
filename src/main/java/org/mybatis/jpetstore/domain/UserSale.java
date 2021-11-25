@@ -1,5 +1,9 @@
 package org.mybatis.jpetstore.domain;
 
+import net.sourceforge.stripes.action.FileBean;
+
+import java.awt.*;
+import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -15,7 +19,7 @@ public class UserSale implements Serializable {
     private int scharge;
     private BigDecimal sprice;
     private String sarea;
-    private String simg1;
+    private FileBean simg1;
     private String simg2;
     private String simg3;
     private int sstatus;
@@ -26,9 +30,7 @@ public class UserSale implements Serializable {
         return sid;
     }
 
-    public void setsid(int sid) {
-        this.sid = sid;
-    }
+    public void setsid(int sid) { this.sid = sid; }
 
     public String getsuserid() {
         return suserid;
@@ -86,11 +88,11 @@ public class UserSale implements Serializable {
         this.sarea = sarea;
     }
 
-    public String getSimg1() {
+    public FileBean getSimg1() {
         return simg1;
     }
 
-    public void setSimg1(String simg1) {
+    public void setSimg1(FileBean simg1) {
         this.simg1 = simg1;
     }
 

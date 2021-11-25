@@ -4,10 +4,8 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.SessionScope;
+
+import net.sourceforge.stripes.action.*;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.domain.UserAdopt;
@@ -54,6 +52,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int aid;
     private int sid;
     private int check;
+    private FileBean img;
 
     private String f_category = "%";
     private String f_charge = "%";
@@ -108,6 +107,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public int isF_order() { return f_order; }
 
     public void setF_order(int f_order) { this.f_order = f_order; }
+
+    public FileBean getImg() { return img; }
+
+    public void setImg(FileBean img) { this.img = img; }
 
     /**
      * View Sales List
