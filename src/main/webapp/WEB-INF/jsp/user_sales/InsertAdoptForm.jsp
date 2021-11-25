@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div><br/><br/>
 <head>
     <style>
         ul {
@@ -51,6 +56,7 @@
         });
     });
 </script>--%>
+
 
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
@@ -140,12 +146,6 @@
             <td>${actionBean.userSale.sage}</td>
         </tr>
         <tr>
-            <td>분양가</td>
-            <td>${actionBean.userSale.sprice}</td>
-            <td>분양지역</td>
-            <td>${actionBean.userSale.sarea}</td>
-        </tr>
-        <tr>
             <td>분양구분</td>
             <td>
                 <c:if test="${actionBean.userSale.scharge==0}">
@@ -153,8 +153,14 @@
                 </c:if>
                 <c:if test="${actionBean.userSale.scharge==1}">
                     유료
-                </c:if>
+                </c:if>$
             </td>
+            <td>분양지역</td>
+            <td>${actionBean.userSale.sarea}</td>
+        </tr>
+        <tr>
+            <td>분양가</td>
+            <td>${actionBean.userSale.sprice} $</td>
             <td>특이사항</td>
             <td>${actionBean.userSale.snote}</td>
         </tr>

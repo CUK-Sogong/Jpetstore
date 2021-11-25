@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../common/IncludeTop.jsp"%>
+<div id="BackLink"><stripes:link
+        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+        event="viewSalesList">
+    Return to SALES LIST
+</stripes:link></div></br></br>
 <head>
     <style>
         ul {
@@ -38,13 +43,16 @@
         td{text-align:center}
     </style>
 </head>
+
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
         focus="" acceptcharset="UTF-8"  >
 
     <h2>분양 수정</h2>
     <hr>
-
+    <div>
+        <button onclick="history.back()">Back</button>
+    </div>
     <table align="center">
         <tr>
             <td>분양자 정보</td>
@@ -83,10 +91,10 @@
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.check==0}">
+                <c:if test="${actionBean.userSale.sstatus==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.check==1}">
+                <c:if test="${actionBean.userSale.sstatus==1}">
                     유료
                 </c:if>
             </td>
@@ -94,12 +102,13 @@
         <tr>
             <td>분양가</td>
             <td>
-                <c:if test="${actionBean.check==0}">
+                <c:if test="${actionBean.userSale.sstatus==0}">
                     0
                 </c:if>
-                <c:if test="${actionBean.check==1}">
+                <c:if test="${actionBean.userSale.sstatus==1}">
                     <stripes:text name="userSale.sprice" />
                 </c:if>
+                단위 : $
             </td>
         </tr>
         <tr>
