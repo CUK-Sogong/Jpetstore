@@ -43,6 +43,9 @@ public class UserSalesActionBean extends AbstractActionBean {
     @SpringBean
     private transient UserSalesService userSalesService;
 
+    @SpringBean
+    private transient AccountService accountService;
+
     private List<UserSale> userSalesList;
     private List<UserAdopt> userAdoptsList;
     private UserSale userSale;
@@ -186,6 +189,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution viewSales(){
         userSale = userSalesService.getSales(sid);
+        account = accountService.getAccount(userSale.getsuserid());
         return new ForwardResolution(INFO_SALES);
     }
 

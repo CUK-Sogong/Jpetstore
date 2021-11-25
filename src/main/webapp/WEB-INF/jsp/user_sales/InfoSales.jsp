@@ -49,6 +49,18 @@
 
 <table align="center" border>
     <tr>
+        <td>아이디</td>
+        <td>${actionBean.userSale.suserid}</td>
+        <td>이름</td>
+        <td>${actionBean.account.firstName} ${actionBean.account.lastName}</td>
+    </tr>
+    <tr>
+        <td>전화번호</td>
+        <td>${actionBean.account.phone}</td>
+        <td>이메일</td>
+        <td>${actionBean.account.email}</td>
+    </tr>
+    <tr>
         <td>종류</td>
         <td>${actionBean.userSale.scategory}</td>
         <td>성별</td>
