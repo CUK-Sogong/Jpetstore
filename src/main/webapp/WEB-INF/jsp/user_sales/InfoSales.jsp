@@ -127,7 +127,9 @@
     <c:if test="${sessionScope.accountBean != null}">
         <c:if test="${sessionScope.accountBean.authenticated}">
             <c:if test="${!sessionScope.accountBean.account.username.equals(actionBean.userSale.suserid)}">
-                <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                <c:if test="${actionBean.userSale.sstatus == 1}">
+                    <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                </c:if>
             </c:if>
         </c:if>
     </c:if>
