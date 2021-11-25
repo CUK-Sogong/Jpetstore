@@ -342,6 +342,9 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution acceptAdopt(){
         userSalesService.acceptAdopt(aid);
+        userSale = userSalesService.getSales(userSalesService.getAdopt(aid).getAsid());
+        userSale.setSstatus(0);
+        userSalesService.updateSales(userSale);
         userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);
     }
