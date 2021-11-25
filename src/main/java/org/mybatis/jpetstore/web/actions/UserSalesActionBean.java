@@ -55,6 +55,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int sid;
     private int check;
 
+    private String f_category = "%";
+    private String f_charge = "%";
+    private int f_order = 0;
+
     private Account account = new Account();
 
     public List<UserSale> getUserSalesList() { return userSalesList; }
@@ -93,6 +97,18 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setCheck(int check) { this.check = check; }
 
+    public String getF_category() { return f_category; }
+
+    public void setF_category(String f_category) { this.f_category = f_category; }
+
+    public String getF_charge() { return f_charge; }
+
+    public void setF_charge(String f_charge) { this.f_charge = f_charge; }
+
+    public int isF_order() { return f_order; }
+
+    public void setF_order(int f_order) { this.f_order = f_order; }
+
     /**
      * View Sales List
      *
@@ -100,9 +116,11 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     @DefaultHandler
     public Resolution viewSalesList() {
-        userSalesList = userSalesService.getSalesList();
+        userSalesList = userSalesService.getSalesList(f_category,f_charge,f_order);
         return new ForwardResolution(SALES_LIST);
     }
+
+
 
     /**
      * Select Sales Form
@@ -110,6 +128,11 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution selectSalesForm(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        if (accountBean == null || !accountBean.isAuthenticated()) {
+            setMessage("You must sign on before attempting to insert your pet to sale.  Please sign on and try checking out again.");
+            return new ForwardResolution(AccountActionBean.class); }
         return new ForwardResolution(SELECT_SALES);
     }
 
@@ -167,7 +190,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         account = accountBean.getAccount();
 
         userSalesService.updateSales(userSale);
-        userSalesList = userSalesService.getSalesList();
+        userSalesList = userSalesService.getSalesList("%","%",0);
         return new ForwardResolution(INFO_SALES);
     }
 
@@ -178,7 +201,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution deleteSales(){
         userSalesService.deleteSales(sid);
-        userSalesList = userSalesService.getSalesList();
+        userSalesList = userSalesService.getSalesList("%", "%",0);
         return new ForwardResolution(SALES_LIST);
     }
 

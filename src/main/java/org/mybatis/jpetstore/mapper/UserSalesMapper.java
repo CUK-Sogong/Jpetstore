@@ -5,7 +5,7 @@ import org.mybatis.jpetstore.domain.UserSale;
 
 public interface UserSalesMapper {
 
-    List<UserSale> getSalesList();
+    List<UserSale> getSalesList(String f_category,String f_charge,int f_order);
 
     void insertSale(UserSale userSale);
 

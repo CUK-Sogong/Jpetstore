@@ -128,3 +128,11 @@ INSERT INTO Board (userId,title,content,date) VALUES ('관리자','8','소공 �
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','9','소공 화이팅',NOW());
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','10','소공 화이팅',NOW());
 INSERT INTO Board (userId,title,content,date) VALUES ('관리자','11','소공 화이팅',NOW());
+
+
+INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
+values(1, 'j2ee', '고양이', 'persian cat', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello');
+INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
+values(2, 'j2ee', '강아지', 'golden retriever', 'MALE', 3, 0, 0, '경기도', '1','1','1',1,'Hello');
+INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
+values(3, 'j2ee', '물고기', 'shark', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello');
