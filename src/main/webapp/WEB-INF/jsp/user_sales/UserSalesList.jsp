@@ -49,8 +49,8 @@
 <body>
 
 <ul>
-    <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="%" />분양게시판</stripes:link></li>
+    <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesListAll">
+        분양게시판</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
         <stripes:param name="f_category" value="강아지" />강아지</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
@@ -67,15 +67,18 @@
 <hr>
 <ul>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_charge" value="%" />전체분양</stripes:link></li>
+        <stripes:param name="f_charge" value="%" /><stripes:param name="f_order" value='0' />전체분양</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
         <stripes:param name="f_charge" value='0' />무료분양</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
         <stripes:param name="f_charge" value='1' />유료분양</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
         <stripes:param name="f_order" value='1' />최신순</stripes:link></li>
-    <li><input type ="text" name ="q" value=""/>
-        <input type = "submit" value ="검색"></li>
+    <li><stripes:form
+            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean">
+        <stripes:text name="f_search" size="14" />
+        <stripes:submit name="viewSalesList" value="검색" />
+    </stripes:form></li>
 </ul>
 <hr>
 <ul>
