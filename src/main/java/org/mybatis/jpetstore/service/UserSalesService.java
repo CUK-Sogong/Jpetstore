@@ -65,8 +65,17 @@ public class UserSalesService {
         return userSalesMapper.getSalesListByUsername(username);
     }
 
-    public List<UserSale> getSalesList(String f_category,String f_charge, int f_order) {
-        return userSalesMapper.getSalesList(f_category,f_charge,f_order);
+    public List<UserSale> getSalesListtest() {
+        return userSalesMapper.getSalesListtest();
+    }
+
+    public List<UserSale> getSalesList(String f_category,String f_charge, int f_order, String f_search) {
+        return userSalesMapper.getSalesList(f_category,f_charge,f_order, f_search);
+    }
+
+
+    public List<UserSale> getSalesListAll() {
+        return userSalesMapper.getSalesListAll();
     }
 
 

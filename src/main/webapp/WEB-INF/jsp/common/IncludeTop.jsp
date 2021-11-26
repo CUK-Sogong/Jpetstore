@@ -111,7 +111,7 @@
 	<img align="middle" src="../images/separator.gif" />
 	<stripes:link
 			beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-			event="viewSalesList">
+			event="viewSalesListAll">
 		UserSales
 	</stripes:link>
 </div>
