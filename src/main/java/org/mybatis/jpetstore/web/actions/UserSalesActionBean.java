@@ -1,6 +1,8 @@
 package org.mybatis.jpetstore.web.actions;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -50,6 +52,7 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     private List<UserSale> userSalesList;
     private List<UserAdopt> userAdoptsList;
+    private int[] adoptCntList;
     private UserSale userSale;
     private UserAdopt userAdopt;
     private int asid;
@@ -57,6 +60,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int sid;
     private int check;
     private FileBean img;
+    private String message;
 
     private String f_category = "%";
     private String f_charge = "%";
@@ -121,6 +125,14 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_search(String f_search) { this.f_search = f_search; }
 
+    public int[] getAdoptCntList() { return adoptCntList; }
+
+    public void setAdoptCntList(int[] adoptCntList) { this.adoptCntList = adoptCntList; }
+
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
+
     /**
      * View Sales List
      *
@@ -130,12 +142,17 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSalesListAll() {
         clear();
         userSalesList = userSalesService.getSalesListAll();
+        message = "전체 분양 목록";
         return new ForwardResolution(SALES_LIST);
     }
 
     public Resolution viewSalesList() {
         if(f_search==null) f_search = "";
         userSalesList = userSalesService.getSalesList(f_category,f_charge,f_order,"%" + f_search.toLowerCase() + "%");
+        if(f_category.equals("%"))
+            message = "전체 분양 목록";
+        else
+            message = f_category + " 분양 목록";
         return new ForwardResolution(SALES_LIST);
     }
 
@@ -173,12 +190,12 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution insertSales(){
+    public Resolution insertSales() throws IOException {
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
-
         userSale.setsuserid(account.getUsername());
+
         if (check == 0) {
             userSale.setScharge(0);
             userSale.setSprice(BigDecimal.ZERO);
@@ -352,6 +369,12 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
         userSalesList = userSalesService.getSalesListByUsername(account.getUsername());
+        adoptCntList = new int[userSalesList.size()];
+        for(int i=0;i<userSalesList.size();i++)
+        {
+            UserSale temp = userSalesList.get(i);
+            adoptCntList[i]=userSalesService.getAdoptCnt(temp.getsid());
+        }
         return new ForwardResolution(VIEW_SALES_LIST_SL);
     }
 

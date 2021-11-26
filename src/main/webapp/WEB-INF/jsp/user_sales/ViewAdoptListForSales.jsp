@@ -70,6 +70,7 @@
     <table border align="center">
         <tr>
             <th>입양 번호</th>
+            <th>날짜</th>
         </tr>
         <c:forEach var="UserAdopt" items="${actionBean.userAdoptsList}">
         <tr>
@@ -80,7 +81,9 @@
                 ${UserAdopt.aid}
             </stripes:link>
             </td>
-            </c:forEach>
+            <td><fmt:formatDate value="${UserAdopt.date}" pattern="yyyy-MM-dd"/></td>
+        </tr>
+        </c:forEach>
     </table>
 
 </stripes:form>

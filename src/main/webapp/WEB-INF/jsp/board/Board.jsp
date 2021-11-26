@@ -9,7 +9,22 @@
         beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean">
     Return to BOARD LIST
 </stripes:link></div>
-
+<style>
+    h2 {
+        text-align: center;
+    }
+    table {
+        width: 40%;
+    }
+    #outter {
+        display: block;
+        width: 60%;
+        margin: auto;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
 <div id="Catalog">
 
     <h2>게시판</h2>
@@ -43,6 +58,13 @@
                     삭제
                     <stripes:param name="boardId" value="${actionBean.board.bnum}" />
                 </stripes:link>
+                <script>
+                    function deleteConfirm(){
+                        var isDelete=comfirm("삭제하시겠습니까?");
+                        if(isDelete){
+                        }
+                    }
+                </script>
             </c:if>
         </c:if>
     </c:if>

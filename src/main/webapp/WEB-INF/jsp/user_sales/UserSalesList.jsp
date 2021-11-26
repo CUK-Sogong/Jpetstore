@@ -46,7 +46,6 @@
     </style>
 </head>
 
-<body>
 
 <ul>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesListAll">
@@ -92,43 +91,49 @@
 </ul>
 
 <hr>
-<table align="center" >
-    <tr>
-        <th>번호</th>
-        <th>사진</th>
-        <th width="200">분양 상태</th>
-        <th width="100">유료/무료</th>
-
-    </tr>
-    <c:forEach var="UserSale" items="${actionBean.userSalesList}">
+<div id="Catalog">
+    <h2>${actionBean.message}</h2>
+    <table align="center" >
         <tr>
-            <td>${UserSale.sid}</td>
-            <td><stripes:link
-                    beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-                    event="viewSales">
-                <stripes:param name="sid" value="${UserSale.sid}" />
-                ${UserSale.sdesc}
-            </stripes:link></td>
-            <td>
-            <c:if test = "${UserSale.sstatus == 0}">
-                분양완료
-            </c:if>
-                <c:if test = "${UserSale.sstatus == 1}">
-                    분양가능
-                </c:if>
-                    </td>
-            <td>
-                <c:if test = "${UserSale.scharge == 0}">
-                    무료
-                </c:if>
-                <c:if test = "${UserSale.scharge == 1}">
-                    유료
-                </c:if>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+            <th>번호</th>
+            <th>사진</th>
+            <th width="200">분양 상태</th>
+            <th width="100">유료/무료</th>
+            <th>날짜</th>
 
-</body>
+        </tr>
+        <c:forEach var="UserSale" items="${actionBean.userSalesList}">
+            <tr>
+                <td>${UserSale.sid}</td>
+                <td><stripes:link
+                        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+                        event="viewSales">
+                    <stripes:param name="sid" value="${UserSale.sid}" />
+                    ${UserSale.sdesc}
+                </stripes:link></td>
+                <td>
+                    <c:if test = "${UserSale.sstatus == 0}">
+                        분양완료
+                    </c:if>
+                    <c:if test = "${UserSale.sstatus == 1}">
+                        분양가능
+                    </c:if>
+                </td>
+                <td>
+                    <c:if test = "${UserSale.scharge == 0}">
+                        무료
+                    </c:if>
+                    <c:if test = "${UserSale.scharge == 1}">
+                        유료
+                    </c:if>
+                </td>
+                <td><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+
+
+
 <%@ include file="../common/IncludeBottom.jsp"%>
 </html>

@@ -41,8 +41,8 @@
     </select>
 
     <insert id="insertSale" parameterType="UserSale">
-        INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
-            values(#{sid}, #{suserid}, #{scategory}, #{sdesc}, #{sgender}, #{sage}, #{scharge}, #{sprice}, #{sarea}, '1','1','1',1,#{snote})
+        INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote,date)
+            values(#{sid}, #{suserid}, #{scategory}, #{sdesc}, #{sgender}, #{sage}, #{scharge}, #{sprice}, #{sarea}, '1','1','1',1,#{snote},NOW())
     </insert>
 
     <select id="getSaleInfo" resultType="UserSale">
@@ -64,7 +64,7 @@
 
     <insert id="insertAdopt" parameterType="UserAdopt">
         INSERT INTO useradopt
-            VALUES(#{aid},#{asid},#{auserid},#{aarea},#{asalary},#{ahome},#{afamnum},#{apets},#{apetexp},#{anote},2)
+            VALUES(#{aid},#{asid},#{auserid},#{aarea},#{asalary},#{ahome},#{afamnum},#{apets},#{apetexp},#{anote},2,NOW())
     </insert>
 
     <delete id="deleteAdopt" parameterType="int">
@@ -114,4 +114,8 @@
             astatus = 0
         WHERE aid = #{aid}
     </update>
+
+    <select id="getAdoptCnt" resultType="int">
+        SELECT COUNT(*) FROM useradopt where asid = #{sid}
+    </select>
 </mapper>

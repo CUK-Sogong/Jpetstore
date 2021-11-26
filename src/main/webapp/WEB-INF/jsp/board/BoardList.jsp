@@ -15,7 +15,7 @@
     text-align: center;
   }
   table {
-    width: 100%;
+    width: 40%;
   }
   #outter {
     display: block;

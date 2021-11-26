@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <br>
 <%@ include file="../common/IncludeTop.jsp"%>
 <div id="BackLink"><stripes:link
@@ -45,8 +45,7 @@
 </head>
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-        focus="" acceptcharset="UTF-8"  >
-
+        focus="" acceptcharset="UTF-8" enctype="multipart-form/data">
 <h2>분양등록</h2>
 
 <hr>

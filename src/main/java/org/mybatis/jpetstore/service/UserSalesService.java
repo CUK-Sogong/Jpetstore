@@ -114,6 +114,10 @@ public class UserSalesService {
         userSalesMapper.refusalAdopt(aid);
     }
 
+    public int getAdoptCnt(int sid) {
+        return userSalesMapper.getAdoptCnt(sid);
+    }
+
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
         if (sequence == null) {

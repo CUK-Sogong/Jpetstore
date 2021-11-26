@@ -180,7 +180,7 @@ create table usersale
     scategory VARCHAR(10)  NOT NULL,
     sdesc     VARCHAR(80)  NOT NULL,
     sgender   VARCHAR(10)  NOT NULL,
-    sage      INT          NOT NULL,
+    sage      VARCHAR(10)  NOT NULL,
     scharge   INT          NOT NULL,
     sprice    INT null,
     sarea     VARCHAR(80)  NOT NULL,
@@ -188,7 +188,8 @@ create table usersale
     simg2     VARCHAR(255) null,
     simg3     VARCHAR(255) null,
     sstatus   INT DEFAULT 1,
-    snote     varchar(255) NOT NULL
+    snote     varchar(255) NOT NULL,
+    date datetime
 );
 
 create table useradopt
@@ -204,5 +205,6 @@ create table useradopt
     apetexp int         NOT NULL,
     anote   VARCHAR(255),
     astatus INT default 2,
+    date datetime,
     constraint fk_sa_ad_1 foreign key (asid) references usersale (sid)
 );

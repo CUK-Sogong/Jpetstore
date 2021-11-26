@@ -6,6 +6,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class UserSale implements Serializable {
     private static final long serialVersionUID = -2254024898221315127L;
@@ -15,7 +16,7 @@ public class UserSale implements Serializable {
     private String scategory;
     private String sdesc;
     private String sgender;
-    private int sage;
+    private String sage;
     private int scharge;
     private BigDecimal sprice;
     private String sarea;
@@ -24,6 +25,7 @@ public class UserSale implements Serializable {
     private String simg3;
     private int sstatus;
     private String snote;
+    private Date date;
 
 
     public int getsid() {
@@ -66,11 +68,11 @@ public class UserSale implements Serializable {
         this.sgender = sgender;
     }
 
-    public int getSage() {
+    public String getSage() {
         return sage;
     }
 
-    public void setSage(int sage) {
+    public void setSage(String sage) {
         this.sage = sage;
     }
 
@@ -135,4 +137,8 @@ public class UserSale implements Serializable {
     public void setSprice(BigDecimal sprice) {
         this.sprice = sprice;
     }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
 }
