@@ -1,13 +1,11 @@
 package org.mybatis.jpetstore.web.actions;
 
+import java.io.File;
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Arrays;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.SessionScope;
+import java.util.*;
+
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import net.sourceforge.stripes.action.*;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.domain.UserAdopt;
@@ -15,6 +13,10 @@ import org.mybatis.jpetstore.domain.Account;
 import org.mybatis.jpetstore.service.UserSalesService;
 import org.mybatis.jpetstore.service.AccountService;
 import net.sourceforge.stripes.integration.spring.SpringBean;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
+
 import javax.servlet.http.HttpSession;
 
 /**
@@ -54,6 +56,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int aid;
     private int sid;
     private int check;
+    private FileBean img;
 
     private String f_category = "%";
     private String f_charge = "%";
@@ -109,6 +112,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public int isF_order() { return f_order; }
 
     public void setF_order(int f_order) { this.f_order = f_order; }
+
+    public FileBean getImg() { return img; }
+
+    public void setImg(FileBean img) { this.img = img; }
 
     public String getF_search() { return f_search; }
 

@@ -1,5 +1,9 @@
 package org.mybatis.jpetstore.domain;
 
+import net.sourceforge.stripes.action.FileBean;
+
+import java.awt.*;
+import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -82,9 +86,7 @@ public class UserSale implements Serializable {
         return sarea;
     }
 
-    public void setSarea(String sarea) {
-        this.sarea = sarea;
-    }
+    public void setSarea(String sarea) { this.sarea = sarea; }
 
     public String getSimg1() {
         return simg1;
