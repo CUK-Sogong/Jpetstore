@@ -1,6 +1,7 @@
 package org.mybatis.jpetstore.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class UserAdopt implements Serializable {
     private static final long serialVersionUID = 7807012195727254896L;
@@ -16,6 +17,7 @@ public class UserAdopt implements Serializable {
     private int apetexp;
     private String anote;
     private int astatus;
+    private Date date;
 
     public int getAid() {
         return aid;
@@ -104,4 +106,8 @@ public class UserAdopt implements Serializable {
     public void setAstatus(int astatus) {
         this.astatus = astatus;
     }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
 }

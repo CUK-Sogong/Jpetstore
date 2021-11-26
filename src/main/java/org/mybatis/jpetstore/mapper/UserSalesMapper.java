@@ -42,4 +42,6 @@ public interface UserSalesMapper {
     void deleteSales(int sid);
 
     List<UserAdopt> getAdoptListBySid(int sid);
+
+    int getAdoptCnt(int sid);
 }
