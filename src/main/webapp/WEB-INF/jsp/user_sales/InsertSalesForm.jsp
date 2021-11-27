@@ -133,7 +133,9 @@
     </tr>
     <tr>
         <td>이미지1</td>
-        <td><button type="button">첨부</button></td>
+        <td>
+            <input type="file" name="img">
+        </td>
     </tr>
     <tr>
         <td>이미지2</td>

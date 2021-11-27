@@ -1,13 +1,15 @@
 package org.mybatis.jpetstore.web.actions;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.util.*;
 
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import net.sourceforge.stripes.action.*;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.domain.UserAdopt;
@@ -15,9 +17,11 @@ import org.mybatis.jpetstore.domain.Account;
 import org.mybatis.jpetstore.service.UserSalesService;
 import org.mybatis.jpetstore.service.AccountService;
 import net.sourceforge.stripes.integration.spring.SpringBean;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,7 +63,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private int aid;
     private int sid;
     private int check;
-    private FileBean img;
+    private File img;
     private String message;
 
     private String f_category = "%";
@@ -117,9 +121,9 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_order(int f_order) { this.f_order = f_order; }
 
-    public FileBean getImg() { return img; }
+    public File getImg() { return img; }
 
-    public void setImg(FileBean img) { this.img = img; }
+    public void setImg(File img) { this.img = img; }
 
     public String getF_search() { return f_search; }
 
@@ -193,6 +197,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution insertSales() throws IOException {
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+
         account = accountBean.getAccount();
         userSale.setsuserid(account.getUsername());
 
