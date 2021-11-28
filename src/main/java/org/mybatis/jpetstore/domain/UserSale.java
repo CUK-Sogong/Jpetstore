@@ -1,11 +1,9 @@
 package org.mybatis.jpetstore.domain;
 
-import net.sourceforge.stripes.action.FileBean;
 
-import java.awt.*;
-import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class UserSale implements Serializable {
     private static final long serialVersionUID = -2254024898221315127L;
@@ -15,22 +13,22 @@ public class UserSale implements Serializable {
     private String scategory;
     private String sdesc;
     private String sgender;
-    private int sage;
+    private String sage;
     private int scharge;
     private BigDecimal sprice;
     private String sarea;
-    private FileBean simg1;
-    private String simg2;
-    private String simg3;
     private int sstatus;
     private String snote;
+    private Date date;
 
 
     public int getsid() {
         return sid;
     }
 
-    public void setsid(int sid) { this.sid = sid; }
+    public void setsid(int sid) {
+        this.sid = sid;
+    }
 
     public String getsuserid() {
         return suserid;
@@ -64,11 +62,11 @@ public class UserSale implements Serializable {
         this.sgender = sgender;
     }
 
-    public int getSage() {
+    public String getSage() {
         return sage;
     }
 
-    public void setSage(int sage) {
+    public void setSage(String sage) {
         this.sage = sage;
     }
 
@@ -84,33 +82,7 @@ public class UserSale implements Serializable {
         return sarea;
     }
 
-    public void setSarea(String sarea) {
-        this.sarea = sarea;
-    }
-
-    public FileBean getSimg1() {
-        return simg1;
-    }
-
-    public void setSimg1(FileBean simg1) {
-        this.simg1 = simg1;
-    }
-
-    public String getSimg2() {
-        return simg2;
-    }
-
-    public void setSimg2(String simg2) {
-        this.simg2 = simg2;
-    }
-
-    public String getSimg3() {
-        return simg3;
-    }
-
-    public void setSimg3(String simg3) {
-        this.simg3 = simg3;
-    }
+    public void setSarea(String sarea) { this.sarea = sarea; }
 
     public int getSstatus() {
         return sstatus;
@@ -135,4 +107,8 @@ public class UserSale implements Serializable {
     public void setSprice(BigDecimal sprice) {
         this.sprice = sprice;
     }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
 }

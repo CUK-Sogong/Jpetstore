@@ -51,6 +51,10 @@
         <property name="typeAliasesPackage" value="org.mybatis.jpetstore.domain" />
     </bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="2000000" />
+    </bean>
+
     <!-- scan for mappers and let them be autowired -->
     <mybatis:scan base-package="org.mybatis.jpetstore.mapper" />
 </beans>

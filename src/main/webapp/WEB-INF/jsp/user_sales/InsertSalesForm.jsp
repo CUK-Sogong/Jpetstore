@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <br>
 <%@ include file="../common/IncludeTop.jsp"%>
 <div id="BackLink"><stripes:link
@@ -43,14 +43,12 @@
         td{text-align:center}
     </style>
 </head>
+
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-        focus="" acceptcharset="UTF-8"  >
-
+        focus="" acceptcharset="UTF-8" enctype="multipart/form-data">
 <h2>분양등록</h2>
-
 <hr>
-
 <table align="center">
     <tr>
         <td>분양자 정보</td>
@@ -134,15 +132,15 @@
     </tr>
     <tr>
         <td>이미지1</td>
-        <td><stripes:file name="img"/></td>
+        <td><stripes:file name="img1"/></td>
     </tr>
     <tr>
         <td>이미지2</td>
-        <td><button type="button">첨부</button></td>
+        <td><stripes:file name="img2"/></td>
     </tr>
     <tr>
         <td>이미지3</td>
-        <td><button type="button">첨부</button></td>
+        <td><stripes:file name="img3"/></td>
     </tr>
     <tr>
         <td>특이사항</td>
@@ -153,4 +151,3 @@
 </stripes:form>
 </div>
 <%@ include file="../common/IncludeBottom.jsp"%>
-</html>

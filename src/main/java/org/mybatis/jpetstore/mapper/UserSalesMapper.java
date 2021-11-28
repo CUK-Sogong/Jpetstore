@@ -1,12 +1,16 @@
 package org.mybatis.jpetstore.mapper;
-import net.sourceforge.stripes.action.FileBean;
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import java.util.List;
 import org.mybatis.jpetstore.domain.UserSale;
 
 public interface UserSalesMapper {
 
-    List<UserSale> getSalesList(String f_category,String f_charge,int f_order);
+    List<UserSale> getSalesList(String f_category,String f_charge,int f_order, String f_search);
+
+    List<UserSale> getSalesListAll();
+
+    List<UserSale> getSalesListtest();
 
     void insertSale(UserSale userSale);
 
@@ -38,5 +42,13 @@ public interface UserSalesMapper {
 
     void deleteSales(int sid);
 
+    void insertImage(Image image);
+
     List<UserAdopt> getAdoptListBySid(int sid);
+
+    int getAdoptCnt(int sid);
+
+    List<Image> getImageList(int sid);
+
+    String getImageDirBySid(int sid);
 }

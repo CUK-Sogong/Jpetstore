@@ -97,18 +97,12 @@
         <td>특이사항</td>
         <td>${actionBean.userSale.snote}</td>
     </tr>
-    <tr>
-        <td>사진1</td>
-        <td>${actionBean.userSale.simg1}</td>
-    </tr>
-    <tr>
-        <td>사진2</td>
-        <td>${actionBean.userSale.simg2}</td>
-    </tr>
-    <tr>
-        <td>사진3</td>
-        <td>${actionBean.userSale.simg3}</td>
-    </tr>
+        <c:forEach var="img" items="${actionBean.userImageList}">
+            <tr>
+                <td>사진</td>
+                <td><img src=${img.dir} height="300" width="300"/></td>
+            </tr>
+        </c:forEach>
 </table>
 <div style="text-align: center">
     <c:if test="${sessionScope.accountBean != null}">
@@ -134,7 +128,6 @@
             </c:if>
         </c:if>
     </c:if>
-
 </div>
 </stripes:form>
 </div>

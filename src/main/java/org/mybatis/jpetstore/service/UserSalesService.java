@@ -15,7 +15,7 @@
  */
 package org.mybatis.jpetstore.service;
 
-import net.sourceforge.stripes.action.FileBean;
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.Sequence;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.mapper.*;
@@ -66,8 +66,17 @@ public class UserSalesService {
         return userSalesMapper.getSalesListByUsername(username);
     }
 
-    public List<UserSale> getSalesList(String f_category,String f_charge, int f_order) {
-        return userSalesMapper.getSalesList(f_category,f_charge,f_order);
+    public List<UserSale> getSalesListtest() {
+        return userSalesMapper.getSalesListtest();
+    }
+
+    public List<UserSale> getSalesList(String f_category,String f_charge, int f_order, String f_search) {
+        return userSalesMapper.getSalesList(f_category,f_charge,f_order, f_search);
+    }
+
+
+    public List<UserSale> getSalesListAll() {
+        return userSalesMapper.getSalesListAll();
     }
 
 
@@ -105,6 +114,19 @@ public class UserSalesService {
     public void refusalAdopt(int aid) {
         userSalesMapper.refusalAdopt(aid);
     }
+
+    public int getAdoptCnt(int sid) {
+        return userSalesMapper.getAdoptCnt(sid);
+    }
+
+    public void insertImage(Image image) {
+        image.setFid(getNextId("filenum"));
+        userSalesMapper.insertImage(image);
+    }
+
+    public List<Image> getImageList(int sid) { return userSalesMapper.getImageList(sid); }
+
+    public String getImageDirBySid(int sid) { return userSalesMapper.getImageDirBySid(sid); }
 
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
