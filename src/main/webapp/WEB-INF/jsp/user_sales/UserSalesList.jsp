@@ -102,15 +102,17 @@
             <th>날짜</th>
 
         </tr>
-        <c:forEach var="UserSale" items="${actionBean.userSalesList}">
+        <c:forEach var="UserSale" items="${actionBean.userSalesList}" varStatus="statusNm">
             <tr>
                 <td>${UserSale.sid}</td>
-                <td><stripes:link
-                        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-                        event="viewSales">
-                    <stripes:param name="sid" value="${UserSale.sid}" />
-                    ${UserSale.sdesc}
-                </stripes:link></td>
+                <c:forEach var="img" items="${actionBean.thumbnailList[statusNm.index]}" varStatus="status">
+                    <td><stripes:link
+                            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+                            event="viewSales">
+                        <stripes:param name="sid" value="${UserSale.sid}" />
+                        <img src=${img} height="300" width="300"/>
+                    </stripes:link></td>
+                </c:forEach>
                 <td>
                     <c:if test = "${UserSale.sstatus == 0}">
                         분양완료
@@ -131,6 +133,7 @@
             </tr>
         </c:forEach>
     </table>
+
 </div>
 
 

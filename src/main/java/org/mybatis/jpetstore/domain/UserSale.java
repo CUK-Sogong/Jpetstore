@@ -1,9 +1,6 @@
 package org.mybatis.jpetstore.domain;
 
-import net.sourceforge.stripes.action.FileBean;
 
-import java.awt.*;
-import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,9 +17,6 @@ public class UserSale implements Serializable {
     private int scharge;
     private BigDecimal sprice;
     private String sarea;
-    private String simg1;
-    private String simg2;
-    private String simg3;
     private int sstatus;
     private String snote;
     private Date date;
@@ -89,30 +83,6 @@ public class UserSale implements Serializable {
     }
 
     public void setSarea(String sarea) { this.sarea = sarea; }
-
-    public String getSimg1() {
-        return simg1;
-    }
-
-    public void setSimg1(String simg1) {
-        this.simg1 = simg1;
-    }
-
-    public String getSimg2() {
-        return simg2;
-    }
-
-    public void setSimg2(String simg2) {
-        this.simg2 = simg2;
-    }
-
-    public String getSimg3() {
-        return simg3;
-    }
-
-    public void setSimg3(String simg3) {
-        this.simg3 = simg3;
-    }
 
     public int getSstatus() {
         return sstatus;

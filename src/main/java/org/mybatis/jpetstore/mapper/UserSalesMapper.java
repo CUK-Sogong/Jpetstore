@@ -1,4 +1,5 @@
 package org.mybatis.jpetstore.mapper;
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import java.util.List;
 import org.mybatis.jpetstore.domain.UserSale;
@@ -41,7 +42,13 @@ public interface UserSalesMapper {
 
     void deleteSales(int sid);
 
+    void insertImage(Image image);
+
     List<UserAdopt> getAdoptListBySid(int sid);
 
     int getAdoptCnt(int sid);
+
+    List<Image> getImageList(int sid);
+
+    String getImageDirBySid(int sid);
 }
