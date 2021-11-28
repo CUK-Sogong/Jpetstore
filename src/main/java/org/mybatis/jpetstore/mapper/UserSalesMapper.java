@@ -1,4 +1,5 @@
 package org.mybatis.jpetstore.mapper;
+import net.sourceforge.stripes.action.FileBean;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import java.util.List;
 import org.mybatis.jpetstore.domain.UserSale;

@@ -15,6 +15,7 @@
  */
 package org.mybatis.jpetstore.service;
 
+import net.sourceforge.stripes.action.FileBean;
 import org.mybatis.jpetstore.domain.Sequence;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.mapper.*;

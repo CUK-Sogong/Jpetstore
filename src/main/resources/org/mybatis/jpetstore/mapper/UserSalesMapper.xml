@@ -33,7 +33,7 @@
             CASE WHEN #{param3} = 1 THEN sid END DESC
     </select>
 
-    <insert id="insertSale" parameterType="UserSale">
+    <insert id="insertSale" parameterType="UserSale" >
         INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote)
             values(#{sid}, #{suserid}, #{scategory}, #{sdesc}, #{sgender}, #{sage}, #{scharge}, #{sprice}, #{sarea}, '1','1','1',1,#{snote})
     </insert>

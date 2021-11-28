@@ -184,7 +184,7 @@ create table usersale
     scharge   INT          NOT NULL,
     sprice    INT null,
     sarea     VARCHAR(80)  NOT NULL,
-    simg1     VARBINARY(2000)    NOT NULL,
+    simg1     VARCHAR(255)    NOT NULL,
     simg2     VARCHAR(255) null,
     simg3     VARCHAR(255) null,
     sstatus   INT DEFAULT 1,
