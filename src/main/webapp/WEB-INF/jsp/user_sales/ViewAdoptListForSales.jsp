@@ -23,6 +23,18 @@
 
     <table align="center" border>
         <tr>
+            <td>아이디</td>
+            <td>${actionBean.userSale.suserid}</td>
+            <td>이름</td>
+            <td>${actionBean.account.firstName} ${actionBean.account.lastName}</td>
+        </tr>
+        <tr>
+            <td>전화번호</td>
+            <td>${actionBean.account.phone}</td>
+            <td>이메일</td>
+            <td>${actionBean.account.email}</td>
+        </tr>
+        <tr>
             <td>종류</td>
             <td>${actionBean.userSale.scategory}</td>
             <td>성별</td>
@@ -53,19 +65,29 @@
             <td>특이사항</td>
             <td>${actionBean.userSale.snote}</td>
         </tr>
-        <tr>
-            <td>사진1</td>
-            <td>${actionBean.userSale.simg1}</td>
-        </tr>
-        <tr>
-            <td>사진2</td>
-            <td>${actionBean.userSale.simg2}</td>
-        </tr>
-        <tr>
-            <td>사진3</td>
-            <td>${actionBean.userSale.simg3}</td>
-        </tr>
+        <c:forEach var="img" items="${actionBean.userImageList}">
+            <tr>
+                <td>사진</td>
+                <td><img src=${img.dir} height="300" width="300"/></td>
+            </tr>
+        </c:forEach>
     </table>
+    <div style="text-align: center">
+        <c:if test="${sessionScope.accountBean != null}">
+            <c:if test="${sessionScope.accountBean.authenticated}">
+                <c:if test="${sessionScope.accountBean.account.username.equals(actionBean.userSale.suserid)}">
+                    <stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="updateSalesForm">
+                        수정
+                        <stripes:param name="sid" value="${actionBean.userSale.sid}" />
+                    </stripes:link>
+                    <stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="deleteSales">
+                        삭제
+                        <stripes:param name="sid" value="${actionBean.userSale.sid}" />
+                    </stripes:link>
+                </c:if>
+            </c:if>
+        </c:if>
+    </div>
     <h2>입양 신청서 목록</h2>
     <table border align="center">
         <tr>

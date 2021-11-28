@@ -282,7 +282,10 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution updateSalesForm(){ return new ForwardResolution(EDIT_SALES); }
+    public Resolution updateSalesForm(){
+        userSale = userSalesService.getSales(sid);
+        return new ForwardResolution(EDIT_SALES);
+    }
 
     /**
      * Edit Sales

@@ -128,7 +128,6 @@
             </c:if>
         </c:if>
     </c:if>
-
 </div>
 </stripes:form>
 </div>

@@ -88,10 +88,10 @@
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.userSale.sstatus==0}">
+                <c:if test="${actionBean.userSale.scharge==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.userSale.sstatus==1}">
+                <c:if test="${actionBean.userSale.scharge==1}">
                     유료
                 </c:if>
             </td>
@@ -99,10 +99,10 @@
         <tr>
             <td>분양가</td>
             <td>
-                <c:if test="${actionBean.userSale.sstatus==0}">
+                <c:if test="${actionBean.userSale.scharge==0}">
                     0
                 </c:if>
-                <c:if test="${actionBean.userSale.sstatus==1}">
+                <c:if test="${actionBean.userSale.scharge==1}">
                     <stripes:text name="userSale.sprice" />
                 </c:if>
                 단위 : $
@@ -130,18 +130,18 @@
                 </stripes:select>
             </td>
         </tr>
-        <tr>
+<%--        <tr>
             <td>이미지1</td>
-            <td><button type="button">첨부</button></td>
+            <td><stripes:file name="img1"/></td>
         </tr>
         <tr>
             <td>이미지2</td>
-            <td><button type="button">첨부</button></td>
+            <td><stripes:file name="img2"/></td>
         </tr>
         <tr>
             <td>이미지3</td>
-            <td><button type="button">첨부</button></td>
-        </tr>
+            <td><stripes:file name="img3"/></td>
+        </tr>--%>
         <tr>
             <td>특이사항</td>
             <td><stripes:text name="userSale.snote" /></td>

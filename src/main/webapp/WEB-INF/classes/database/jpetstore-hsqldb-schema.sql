@@ -203,7 +203,7 @@ create table useradopt
     anote   VARCHAR(255),
     astatus INT default 2,
     date datetime,
-    constraint fk_sa_ad_1 foreign key (asid) references usersale (sid)
+    constraint fk_sa_ad_1 foreign key (asid) references usersale (sid) ON DELETE CASCADE
 );
 
 create table file_dir
@@ -211,5 +211,5 @@ create table file_dir
     fid INT PRIMARY KEY,
     sid INT,
     dir VARCHAR(255) NOT NULL,
-    constraint fk_sa_fi foreign key (sid) references usersale (sid)
+    constraint fk_sa_fi foreign key (sid) references usersale (sid) ON DELETE CASCADE
 )
