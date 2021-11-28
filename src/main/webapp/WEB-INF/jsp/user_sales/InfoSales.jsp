@@ -100,7 +100,7 @@
         <c:forEach var="img" items="${actionBean.userImageList}">
             <tr>
                 <td>사진</td>
-                <td><img src=${img.dir} height="300" width="300"/></td>
+                <td colspan='3'><img src=${img.dir} height="300" width="300"/></td>
             </tr>
         </c:forEach>
 </table>

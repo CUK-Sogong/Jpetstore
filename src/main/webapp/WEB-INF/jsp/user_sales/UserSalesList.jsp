@@ -40,9 +40,15 @@
             background-color: #4CAF50;
         }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        .td{text-align:center;
+            padding-top: 30px;
+
+        }
+        tr{text-align: center;
+        }
+        th{text-align: center}
     </style>
 </head>
 
@@ -92,28 +98,32 @@
 
 <hr>
 <div id="Catalog">
-    <h2>${actionBean.message}</h2>
-    <table align="center" >
+    <h2>${actionBean.msg}</h2>
+    <table text-align="center" >
         <tr>
-            <th>번호</th>
             <th>사진</th>
+            <th>강아지종류</th>
             <th width="200">분양 상태</th>
             <th width="100">유료/무료</th>
+            <th>분양지역</th>
             <th>날짜</th>
 
         </tr>
+
         <c:forEach var="UserSale" items="${actionBean.userSalesList}" varStatus="statusNm">
             <tr>
-                <td>${UserSale.sid}</td>
                 <c:forEach var="img" items="${actionBean.thumbnailList[statusNm.index]}" varStatus="status">
-                    <td><stripes:link
-                            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-                            event="viewSales">
-                        <stripes:param name="sid" value="${UserSale.sid}" />
-                        <img src=${img} height="300" width="300"/>
-                    </stripes:link></td>
+                    <td>
+                        <stripes:link
+                                beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+                                event="viewSales">
+                            <stripes:param name="sid" value="${UserSale.sid}" />
+                        <img src=${img} height="70" width="70"/>
+                        </stripes:link>
+                    </td>
                 </c:forEach>
-                <td>
+                <td class="td">${UserSale.sdesc}</td>
+                <td class="td">
                     <c:if test = "${UserSale.sstatus == 0}">
                         분양완료
                     </c:if>
@@ -121,7 +131,7 @@
                         분양가능
                     </c:if>
                 </td>
-                <td>
+                <td class="td">
                     <c:if test = "${UserSale.scharge == 0}">
                         무료
                     </c:if>
@@ -129,9 +139,12 @@
                         유료
                     </c:if>
                 </td>
-                <td><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
+                <td class="td">${UserSale.sarea}</td>
+                <td class="td"><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
             </tr>
+
         </c:forEach>
+
     </table>
 
 </div>

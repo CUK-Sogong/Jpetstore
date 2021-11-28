@@ -65,7 +65,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     private FileBean img1;
     private FileBean img2;
     private FileBean img3;
-    private String message;
+    private String msg;
     private String f_category = "%";
     private String f_charge = "%";
     private int f_order = 0;
@@ -152,9 +152,9 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setAdoptCntList(int[] adoptCntList) { this.adoptCntList = adoptCntList; }
 
-    public String getMessage() { return message; }
+    public String getMsg() { return msg; }
 
-    public void setMessage(String message) { this.message = message; }
+    public void setMsg(String msg) { this.msg = msg; }
 
     public String[] getThumbnailList() { return thumbnailList; }
 
@@ -169,7 +169,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSalesListAll() {
         clear();
         userSalesList = userSalesService.getSalesListAll();
-        message = "전체 분양 목록";
+        msg = "전체 분양 목록";
         thumbnailList = new String[userSalesList.size()];
         for(int i=0;i<userSalesList.size();i++)
         {
@@ -183,9 +183,9 @@ public class UserSalesActionBean extends AbstractActionBean {
         if(f_search==null) f_search = "";
         userSalesList = userSalesService.getSalesList(f_category,f_charge,f_order,"%" + f_search.toLowerCase() + "%");
         if(f_category.equals("%"))
-            message = "전체 분양 목록";
+            msg = "전체 분양 목록";
         else
-            message = f_category + " 분양 목록";
+            msg = f_category + " 분양 목록";
         thumbnailList = new String[userSalesList.size()];
         for(int i=0;i<userSalesList.size();i++)
         {
@@ -249,7 +249,7 @@ public class UserSalesActionBean extends AbstractActionBean {
             userSalesService.insertSale(userSale);
             userSale = userSalesService.getSalesRecent();
             //본인 user_images 경로 적기
-            String path = "C:/Users/ktykt/git/Jpetstore/src/main/webapp/user_images/";
+            String path = "/Users/jeonmingi/Jpetstore/src/main/webapp/user_images/";
 
             if(img1!=null) {
                 String time = LocalTime.now().toString().replace(":", "").replace(".", "");
