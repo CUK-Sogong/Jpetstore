@@ -15,6 +15,7 @@
  */
 package org.mybatis.jpetstore.service;
 
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.Sequence;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.mapper.*;
@@ -117,6 +118,15 @@ public class UserSalesService {
     public int getAdoptCnt(int sid) {
         return userSalesMapper.getAdoptCnt(sid);
     }
+
+    public void insertImage(Image image) {
+        image.setFid(getNextId("filenum"));
+        userSalesMapper.insertImage(image);
+    }
+
+    public List<Image> getImageList(int sid) { return userSalesMapper.getImageList(sid); }
+
+    public String getImageDirBySid(int sid) { return userSalesMapper.getImageDirBySid(sid); }
 
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));

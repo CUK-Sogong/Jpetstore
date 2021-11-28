@@ -4,24 +4,20 @@ import java.io.*;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import net.sourceforge.stripes.action.*;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.io.IOUtils;
-import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.UserSale;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import org.mybatis.jpetstore.domain.Account;
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.service.UserSalesService;
 import org.mybatis.jpetstore.service.AccountService;
 import net.sourceforge.stripes.integration.spring.SpringBean;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -56,22 +52,29 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     private List<UserSale> userSalesList;
     private List<UserAdopt> userAdoptsList;
+    private List<Image> userImageList;
     private int[] adoptCntList;
+    private String[] thumbnailList;
     private UserSale userSale;
     private UserAdopt userAdopt;
+    private Image image = new Image();
     private int asid;
     private int aid;
     private int sid;
     private int check;
-    private File img;
+    private FileBean img1;
+    private FileBean img2;
+    private FileBean img3;
     private String message;
-
     private String f_category = "%";
     private String f_charge = "%";
     private int f_order = 0;
     private String f_search;
 
     private Account account = new Account();
+
+    public UserSalesActionBean() {
+    }
 
     public List<UserSale> getUserSalesList() { return userSalesList; }
 
@@ -80,6 +83,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public List<UserAdopt> getUserAdoptsList() { return userAdoptsList; }
 
     public void setUserAdoptsList(List<UserAdopt> userAdoptsList) { this.userAdoptsList = userAdoptsList; }
+
+    public List<Image> getUserImageList() { return userImageList; }
+
+    public void setUserImageList(List<Image> userImageList) { this.userImageList = userImageList; }
 
     public Account getAccount() { return account; }
 
@@ -92,6 +99,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public UserAdopt getUserAdopt() { return userAdopt; }
 
     public void setUserAdopt(UserAdopt userAdopt) { this.userAdopt = userAdopt; }
+
+    public Image getImage() { return image; }
+
+    public void setImage(Image image) { this.image = image; }
 
     public int getAsid() { return asid; }
 
@@ -121,9 +132,17 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_order(int f_order) { this.f_order = f_order; }
 
-    public File getImg() { return img; }
+    public FileBean getImg1() { return img1; }
 
-    public void setImg(File img) { this.img = img; }
+    public void setImg1(FileBean img1) { this.img1 = img1; }
+
+    public FileBean getImg2() { return img2; }
+
+    public void setImg2(FileBean img2) { this.img2 = img2; }
+
+    public FileBean getImg3() { return img3; }
+
+    public void setImg3(FileBean img3) { this.img3 = img3; }
 
     public String getF_search() { return f_search; }
 
@@ -137,6 +156,10 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setMessage(String message) { this.message = message; }
 
+    public String[] getThumbnailList() { return thumbnailList; }
+
+    public void setThumbnailList(String[] thumbnailList) { this.thumbnailList = thumbnailList; }
+
     /**
      * View Sales List
      *
@@ -147,6 +170,12 @@ public class UserSalesActionBean extends AbstractActionBean {
         clear();
         userSalesList = userSalesService.getSalesListAll();
         message = "전체 분양 목록";
+        thumbnailList = new String[userSalesList.size()];
+        for(int i=0;i<userSalesList.size();i++)
+        {
+            UserSale temp = userSalesList.get(i);
+            thumbnailList[i] = userSalesService.getImageDirBySid(temp.getsid());
+        }
         return new ForwardResolution(SALES_LIST);
     }
 
@@ -157,6 +186,12 @@ public class UserSalesActionBean extends AbstractActionBean {
             message = "전체 분양 목록";
         else
             message = f_category + " 분양 목록";
+        thumbnailList = new String[userSalesList.size()];
+        for(int i=0;i<userSalesList.size();i++)
+        {
+            UserSale temp = userSalesList.get(i);
+            thumbnailList[i] = userSalesService.getImageDirBySid(temp.getsid());
+        }
         return new ForwardResolution(SALES_LIST);
     }
 
@@ -200,21 +235,44 @@ public class UserSalesActionBean extends AbstractActionBean {
 
         account = accountBean.getAccount();
         userSale.setsuserid(account.getUsername());
-
         if (check == 0) {
             userSale.setScharge(0);
             userSale.setSprice(BigDecimal.ZERO);
         } else
             userSale.setScharge(1);
         if(userSale.getSdesc() == null || userSale.getSprice() == null || userSale.getSnote() == null
-                || userSale.getSdesc().length() < 1  || userSale.getSnote().length() < 1){
+                || userSale.getSdesc().length() < 1  || userSale.getSnote().length() < 1 || img1 == null){
             setMessage("필수항목을 입력해 주세요!");
             return new ForwardResolution(INSERT_SALES);
         }
         else {
             userSalesService.insertSale(userSale);
             userSale = userSalesService.getSalesRecent();
-            return new ForwardResolution(INFO_SALES);
+            //본인 user_images 경로 적기
+            String path = "C:/Users/ktykt/git/Jpetstore/src/main/webapp/user_images/";
+
+            if(img1!=null) {
+                String time = LocalTime.now().toString().replace(":", "").replace(".", "");
+                image.setDir("../user_images/"+time+img1.getFileName());
+                image.setSid(userSale.getsid());
+                img1.save(new File(path + time + img1.getFileName()));
+                userSalesService.insertImage(image);
+            }
+            if(img2!=null) {
+                String time = LocalTime.now().toString().replace(":", "").replace(".", "");
+                image.setDir("../user_images/"+time+img2.getFileName());
+                image.setSid(userSale.getsid());
+                img2.save(new File(path + time + img2.getFileName()));
+                userSalesService.insertImage(image);
+            }
+            if(img3!=null) {
+                String time = LocalTime.now().toString().replace(":", "").replace(".", "");
+                image.setDir("../user_images/"+time+img3.getFileName());
+                image.setSid(userSale.getsid());
+                img3.save(new File(path + time + img3.getFileName()));
+                userSalesService.insertImage(image);
+            }
+            return viewSalesList();
         }
 
     }
@@ -269,6 +327,7 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSales(){
         userSale = userSalesService.getSales(sid);
         account = accountService.getAccount(userSale.getsuserid());
+        userImageList = userSalesService.getImageList(sid);
         return new ForwardResolution(INFO_SALES);
     }
 
