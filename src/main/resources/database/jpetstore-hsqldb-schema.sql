@@ -196,7 +196,7 @@ create table usersale
 create table useradopt
 (
     aid     int PRIMARY KEY,
-    asid    INT,
+    asid    VARCHAR(80) NOT NULL,
     auserid VARCHAR(80) NOT NULL,
     aarea   VARCHAR(80) NOT NULL,
     asalary INT         NOT NULL,
@@ -207,7 +207,7 @@ create table useradopt
     anote   VARCHAR(255),
     astatus INT default 2,
     date datetime,
-    constraint fk_sa_ad_1 foreign key (asid) references usersale (sid) ON DELETE CASCADE
+    constraint fk_sa_ad_1 foreign key (asid) references item (itemid) ON DELETE CASCADE
 );
 
 create table file_dir

@@ -28,10 +28,10 @@ public interface UserSalesMapper {
 
     void insertImage(Image image);
 
-    List<UserAdopt> getAdoptListBySid(int sid);
+    List<UserAdopt> getAdoptListBySid(String sid);
 
-    int getAdoptCnt(int sid);
+    int getAdoptCnt(String sid);
 
-    List<Image> getImageList(int sid);
+    List<Image> getImageList(String itemId);
     String getImageDirByItemId(String itemId);
 }

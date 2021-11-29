@@ -166,7 +166,46 @@
   </select>
 
   <update id="updateUserItem" parameterType="Item">
-
+    UPDATE ITEM SET
+     listprice = #{listPrice},
+     attr1 = #{attribute1},
+     attr2 = #{attribute2},
+     attr3 = #{attribute3},
+     attr4 = #{attribute4},
+     sale_status = #{saleStatus}
+     WHERE itemid = #{itemId}
   </update>
+
+  <delete id="deleteUserItem" parameterType="String">
+    DELETE FROM ITEM
+    WHERE itemid=#{itemId}
+  </delete>
+
+  <select id="getUserItemListByUsername" resultType="Item">
+    SELECT
+      I.ITEMID,
+      I.USERID,
+      I.PRODUCTID,
+      I.LISTPRICE,
+      I.UNITCOST,
+      SUPPLIER AS supplierId,
+      I.PRODUCTID AS "product.productId",
+      NAME AS "product.name",
+      DESCN AS "product.description",
+      CATEGORY AS "product.categoryId",
+      STATUS,
+      ATTR1 AS attribute1,
+      ATTR2 AS attribute2,
+      ATTR3 AS attribute3,
+      ATTR4 AS attribute4,
+      I.date,
+      I.CHARGE,
+      I.SALE_STATUS AS saleStatus
+    from ITEM I,  PRODUCT P
+    where P.PRODUCTID = I.PRODUCTID
+      and itemid LIKE '%SAL%'
+      and I.USERID LIKE #{username}
+  </select>
+
 
 </mapper>

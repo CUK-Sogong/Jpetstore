@@ -136,4 +136,12 @@ public class CatalogService {
   public void updateUserItem(Item userItem) {
     itemMapper.updateUserItem(userItem);
   }
+
+  public void updateUserProduct(Product userProduct) { productMapper.updateUserProduct(userProduct); }
+
+  public void deleteUserItem(String itemId) { itemMapper.deleteUserItem(itemId); }
+
+  public void deleteUserProduct(String itemId) { productMapper.deleteUserProduct(itemId); }
+
+  public List<Item> getUserItemListByUsername(String username) { return itemMapper.getUserItemListByUsername(username); }
 }

@@ -96,35 +96,41 @@
     <table align="center" border>
         <tr>
             <td>종류</td>
-            <td>${actionBean.userSale.scategory}</td>
+            <td>${actionBean.userProduct.categoryId}</td>
             <td>성별</td>
-            <td>${actionBean.userSale.sgender}</td>
+            <td>${actionBean.userItem.attribute1}</td>
         </tr>
         <tr>
             <td>품종</td>
-            <td>${actionBean.userSale.sdesc}</td>
+            <td>${actionBean.userProduct.name}</td>
             <td>개월 수</td>
-            <td>${actionBean.userSale.sage}</td>
+            <td>${actionBean.userItem.attribute2}</td>
         </tr>
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.userSale.scharge==0}">
+                <c:if test="${actionBean.userItem.charge==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.userSale.scharge==1}">
+                <c:if test="${actionBean.userItem.charge==1}">
                     유료
                 </c:if>
             </td>
             <td>분양지역</td>
-            <td>${actionBean.userSale.sarea}</td>
+            <td>${actionBean.userItem.attribute3}</td>
         </tr>
         <tr>
             <td>분양가</td>
-            <td>${actionBean.userSale.sprice} $</td>
+            <td>${actionBean.userItem.listPrice} $</td>
             <td>특이사항</td>
-            <td>${actionBean.userSale.snote}</td>
+            <td>${actionBean.userItem.attribute4}</td>
         </tr>
+        <c:forEach var="img" items="${actionBean.userImageList}">
+            <tr>
+                <td>사진</td>
+                <td colspan='3'><img src=${img.dir} height="300" width="300"/></td>
+            </tr>
+        </c:forEach>
     </table>
     <stripes:submit name="insertAdopt" value="입양 신청"/>
 </stripes:form>

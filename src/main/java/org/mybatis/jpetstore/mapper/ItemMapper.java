@@ -44,4 +44,8 @@ public interface ItemMapper {
     Item getUserItem(String itemId);
 
   void updateUserItem(Item userItem);
+
+  void deleteUserItem(String itemId);
+
+  List<Item> getUserItemListByUsername(String username);
 }

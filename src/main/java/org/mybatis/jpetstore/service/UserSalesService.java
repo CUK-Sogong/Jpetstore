@@ -65,7 +65,7 @@ public class UserSalesService {
         return userSalesMapper.getAdoptRecent();
     }
     @Transactional
-    public List<UserAdopt> getAdoptListBySid(int sid) {
+    public List<UserAdopt> getAdoptListBySid(String sid) {
         return userSalesMapper.getAdoptListBySid(sid);
     }
     @Transactional
@@ -77,7 +77,7 @@ public class UserSalesService {
         userSalesMapper.refusalAdopt(aid);
     }
     @Transactional
-    public int getAdoptCnt(int sid) {
+    public int getAdoptCnt(String sid) {
         return userSalesMapper.getAdoptCnt(sid);
     }
     @Transactional
@@ -86,15 +86,9 @@ public class UserSalesService {
         userSalesMapper.insertImage(image);
     }
 
-    public List<Image> getImageList(int sid) { return userSalesMapper.getImageList(sid); }
+    public List<Image> getImageList(String itemId) { return userSalesMapper.getImageList(itemId); }
 
     public String getImageDirByItemId(String itemId) { return userSalesMapper.getImageDirByItemId(itemId); }
-
-
-
-
-
-
 
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));

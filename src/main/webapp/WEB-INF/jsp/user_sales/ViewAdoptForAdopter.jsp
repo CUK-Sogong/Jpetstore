@@ -63,7 +63,7 @@
     <table align="center">
         <tr>
             <td>아이디</td>
-            <td>${actionBean.userSale.suserid}</td>
+            <td>${actionBean.userItem.userId}</td>
             <td>이름</td>
             <td>${actionBean.account.firstName} ${actionBean.account.lastName}</td>
         </tr>
@@ -75,34 +75,34 @@
         </tr>
         <tr>
             <td>종류</td>
-            <td>${actionBean.userSale.scategory}</td>
+            <td>${actionBean.userProduct.categoryId}</td>
             <td>성별</td>
-            <td>${actionBean.userSale.sgender}</td>
+            <td>${actionBean.userItem.attribute1}</td>
         </tr>
         <tr>
             <td>품종</td>
-            <td>${actionBean.userSale.sdesc}</td>
+            <td>${actionBean.userProduct.name}</td>
             <td>개월 수</td>
-            <td>${actionBean.userSale.sage}</td>
+            <td>${actionBean.userItem.attribute2}</td>
         </tr>
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.userSale.scharge==0}">
+                <c:if test="${actionBean.userItem.charge==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.userSale.scharge==1}">
+                <c:if test="${actionBean.userItem.charge==1}">
                     유료
                 </c:if>
             </td>
             <td>분양지역</td>
-            <td>${actionBean.userSale.sarea}</td>
+            <td>${actionBean.userItem.attribute3}</td>
         </tr>
         <tr>
             <td>분양가</td>
-            <td>${actionBean.userSale.sprice} $</td>
+            <td>${actionBean.userItem.listPrice} $</td>
             <td>특이사항</td>
-            <td>${actionBean.userSale.snote}</td>
+            <td>${actionBean.userItem.attribute4}</td>
         </tr>
         <c:forEach var="img" items="${actionBean.userImageList}">
             <tr>
@@ -114,21 +114,5 @@
     <stripes:submit name="deleteAdopt" value="삭제"/>
 </stripes:form>
 </div>
-<%--<div align="center">
-    <tr>
-        <td>약관</td>
-        <br>
-        <td>약관 예시 text</td>
-    </tr>
-</div>
-<div style="text-align: center">
-
-&lt;%&ndash;    동의합니다
-    <p>
-        <input type="checkbox" id="check_1"  name="" /> 위의 약관에 동의 합니다.<br />
-    </p>&ndash;%&gt;
-
-</div>--%>
-
 <%@ include file="../common/IncludeBottom.jsp"%>
 </html>

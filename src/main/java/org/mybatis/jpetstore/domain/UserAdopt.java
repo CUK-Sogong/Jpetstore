@@ -7,7 +7,7 @@ public class UserAdopt implements Serializable {
     private static final long serialVersionUID = 7807012195727254896L;
 
     private int aid;
-    private int asid;
+    private String asid;
     private String auserid;
     private String aarea;
     private int asalary;
@@ -27,13 +27,9 @@ public class UserAdopt implements Serializable {
         this.aid = aid;
     }
 
-    public int getAsid() {
-        return asid;
-    }
+    public String getAsid() { return asid; }
 
-    public void setAsid(int asid) {
-        this.asid = asid;
-    }
+    public void setAsid(String asid) { this.asid = asid; }
 
     public String getAuserid() {
         return auserid;

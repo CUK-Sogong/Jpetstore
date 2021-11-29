@@ -83,4 +83,14 @@
     WHERE productid = #{itemId}
   </select>
 
+  <update id="updateUserProduct" parameterType="Product">
+    UPDATE product SET
+      name=#{name}
+    WHERE productid=#{productId}
+  </update>
+
+  <delete id="deleteUserProduct" parameterType="String">
+    DELETE FROM product
+    WHERE productid=#{itemId}
+  </delete>
 </mapper>
