@@ -31,24 +31,23 @@
     <tr>
         <td>종류</td>
         <td>
-            <stripes:select name="userSale.scategory">
-                <stripes:option>강아지</stripes:option>
-                <stripes:option>고양이</stripes:option>
-                <stripes:option>물고기</stripes:option>
-                <stripes:option>새</stripes:option>
-                <stripes:option>파충류</stripes:option>
-                <stripes:option>기타</stripes:option>
+            <stripes:select name="userProduct.categoryId">
+                <stripes:option value="DOGS">강아지</stripes:option>
+                <stripes:option value="CATS">고양이</stripes:option>
+                <stripes:option value="FISH">물고기</stripes:option>
+                <stripes:option value="BIRDS">새</stripes:option>
+                <stripes:option value="REPTILES">파충류</stripes:option>
             </stripes:select>
         </td>
     </tr>
     <tr>
         <td>품종</td>
-        <td><stripes:text name="userSale.sdesc" /></td>
+        <td><stripes:text name="userProduct.name" /></td>
     </tr>
     <tr>
         <td>성별</td>
         <td>
-            <stripes:select name="userSale.sgender">
+            <stripes:select name="userItem.attribute1">
                 <stripes:option>수컷</stripes:option>
                 <stripes:option>암컷</stripes:option>
                 <stripes:option>중성화</stripes:option>
@@ -57,7 +56,7 @@
     </tr>
     <tr>
         <td>개월 수</td>
-        <td><stripes:text name="userSale.sage" /></td>
+        <td><stripes:text name="userItem.attribute2" /></td>
     </tr>
     <tr>
         <td>분양구분</td>
@@ -77,7 +76,7 @@
                 0
             </c:if>
             <c:if test="${actionBean.check==1}">
-                <stripes:text name="userSale.sprice" />
+                <stripes:text name="userItem.listPrice" />
             </c:if>
              단위 : $
         </td>
@@ -85,7 +84,7 @@
     <tr>
         <td>분양지역</td>
         <td>
-            <stripes:select name="userSale.sarea">
+            <stripes:select name="userItem.attribute3">
                 <stripes:option>서울특별시</stripes:option>
                 <stripes:option>경기도</stripes:option>
                 <stripes:option>대전광역시</stripes:option>
@@ -118,7 +117,7 @@
     </tr>
     <tr>
         <td>특이사항</td>
-        <td><stripes:text name="userSale.snote" /></td>
+        <td><stripes:text name="userItem.attribute4" /></td>
     </tr>
 </table>
 <stripes:submit name="insertSales" value="작성"/>

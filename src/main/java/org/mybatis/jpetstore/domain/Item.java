@@ -17,6 +17,7 @@ package org.mybatis.jpetstore.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * The Class Item.
@@ -40,6 +41,10 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
+  private String userId;
+  private int charge;
+  private int saleStatus;
+  private Date date;
 
   public String getItemId() {
     return itemId;
@@ -48,6 +53,10 @@ public class Item implements Serializable {
   public void setItemId(String itemId) {
     this.itemId = itemId.trim();
   }
+
+  public String getProductId() { return productId; }
+
+  public void setProductId(String productId) { this.productId = productId; }
 
   public int getQuantity() {
     return quantity;
@@ -137,9 +146,29 @@ public class Item implements Serializable {
     this.attribute5 = attribute5;
   }
 
-  @Override
+  public String getUserId() { return userId; }
+
+  public void setUserId(String userId) { this.userId = userId; }
+
+  public int getCharge() { return charge; }
+
+  public void setCharge(int charge) { this.charge = charge; }
+
+  public int getSaleStatus() { return saleStatus; }
+
+  public void setSaleStatus(int saleStatus) { this.saleStatus = saleStatus; }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+/*  @Override
   public String toString() {
     return "(" + getItemId() + "-" + getProduct().getProductId() + ")";
-  }
+  }*/
 
 }
