@@ -64,14 +64,14 @@
 
 <h2>입양신청</h2>
 <hr>
-
+* : 필수 입력 사항
 <table align="center">
     <tr>
-        <td>입양자 정보</td>
+        <td>*입양자 정보</td>
         <td>${actionBean.account.username}</td>
     </tr>
     <tr>
-        <td>거주지역</td>
+        <td>*거주지역</td>
         <td>
             <stripes:select name="userAdopt.aarea">
                 <stripes:option>서울특별시</stripes:option>
@@ -93,11 +93,11 @@
         </td>
     </tr>
     <tr>
-        <td>월급</td>
+        <td>*월급</td>
         <td><stripes:text name="userAdopt.asalary"/></td>
     </tr>
     <tr>
-        <td>거주 형태</td>
+        <td>*거주 형태</td>
         <td>
             <stripes:select name="userAdopt.ahome">
                 <stripes:option>원룸</stripes:option>
@@ -110,22 +110,22 @@
     </tr>
 
     <tr>
-        <td>동거인 수</td>
+        <td>*동거인 수</td>
         <td><stripes:text name="userAdopt.afamnum"/></td>
     </tr>
     <tr>
-        <td>동거 반려동물</td>
+        <td>*동거 반려동물</td>
         <td><stripes:text name="userAdopt.apets"/> ex) 강아지 1마리, 고양이 1마리</td>
     </tr>
     <tr>
-        <td>반려동물 키움 경험</td>
+        <td>*반려동물 키움 경험</td>
         <td>
             <stripes:radio value="1" name="userAdopt.apetexp"/>있음
             <stripes:radio value="0" name="userAdopt.apetexp"/>없음
         </td>
     </tr>
     <tr>
-        <td>사유 및 각오</td>
+        <td>*사유 및 각오</td>
         <td>
             <stripes:textarea name="userAdopt.anote"/>
         </td>

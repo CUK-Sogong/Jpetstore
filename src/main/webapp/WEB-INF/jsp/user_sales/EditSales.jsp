@@ -50,13 +50,14 @@
 
     <h2>분양 수정</h2>
     <hr>
+    * : 필수 입력 사항
     <table align="center">
         <tr>
-            <td>분양자 정보</td>
+            <td>*분양자 정보</td>
             <td>${actionBean.account.username}</td>
         </tr>
         <tr>
-            <td>종류</td>
+            <td>*종류</td>
             <td>
                 <stripes:select name="userSale.scategory">
                     <stripes:option>강아지</stripes:option>
@@ -69,11 +70,11 @@
             </td>
         </tr>
         <tr>
-            <td>품종</td>
+            <td>*품종</td>
             <td><stripes:text name="userSale.sdesc" /></td>
         </tr>
         <tr>
-            <td>성별</td>
+            <td>*성별</td>
             <td>
                 <stripes:select name="userSale.sgender">
                     <stripes:option>수컷</stripes:option>
@@ -82,11 +83,11 @@
             </td>
         </tr>
         <tr>
-            <td>개월 수</td>
+            <td>*개월 수</td>
             <td><stripes:text name="userSale.sage" /></td>
         </tr>
         <tr>
-            <td>분양구분</td>
+            <td>*분양구분</td>
             <td>
                 <c:if test="${actionBean.userSale.scharge==0}">
                     무료
@@ -97,7 +98,7 @@
             </td>
         </tr>
         <tr>
-            <td>분양가</td>
+            <td>*분양가</td>
             <td>
                 <c:if test="${actionBean.userSale.scharge==0}">
                     0
@@ -109,7 +110,7 @@
             </td>
         </tr>
         <tr>
-            <td>분양지역</td>
+            <td>*분양지역</td>
             <td>
                 <stripes:select name="userSale.sarea">
                     <stripes:option>서울특별시</stripes:option>
@@ -143,7 +144,7 @@
             <td><stripes:file name="img3"/></td>
         </tr>--%>
         <tr>
-            <td>특이사항</td>
+            <td>*특이사항</td>
             <td><stripes:text name="userSale.snote" /></td>
         </tr>
     </table>
