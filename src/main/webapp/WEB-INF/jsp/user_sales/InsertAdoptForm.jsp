@@ -9,53 +9,14 @@
 </stripes:link></div><br/><br/>
 <head>
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            /*background-color: #333;*/
-            text-align:center
-        }
-        ul:after{
-            content:'';
-            display: block;
-            clear:both;
-        }
-        li {
-            display: inline-block;
-        }
-        li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        li a:hover:not(.active) {
-            background-color: darkgray;
-        }
-        .active {
-            background-color: #4CAF50;
-        }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        td{
+            text-align:center;
+        }
     </style>
 </head>
-<%--<script type="text/javascript">
-    $(document).ready(function(){
-
-        $("#nextBtn").click(function(){
-            if($("#check_1").is(":checked") == false){
-                alert("약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;
-            }else{
-                $("#terms_form").submit();
-            }
-        });
-    });
-</script>--%>
 
 
 <div id="Catalog"><stripes:form
@@ -94,7 +55,7 @@
     </tr>
     <tr>
         <td>월급</td>
-        <td><stripes:text name="userAdopt.asalary"/></td>
+        <td><stripes:text name="userAdopt.asalary"/> 단위 : $</td>
     </tr>
     <tr>
         <td>거주 형태</td>
@@ -153,7 +114,7 @@
                 </c:if>
                 <c:if test="${actionBean.userSale.scharge==1}">
                     유료
-                </c:if>$
+                </c:if>
             </td>
             <td>분양지역</td>
             <td>${actionBean.userSale.sarea}</td>
@@ -168,21 +129,6 @@
     <stripes:submit name="insertAdopt" value="입양 신청"/>
 </stripes:form>
 </div>
-<%--<div align="center">
-    <tr>
-        <td>약관</td>
-        <br>
-        <td>약관 예시 text</td>
-    </tr>
-</div>
-<div style="text-align: center">
-
-&lt;%&ndash;    동의합니다
-    <p>
-        <input type="checkbox" id="check_1"  name="" /> 위의 약관에 동의 합니다.<br />
-    </p>&ndash;%&gt;
-
-</div>--%>
 
 <%@ include file="../common/IncludeBottom.jsp"%>
 </html>

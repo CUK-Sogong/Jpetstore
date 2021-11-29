@@ -6,6 +6,14 @@
     Return to SALES LIST
 </stripes:link></div>
 </br></br>
+<style>
+    table{
+        text-align:center;
+    }
+    td{
+        text-align:center;
+    }
+</style>
 <div id="Catalog">
     <h2>분양 등록 목록</h2>
     <table style="display: inline; line-height: 25px;">

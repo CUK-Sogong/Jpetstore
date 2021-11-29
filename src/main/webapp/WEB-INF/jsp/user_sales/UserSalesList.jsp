@@ -46,9 +46,13 @@
             padding-top: 30px;
 
         }
-        tr{text-align: center;
+        tr{
+            text-align: center;
         }
-        th{text-align: center}
+        th{
+            text-align: center
+        }
+
     </style>
 </head>
 
@@ -102,9 +106,10 @@
     <table text-align="center" >
         <tr>
             <th>사진</th>
-            <th>강아지종류</th>
-            <th width="200">분양 상태</th>
+            <th>품종</th>
+            <th width="100">분양 상태</th>
             <th width="100">유료/무료</th>
+            <th width="100">성별</th>
             <th>분양지역</th>
             <th>날짜</th>
 
@@ -139,6 +144,7 @@
                         유료
                     </c:if>
                 </td>
+                <td class="td">${UserSale.sgender}</td>
                 <td class="td">${UserSale.sarea}</td>
                 <td class="td"><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
             </tr>

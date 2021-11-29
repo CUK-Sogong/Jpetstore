@@ -14,38 +14,12 @@
 </stripes:link></div></br></br>
 <head>
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        /background-color: #333;/
-        text-align:center
-        }
-        ul:after{
-            content:'';
-            display: block;
-            clear:both;
-        }
-        li {
-            display: inline-block;
-        }
-        li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        li a:hover:not(.active) {
-            background-color: darkgray;
-        }
-        .active {
-            background-color: #4CAF50;
-        }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        td{
+            text-align:center;
+        }
     </style>
 </head>
 <body>

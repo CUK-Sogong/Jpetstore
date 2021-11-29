@@ -249,7 +249,7 @@ public class UserSalesActionBean extends AbstractActionBean {
             userSalesService.insertSale(userSale);
             userSale = userSalesService.getSalesRecent();
             //본인 user_images 경로 적기
-            String path = "/Users/jeonmingi/Jpetstore/src/main/webapp/user_images/";
+            String path = "C:/Users/ktykt/git/Jpetstore/src/main/webapp/user_images/";
 
             if(img1!=null) {
                 String time = LocalTime.now().toString().replace(":", "").replace(".", "");
@@ -340,6 +340,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertAdoptForm(){
+        clear();
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
@@ -353,6 +354,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution insertAdopt(){
+
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
@@ -497,6 +499,7 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public void clear() {
         userSale = new UserSale();
+        userAdopt = new UserAdopt();
         f_category = "%";
         f_charge = "%";
         f_order = 0;

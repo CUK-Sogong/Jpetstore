@@ -5,6 +5,14 @@
         event="viewSalesList">
     Return to SALES LIST
 </stripes:link></div></br></br>
+<style>
+    table{
+        text-align:center;
+    }
+    td{
+        text-align:center;
+    }
+</style>
 <html>
 <div id="Catalog">
     <h2>입양 신청 목록</h2>
