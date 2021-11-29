@@ -73,4 +73,24 @@
     WHERE productid=#{param1}
   </update>
 
+  <select id="getUserProduct" resultType="Product">
+    SELECT
+      PRODUCTID,
+      NAME,
+      DESCN as description,
+      CATEGORY as categoryId
+    FROM product
+    WHERE productid = #{itemId}
+  </select>
+
+  <update id="updateUserProduct" parameterType="Product">
+    UPDATE product SET
+      name=#{name}
+    WHERE productid=#{productId}
+  </update>
+
+  <delete id="deleteUserProduct" parameterType="String">
+    DELETE FROM product
+    WHERE productid=#{itemId}
+  </delete>
 </mapper>

@@ -126,7 +126,7 @@
 
     <select id="getImageList" resultType="Image">
         SELECT * FROM file_dir
-        WHERE sid = #{sid}
+        WHERE sid = #{itemId}
     </select>
 
     <select id="getImageDirBySid" resultType="string">
