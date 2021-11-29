@@ -28,22 +28,22 @@ INSERT INTO account VALUES('ACID','acid@yourdomain.com','ABC', 'XYX', 'OK', '901
 INSERT INTO profile VALUES('j2ee','english','DOGS',1,1);
 INSERT INTO profile VALUES('ACID','english','CATS',1,1);
 
-INSERT INTO bannerdata VALUES ('FISH','<image src="../images/banner_fish.gif">');
+INSERT INTO bannerdata VALUES ('물고기','<image src="../images/banner_fish.gif">');
 INSERT INTO bannerdata VALUES ('CATS','<image src="../images/banner_cats.gif">');
 INSERT INTO bannerdata VALUES ('DOGS','<image src="../images/banner_dogs.gif">');
 INSERT INTO bannerdata VALUES ('REPTILES','<image src="../images/banner_reptiles.gif">');
 INSERT INTO bannerdata VALUES ('BIRDS','<image src="../images/banner_birds.gif">');
 
-INSERT INTO category VALUES ('FISH','Fish','<image src="../images/fish_icon.gif"><font size="5" color="blue"> Fish</font>');
+INSERT INTO category VALUES ('물고기','Fish','<image src="../images/fish_icon.gif"><font size="5" color="blue"> Fish</font>');
 INSERT INTO category VALUES ('DOGS','Dogs','<image src="../images/dogs_icon.gif"><font size="5" color="blue"> Dogs</font>');
 INSERT INTO category VALUES ('REPTILES','Reptiles','<image src="../images/reptiles_icon.gif"><font size="5" color="blue"> Reptiles</font>');
 INSERT INTO category VALUES ('CATS','Cats','<image src="../images/cats_icon.gif"><font size="5" color="blue"> Cats</font>');
 INSERT INTO category VALUES ('BIRDS','Birds','<image src="../images/birds_icon.gif"><font size="5" color="blue"> Birds</font>');
 
-INSERT INTO product VALUES ('FI-SW-01','FISH','Angelfish','<image src="../images/fish1.gif">Salt Water fish from Australia');
-INSERT INTO product VALUES ('FI-SW-02','FISH','Tiger Shark','<image src="../images/fish4.gif">Salt Water fish from Australia');
-INSERT INTO product VALUES ('FI-FW-01','FISH', 'Koi','<image src="../images/fish3.gif">Fresh Water fish from Japan');
-INSERT INTO product VALUES ('FI-FW-02','FISH', 'Goldfish','<image src="../images/fish2.gif">Fresh Water fish from China');
+INSERT INTO product VALUES ('FI-SW-01','물고기','Angelfish','<image src="../images/fish1.gif">Salt Water fish from Australia');
+INSERT INTO product VALUES ('FI-SW-02','물고기','Tiger Shark','<image src="../images/fish4.gif">Salt Water fish from Australia');
+INSERT INTO product VALUES ('FI-FW-01','물고기', 'Koi','<image src="../images/fish3.gif">Fresh Water fish from Japan');
+INSERT INTO product VALUES ('FI-FW-02','물고기', 'Goldfish','<image src="../images/fish2.gif">Fresh Water fish from China');
 INSERT INTO product VALUES ('K9-BD-01','DOGS','Bulldog','<image src="../images/dog2.gif">Friendly dog from England');
 INSERT INTO product VALUES ('K9-PO-02','DOGS','Poodle','<image src="../images/dog6.gif">Cute dog from France');
 INSERT INTO product VALUES ('K9-DL-01','DOGS', 'Dalmation','<image src="../images/dog5.gif">Great dog for a Fire Station');
@@ -141,9 +141,26 @@ INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','20','소공 화이
 INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','21','소공 화이팅',NOW());
 INSERT INTO Board (userId,title,content,date) VALUES ('j2ee','22','소공 화이팅',NOW());
 
-/*INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
-values(1, 'j2ee', '고양이', 'persian cat', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello',NOW());
-INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
-values(2, 'j2ee', '강아지', 'golden retriever', 'MALE', 3, 0, 0, '경기도', '1','1','1',1,'Hello',NOW());
-INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
-values(3, 'j2ee', '물고기', 'shark', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello',NOW());*/
+-- INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
+-- values(1, 'j2ee', '고양이', '페르시안 고양이', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello',NOW());
+-- INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
+-- values(2, 'j2ee', '강아지', 'golden retriever', 'MALE', 3, 0, 0, '경기도', '1','1','1',1,'Hello',NOW());
+-- INSERT INTO usersale(sid, suserid, scategory, sdesc, sgender, sage, scharge, sprice, sarea, simg1, simg2, simg3, sstatus, snote, date)
+-- values(3, 'j2ee', '물고기', 'shark', 'FEMALE', 3, 1, 100, '경기도', '1','1','1',1,'Hello',NOW());
+
+-- create table usersale
+-- (
+--     sid       INT PRIMARY KEY,
+--     suserId   VARCHAR(80)  NOT NULL,
+--     scategory VARCHAR(10)  NOT NULL,
+--     sdesc     VARCHAR(80)  NOT NULL,
+--     sgender   VARCHAR(10)  NOT NULL,
+--     sage      VARCHAR(10)  NOT NULL,
+--     scharge   INT          NOT NULL,
+--     sprice    INT null,
+--     sarea     VARCHAR(80)  NOT NULL,
+--     sstatus   INT DEFAULT 1,
+--     snote     varchar(255) NOT NULL,
+--     date datetime
+-- );
+-- INSERT INTO usersale(1,'j2ee','고양이','페르시안 고양이','MALE','1',1,100,'경기도',1,'1',NOW());
