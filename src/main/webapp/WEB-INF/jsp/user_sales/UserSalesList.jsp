@@ -61,17 +61,15 @@
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesListAll">
         분양게시판</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="강아지" />강아지</stripes:link></li>
+        <stripes:param name="f_category" value="DOGS" />강아지</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="고양이" />고양이</stripes:link></li>
+        <stripes:param name="f_category" value="CATS" />고양이</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="물고기" />물고기</stripes:link></li>
+        <stripes:param name="f_category" value="FISH" />물고기</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="새" />새</stripes:link></li>
+        <stripes:param name="f_category" value="BIRDS" />새</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="파충류" />파충류</stripes:link></li>
-    <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="기타" />기타</stripes:link></li>
+        <stripes:param name="f_category" value="REPTILES" />파충류</stripes:link></li>
 </ul>
 <hr>
 <ul>
@@ -112,45 +110,40 @@
             <th width="100">성별</th>
             <th>분양지역</th>
             <th>날짜</th>
-
         </tr>
 
-        <c:forEach var="UserSale" items="${actionBean.userSalesList}" varStatus="statusNm">
+        <c:forEach var="UserItem" items="${actionBean.userItemList}" varStatus="statusNm">
             <tr>
-                <c:forEach var="img" items="${actionBean.thumbnailList[statusNm.index]}" varStatus="status">
-                    <td>
-                        <stripes:link
-                                beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-                                event="viewSales">
-                            <stripes:param name="sid" value="${UserSale.sid}" />
-                        <img src=${img} height="70" width="70"/>
-                        </stripes:link>
+                <td>
+                    <stripes:link
+                            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+                            event="viewSales">
+                        <stripes:param name="itemId" value="${UserItem.itemId}" />
+                        <img src=${UserItem.product.description} height="70" width="70"/>
+                    </stripes:link>
+                </td>
+                <td class="td">${UserItem.product.name}</td>
+                    <td class="td">
+                        <c:if test = "${UserItem.saleStatus == 0}">
+                            분양완료
+                        </c:if>
+                        <c:if test = "${UserItem.saleStatus == 1}">
+                            분양가능
+                        </c:if>
                     </td>
-                </c:forEach>
-                <td class="td">${UserSale.sdesc}</td>
-                <td class="td">
-                    <c:if test = "${UserSale.sstatus == 0}">
-                        분양완료
-                    </c:if>
-                    <c:if test = "${UserSale.sstatus == 1}">
-                        분양가능
-                    </c:if>
-                </td>
-                <td class="td">
-                    <c:if test = "${UserSale.scharge == 0}">
-                        무료
-                    </c:if>
-                    <c:if test = "${UserSale.scharge == 1}">
-                        유료
-                    </c:if>
-                </td>
-                <td class="td">${UserSale.sgender}</td>
-                <td class="td">${UserSale.sarea}</td>
-                <td class="td"><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
+                    <td class="td">
+                        <c:if test = "${UserItem.charge == 0}">
+                            무료
+                        </c:if>
+                        <c:if test = "${UserItem.charge == 1}">
+                            유료
+                        </c:if>
+                    </td>
+                    <td class="td">${UserItem.attribute1}</td>
+                    <td class="td">${UserItem.attribute3}</td>
+                    <td class="td"><fmt:formatDate value="${UserItem.date}" pattern="yyyy-MM-dd"/></td>
             </tr>
-
         </c:forEach>
-
     </table>
 
 </div>

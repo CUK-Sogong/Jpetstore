@@ -53,4 +53,24 @@
     WHERE lower(name) like #{value}
   </select>
 
+  <select id="getUserProductList" resultType="Product">
+    SELECT
+      PRODUCTID,
+      NAME,
+      DESCN as description,
+      CATEGORY as categoryId
+    FROM product
+    WHERE productid LIKE '%SAL%'
+  </select>
+
+  <insert id="insertUserProduct" parameterType="Product">
+    INSERT INTO product
+    VALUES (#{productId},#{categoryId},#{name},#{description});
+  </insert>
+
+  <update id="setProductDescription" parameterType="string">
+    UPDATE product SET descn=#{param2}
+    WHERE productid=#{param1}
+  </update>
+
 </mapper>

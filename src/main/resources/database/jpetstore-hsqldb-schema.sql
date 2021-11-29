@@ -132,11 +132,15 @@ create index productName on product (name);
 
 create table item (
     itemid varchar(10) not null,
-    productid varchar(10) not null,
+    userid varchar(20) null,
+    productid varchar(10) null,
     listprice decimal(10,2) null,
     unitcost decimal(10,2) null,
     supplier int null,
     status varchar(2) null,
+    charge INT null,
+    date datetime,
+    sale_status INT DEFAULT 1,
     attr1 varchar(80) null,
     attr2 varchar(80) null,
     attr3 varchar(80) null,
@@ -209,7 +213,7 @@ create table useradopt
 create table file_dir
 (
     fid INT PRIMARY KEY,
-    sid INT,
+    sid varchar(255),
     dir VARCHAR(255) NOT NULL,
-    constraint fk_sa_fi foreign key (sid) references usersale (sid) ON DELETE CASCADE
+    constraint fk_sa_fi foreign key (sid) references item (itemid) ON DELETE CASCADE
 )
