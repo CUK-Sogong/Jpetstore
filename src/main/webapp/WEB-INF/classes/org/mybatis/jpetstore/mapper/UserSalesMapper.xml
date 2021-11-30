@@ -134,4 +134,10 @@
         WHERE sid = #{sid}
         ORDER BY fid asc limit 1
     </select>
+
+    <select id="getAdoptByUsernameAndItemId" resultType="UserAdopt">
+        SELECT * FROM useradopt
+        WHERE auserid LIKE #{param1} AND
+              asid LIKE #{param2}
+    </select>
 </mapper>

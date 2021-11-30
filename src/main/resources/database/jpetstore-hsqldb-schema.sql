@@ -177,7 +177,7 @@ create table board(
     constraint pk_bnum primary key (bnum)
 );
 
-create table usersale
+/*create table usersale
 (
     sid       INT PRIMARY KEY,
     suserId   VARCHAR(80)  NOT NULL,
@@ -191,7 +191,7 @@ create table usersale
     sstatus   INT DEFAULT 1,
     snote     varchar(255) NOT NULL,
     date datetime
-);
+);*/
 
 create table useradopt
 (

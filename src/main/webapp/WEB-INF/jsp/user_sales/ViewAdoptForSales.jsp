@@ -60,8 +60,10 @@
             <td>${actionBean.userAdopt.anote}</td>
         </tr>
     </table>
-    <stripes:submit name="acceptAdopt" value="수락"/>
-    <stripes:submit name="refusalAdopt" value="거절"/>
+    <c:if test="${actionBean.userAdopt.astatus == 2}">
+        <stripes:submit name="acceptAdopt" value="수락"/>
+        <stripes:submit name="refusalAdopt" value="거절"/>
+    </c:if>
 
 </stripes:form>
 </div>

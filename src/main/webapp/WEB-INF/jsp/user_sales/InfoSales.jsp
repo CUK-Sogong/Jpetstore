@@ -93,7 +93,12 @@
         <c:if test="${sessionScope.accountBean.authenticated}">
             <c:if test="${!sessionScope.accountBean.account.username.equals(actionBean.userItem.userId)}">
                 <c:if test="${actionBean.userItem.saleStatus == 1}">
-                    <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                    <c:if test="${actionBean.userAdopt == null}">
+                        <stripes:submit name="insertAdoptForm" value="입양신청"/>
+                    </c:if>
+                    <c:if test="${actionBean.userAdopt != null}">
+                        <p>이미 입양 신청을 했습니다.</p>
+                    </c:if>
                 </c:if>
             </c:if>
         </c:if>

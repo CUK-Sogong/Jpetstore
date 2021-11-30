@@ -249,7 +249,7 @@ public class UserSalesActionBean extends AbstractActionBean {
             catalogService.insertUserProduct(userProduct);
             catalogService.insertUserItem(userItem);
             //본인 user_images 경로 적기
-            String path = "C:/Users/HYUNYOUNG/SETEAM/jpetstore_new/Jpetstore/src/main/webapp/user_images/";
+            String path = "C:/Users/ktykt/git/Jpetstore/src/main/webapp/user_images/";
 
             if(img1!=null) {
                 String time = LocalTime.now().toString().replace(":", "").replace(".", "");
@@ -332,8 +332,12 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution viewSales(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        account = accountBean.getAccount();
         userItem = catalogService.getUserItem(itemId);
         userProduct = catalogService.getUserProduct(itemId);
+        userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(),itemId);
         account = accountService.getAccount(userItem.getUserId());
         userImageList = userSalesService.getImageList(itemId);
         return new ForwardResolution(INFO_SALES);
@@ -462,7 +466,10 @@ public class UserSalesActionBean extends AbstractActionBean {
      *
      * @return the resolution
      */
-    public Resolution acceptAdopt(){
+    public Resolution acceptAdopt() {
+        userAdoptsList = userSalesService.getAdoptListBySid(itemId);
+        for (UserAdopt adopt : userAdoptsList) userSalesService.refusalAdopt(adopt.getAid());
+
         userSalesService.acceptAdopt(aid);
         userItem = catalogService.getUserItem(userSalesService.getAdopt(aid).getAsid());
         userItem.setSaleStatus(0);

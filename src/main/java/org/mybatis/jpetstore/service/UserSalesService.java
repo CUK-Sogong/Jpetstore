@@ -90,6 +90,9 @@ public class UserSalesService {
 
     public String getImageDirByItemId(String itemId) { return userSalesMapper.getImageDirByItemId(itemId); }
 
+    public UserAdopt getAdoptByUsernameAndItemId(String username, String itemId) {
+        return userSalesMapper.getAdoptByUsernameAndItemId(username, itemId);
+    }
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
         if (sequence == null) {
@@ -100,7 +103,5 @@ public class UserSalesService {
         sequenceMapper.updateSequence(parameterObject);
         return sequence.getNextId();
     }
-
-
 
 }

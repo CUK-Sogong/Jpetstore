@@ -34,4 +34,6 @@ public interface UserSalesMapper {
 
     List<Image> getImageList(String itemId);
     String getImageDirByItemId(String itemId);
+
+    UserAdopt getAdoptByUsernameAndItemId(String username, String itemId);
 }
