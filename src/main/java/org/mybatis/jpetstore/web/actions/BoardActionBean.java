@@ -98,6 +98,7 @@ public class BoardActionBean extends AbstractActionBean {
     }
 
     public ForwardResolution newBoardForm(){
+        clear();
         return new ForwardResolution(NEW_BOARD);
     }
 
@@ -141,5 +142,8 @@ public class BoardActionBean extends AbstractActionBean {
         }
     }
 
+    public void clear() {
+        board = new Board();
+    }
 
 }

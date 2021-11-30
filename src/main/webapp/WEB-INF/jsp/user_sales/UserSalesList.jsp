@@ -40,9 +40,19 @@
             background-color: #4CAF50;
         }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        .td{text-align:center;
+            padding-top: 30px;
+
+        }
+        tr{
+            text-align: center;
+        }
+        th{
+            text-align: center
+        }
+
     </style>
 </head>
 
@@ -51,17 +61,15 @@
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesListAll">
         분양게시판</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="강아지" />강아지</stripes:link></li>
+        <stripes:param name="f_category" value="DOGS" />강아지</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="고양이" />고양이</stripes:link></li>
+        <stripes:param name="f_category" value="CATS" />고양이</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="물고기" />물고기</stripes:link></li>
+        <stripes:param name="f_category" value="FISH" />물고기</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="새" />새</stripes:link></li>
+        <stripes:param name="f_category" value="BIRDS" />새</stripes:link></li>
     <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="파충류" />파충류</stripes:link></li>
-    <li><stripes:link beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean" event="viewSalesList">
-        <stripes:param name="f_category" value="기타" />기타</stripes:link></li>
+        <stripes:param name="f_category" value="REPTILES" />파충류</stripes:link></li>
 </ul>
 <hr>
 <ul>
@@ -92,45 +100,52 @@
 
 <hr>
 <div id="Catalog">
-    <h2>${actionBean.message}</h2>
-    <table align="center" >
+    <h2>${actionBean.msg}</h2>
+    <table text-align="center" >
         <tr>
-            <th>번호</th>
             <th>사진</th>
-            <th width="200">분양 상태</th>
+            <th>품종</th>
+            <th width="100">분양 상태</th>
             <th width="100">유료/무료</th>
+            <th width="100">성별</th>
+            <th>분양지역</th>
             <th>날짜</th>
-
         </tr>
-        <c:forEach var="UserSale" items="${actionBean.userSalesList}">
+
+        <c:forEach var="UserItem" items="${actionBean.userItemList}" varStatus="statusNm">
             <tr>
-                <td>${UserSale.sid}</td>
-                <td><stripes:link
-                        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-                        event="viewSales">
-                    <stripes:param name="sid" value="${UserSale.sid}" />
-                    ${UserSale.sdesc}
-                </stripes:link></td>
                 <td>
-                    <c:if test = "${UserSale.sstatus == 0}">
-                        분양완료
-                    </c:if>
-                    <c:if test = "${UserSale.sstatus == 1}">
-                        분양가능
-                    </c:if>
+                    <stripes:link
+                            beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
+                            event="viewSales">
+                        <stripes:param name="itemId" value="${UserItem.itemId}" />
+                        <img src=${UserItem.product.description} height="70" width="70"/>
+                    </stripes:link>
                 </td>
-                <td>
-                    <c:if test = "${UserSale.scharge == 0}">
-                        무료
-                    </c:if>
-                    <c:if test = "${UserSale.scharge == 1}">
-                        유료
-                    </c:if>
-                </td>
-                <td><fmt:formatDate value="${UserSale.date}" pattern="yyyy-MM-dd"/></td>
+                <td class="td">${UserItem.product.name}</td>
+                    <td class="td">
+                        <c:if test = "${UserItem.saleStatus == 0}">
+                            분양완료
+                        </c:if>
+                        <c:if test = "${UserItem.saleStatus == 1}">
+                            분양가능
+                        </c:if>
+                    </td>
+                    <td class="td">
+                        <c:if test = "${UserItem.charge == 0}">
+                            무료
+                        </c:if>
+                        <c:if test = "${UserItem.charge == 1}">
+                            유료
+                        </c:if>
+                    </td>
+                    <td class="td">${UserItem.attribute1}</td>
+                    <td class="td">${UserItem.attribute3}</td>
+                    <td class="td"><fmt:formatDate value="${UserItem.date}" pattern="yyyy-MM-dd"/></td>
             </tr>
         </c:forEach>
     </table>
+
 </div>
 
 

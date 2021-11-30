@@ -35,4 +35,17 @@ public interface ItemMapper {
 
   Item getItem(String itemId);
 
+  List<Item> getUserItemList();
+
+  List<Item> getUserItemListByFilter(String f_category, String f_charge, int f_order, String f_search);
+
+  void insertUserItem(Item userItem);
+
+    Item getUserItem(String itemId);
+
+  void updateUserItem(Item userItem);
+
+  void deleteUserItem(String itemId);
+
+  List<Item> getUserItemListByUsername(String username);
 }

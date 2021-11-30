@@ -12,7 +12,14 @@
         event="viewSalesList">
     Return to SALES LIST
 </stripes:link></div></br></br>
-
+<style>
+    table{
+        text-align:center;
+    }
+    td{
+        text-align:center;
+    }
+</style>
 <body>
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
@@ -29,7 +36,7 @@
         </tr>
         <tr>
             <td>월급</td>
-            <td>${actionBean.userAdopt.asalary}</td>
+            <td>${actionBean.userAdopt.asalary} $</td>
         </tr>
         <tr>
             <td>거주 형태</td>

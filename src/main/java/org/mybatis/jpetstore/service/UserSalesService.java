@@ -15,8 +15,10 @@
  */
 package org.mybatis.jpetstore.service;
 
+import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.Sequence;
-import org.mybatis.jpetstore.domain.UserSale;
+import org.mybatis.jpetstore.domain.Item;
+import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.mapper.*;
 import org.mybatis.jpetstore.domain.UserAdopt;
 import org.springframework.stereotype.Service;
@@ -52,71 +54,41 @@ public class UserSalesService {
     public List<UserAdopt> getAdoptList() {
         return userSalesMapper.getAdoptList();
     }
-
-    public List<UserAdopt> getAdoptListByUsername(String username) {
-        return userSalesMapper.getAdoptListByUsername(username);
-    }
-
+    @Transactional
+    public List<UserAdopt> getAdoptListByUsername(String username) { return userSalesMapper.getAdoptListByUsername(username); }
+    @Transactional
     public UserAdopt getAdopt(int aid) {
         return userSalesMapper.getAdopt(aid);
     }
-
-    public List<UserSale> getSalesListByUsername(String username) {
-        return userSalesMapper.getSalesListByUsername(username);
-    }
-
-    public List<UserSale> getSalesListtest() {
-        return userSalesMapper.getSalesListtest();
-    }
-
-    public List<UserSale> getSalesList(String f_category,String f_charge, int f_order, String f_search) {
-        return userSalesMapper.getSalesList(f_category,f_charge,f_order, f_search);
-    }
-
-
-    public List<UserSale> getSalesListAll() {
-        return userSalesMapper.getSalesListAll();
-    }
-
-
-    public void insertSale(UserSale userSale) {
-        userSale.setsid(getNextId("salesnum"));
-        userSalesMapper.insertSale(userSale);
-    }
-    public void updateSales(UserSale userSale) {
-        userSalesMapper.updateSales(userSale);
-    }
-
-    public void deleteSales(int sid) {
-        userSalesMapper.deleteSales(sid);
-    }
-
-    public UserSale getSales(int sid) {
-        return userSalesMapper.getSales(sid);
-    }
-    public UserSale getSalesRecent() {
-        return userSalesMapper.getSalesRecent();
-    }
-
+    @Transactional
     public UserAdopt getAdoptRecent() {
         return userSalesMapper.getAdoptRecent();
     }
-
-    public List<UserAdopt> getAdoptListBySid(int sid) {
+    @Transactional
+    public List<UserAdopt> getAdoptListBySid(String sid) {
         return userSalesMapper.getAdoptListBySid(sid);
     }
-
+    @Transactional
     public void acceptAdopt(int aid) {
         userSalesMapper.acceptAdopt(aid);
     }
-
+    @Transactional
     public void refusalAdopt(int aid) {
         userSalesMapper.refusalAdopt(aid);
     }
-
-    public int getAdoptCnt(int sid) {
+    @Transactional
+    public int getAdoptCnt(String sid) {
         return userSalesMapper.getAdoptCnt(sid);
     }
+    @Transactional
+    public void insertImage(Image image) {
+        image.setFid(getNextId("filenum"));
+        userSalesMapper.insertImage(image);
+    }
+
+    public List<Image> getImageList(String itemId) { return userSalesMapper.getImageList(itemId); }
+
+    public String getImageDirByItemId(String itemId) { return userSalesMapper.getImageDirByItemId(itemId); }
 
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));

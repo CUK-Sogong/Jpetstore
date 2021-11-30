@@ -9,38 +9,12 @@
 </stripes:link></div></br></br>
 <head>
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            /*background-color: #333;*/
-            text-align:center
-        }
-        ul:after{
-            content:'';
-            display: block;
-            clear:both;
-        }
-        li {
-            display: inline-block;
-        }
-        li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        li a:hover:not(.active) {
-            background-color: darkgray;
-        }
-        .active {
-            background-color: #4CAF50;
-        }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        td{
+            text-align:center;
+        }
     </style>
 </head>
 
@@ -58,40 +32,40 @@
         <tr>
             <td>종류</td>
             <td>
-                <stripes:select name="userSale.scategory">
-                    <stripes:option>강아지</stripes:option>
-                    <stripes:option>고양이</stripes:option>
-                    <stripes:option>물고기</stripes:option>
-                    <stripes:option>새</stripes:option>
-                    <stripes:option>파충류</stripes:option>
-                    <stripes:option>기타</stripes:option>
+                <stripes:select name="userProduct.categoryId">
+                    <stripes:option value="DOGS">강아지</stripes:option>
+                    <stripes:option value="CATS">고양이</stripes:option>
+                    <stripes:option value="FISH">물고기</stripes:option>
+                    <stripes:option value="BIRDS">새</stripes:option>
+                    <stripes:option value="REPTILES">파충류</stripes:option>
                 </stripes:select>
             </td>
         </tr>
         <tr>
             <td>품종</td>
-            <td><stripes:text name="userSale.sdesc" /></td>
+            <td><stripes:text name="userProduct.name" /></td>
         </tr>
         <tr>
             <td>성별</td>
             <td>
-                <stripes:select name="userSale.sgender">
+                <stripes:select name="userItem.attribute1">
                     <stripes:option>수컷</stripes:option>
                     <stripes:option>암컷</stripes:option>
+                    <stripes:option>중성화</stripes:option>
                 </stripes:select>
             </td>
         </tr>
         <tr>
             <td>개월 수</td>
-            <td><stripes:text name="userSale.sage" /></td>
+            <td><stripes:text name="userItem.attribute2" /></td>
         </tr>
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.userSale.sstatus==0}">
+                <c:if test="${actionBean.userItem.charge==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.userSale.sstatus==1}">
+                <c:if test="${actionBean.userItem.charge==1}">
                     유료
                 </c:if>
             </td>
@@ -99,11 +73,11 @@
         <tr>
             <td>분양가</td>
             <td>
-                <c:if test="${actionBean.userSale.sstatus==0}">
+                <c:if test="${actionBean.userItem.charge==0}">
                     0
                 </c:if>
-                <c:if test="${actionBean.userSale.sstatus==1}">
-                    <stripes:text name="userSale.sprice" />
+                <c:if test="${actionBean.userItem.charge==1}">
+                    <stripes:text name="userItem.listPrice" />
                 </c:if>
                 단위 : $
             </td>
@@ -111,7 +85,7 @@
         <tr>
             <td>분양지역</td>
             <td>
-                <stripes:select name="userSale.sarea">
+                <stripes:select name="userItem.attribute3">
                     <stripes:option>서울특별시</stripes:option>
                     <stripes:option>경기도</stripes:option>
                     <stripes:option>대전광역시</stripes:option>
@@ -131,20 +105,8 @@
             </td>
         </tr>
         <tr>
-            <td>이미지1</td>
-            <td><button type="button">첨부</button></td>
-        </tr>
-        <tr>
-            <td>이미지2</td>
-            <td><button type="button">첨부</button></td>
-        </tr>
-        <tr>
-            <td>이미지3</td>
-            <td><button type="button">첨부</button></td>
-        </tr>
-        <tr>
             <td>특이사항</td>
-            <td><stripes:text name="userSale.snote" /></td>
+            <td><stripes:text name="userItem.attribute4" /></td>
         </tr>
     </table>
     <stripes:submit name="updateSales" value="작성"/>

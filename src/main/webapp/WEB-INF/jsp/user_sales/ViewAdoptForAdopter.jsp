@@ -9,54 +9,13 @@
 </stripes:link></div></br></br>
 <head>
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            /*background-color: #333;*/
-            text-align:center
-        }
-        ul:after{
-            content:'';
-            display: block;
-            clear:both;
-        }
-        li {
-            display: inline-block;
-        }
-        li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        li a:hover:not(.active) {
-            background-color: darkgray;
-        }
-        .active {
-            background-color: #4CAF50;
-        }
         table{
-            text-align:center
+            text-align:center;
         }
-        td{text-align:center}
+        td{
+            text-align:center;
+        }
     </style>
-</head>
-<%--<script type="text/javascript">
-    $(document).ready(function(){
-
-        $("#nextBtn").click(function(){
-            if($("#check_1").is(":checked") == false){
-                alert("약관에 동의 하셔야 다음 단계로 진행 가능합니다.");
-                return;
-            }else{
-                $("#terms_form").submit();
-            }
-        });
-    });
-</script>--%>
-
 <div id="Catalog"><stripes:form
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
         focus="" acceptcharset="UTF-8"  >
@@ -73,7 +32,7 @@
         </tr>
         <tr>
             <td>월급</td>
-            <td>${actionBean.userAdopt.asalary}</td>
+            <td>${actionBean.userAdopt.asalary} $</td>
         </tr>
         <tr>
             <td>거주 형태</td>
@@ -100,58 +59,60 @@
             <td>${actionBean.userAdopt.anote}</td>
         </tr>
     </table>
-    <h3>반려동물 정보</h3>
-    <table align="center" border>
+    <h3>분양 정보</h3>
+    <table align="center">
+        <tr>
+            <td>아이디</td>
+            <td>${actionBean.userItem.userId}</td>
+            <td>이름</td>
+            <td>${actionBean.account.firstName} ${actionBean.account.lastName}</td>
+        </tr>
+        <tr>
+            <td>전화번호</td>
+            <td>${actionBean.account.phone}</td>
+            <td>이메일</td>
+            <td>${actionBean.account.email}</td>
+        </tr>
         <tr>
             <td>종류</td>
-            <td>${actionBean.userSale.scategory}</td>
+            <td>${actionBean.userProduct.categoryId}</td>
             <td>성별</td>
-            <td>${actionBean.userSale.sgender}</td>
+            <td>${actionBean.userItem.attribute1}</td>
         </tr>
         <tr>
             <td>품종</td>
-            <td>${actionBean.userSale.sdesc}</td>
+            <td>${actionBean.userProduct.name}</td>
             <td>개월 수</td>
-            <td>${actionBean.userSale.sage}</td>
+            <td>${actionBean.userItem.attribute2}</td>
         </tr>
         <tr>
             <td>분양구분</td>
             <td>
-                <c:if test="${actionBean.userSale.scharge==0}">
+                <c:if test="${actionBean.userItem.charge==0}">
                     무료
                 </c:if>
-                <c:if test="${actionBean.userSale.scharge==1}">
+                <c:if test="${actionBean.userItem.charge==1}">
                     유료
                 </c:if>
             </td>
             <td>분양지역</td>
-            <td>${actionBean.userSale.sarea}</td>
+            <td>${actionBean.userItem.attribute3}</td>
         </tr>
         <tr>
             <td>분양가</td>
-            <td>${actionBean.userSale.sprice} $</td>
+            <td>${actionBean.userItem.listPrice} $</td>
             <td>특이사항</td>
-            <td>${actionBean.userSale.snote}</td>
+            <td>${actionBean.userItem.attribute4}</td>
         </tr>
+        <c:forEach var="img" items="${actionBean.userImageList}">
+            <tr>
+                <td>사진</td>
+                <td colspan='3'><img src=${img.dir} height="300" width="300"/></td>
+            </tr>
+        </c:forEach>
     </table>
     <stripes:submit name="deleteAdopt" value="삭제"/>
 </stripes:form>
 </div>
-<%--<div align="center">
-    <tr>
-        <td>약관</td>
-        <br>
-        <td>약관 예시 text</td>
-    </tr>
-</div>
-<div style="text-align: center">
-
-&lt;%&ndash;    동의합니다
-    <p>
-        <input type="checkbox" id="check_1"  name="" /> 위의 약관에 동의 합니다.<br />
-    </p>&ndash;%&gt;
-
-</div>--%>
-
 <%@ include file="../common/IncludeBottom.jsp"%>
 </html>
