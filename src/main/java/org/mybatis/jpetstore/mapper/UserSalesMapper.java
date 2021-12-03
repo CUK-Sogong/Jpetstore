@@ -19,10 +19,9 @@ public interface UserSalesMapper {
 
     UserAdopt getAdoptRecent();
 
-    void acceptAdopt(int aid); // astatus 1로 바꿔주기, sstatus 0으로 바꿔주기
+    void acceptAdopt(int aid); // astatus 1로 바꿔주기(수락)
 
-    void refusalAdopt(int aid); // astatus 0으로 바꿔주기
-
+    void refusalAdopt(int aid); // astatus 0으로 바꿔주기(거절)
 
     void insertImage(Image image);
 
@@ -31,7 +30,10 @@ public interface UserSalesMapper {
     int getAdoptCnt(String sid);
 
     List<Image> getImageList(String itemId);
+
     String getImageDirByItemId(String itemId);
 
     UserAdopt getAdoptByUsernameAndItemId(String username, String itemId);
+
+    void updateAdoptStatus_del(String itemId); //astatus 3으로 바꿔주기(분양 삭제)
 }

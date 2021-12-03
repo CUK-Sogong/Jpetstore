@@ -140,4 +140,10 @@
         WHERE auserid LIKE #{param1} AND
               asid LIKE #{param2}
     </select>
+
+    <update id="updateAdoptStatus_del" parameterType="string">
+        UPDATE useradopt SET
+            astatus = 3
+        WHERE asid = #{itemId}
+    </update>
 </mapper>

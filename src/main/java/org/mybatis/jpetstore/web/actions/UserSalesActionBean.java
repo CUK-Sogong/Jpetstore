@@ -171,19 +171,32 @@ public class UserSalesActionBean extends AbstractActionBean {
     @DefaultHandler
     public Resolution viewSalesListAll() {
         clear();
-        msg = "전체 분양 목록";
         userItemList = catalogService.getUserItemList();
         return new ForwardResolution(SALES_LIST);
     }
 
     public Resolution viewSalesList() {
         if(f_search==null) f_search = "";
-        if(f_category.equals("%")) msg = "전체 분양 목록";
-        else if(f_category.equals("DOGS")) msg = "강아지 분양 목록";
-        else if(f_category.equals("CATS")) msg = "고양이 분양 목록";
-        else if(f_category.equals("BIRDS")) msg = "새 분양 목록";
-        else if(f_category.equals("FISH")) msg = "물고기 분양 목록";
-        else if(f_category.equals("REPTILES")) msg = "파충류 분양 목록";
+        switch (f_category) {
+            case "%":
+                msg = "전체 분양 목록";
+                break;
+            case "DOGS":
+                msg = "강아지 분양 목록";
+                break;
+            case "CATS":
+                msg = "고양이 분양 목록";
+                break;
+            case "BIRDS":
+                msg = "새 분양 목록";
+                break;
+            case "FISH":
+                msg = "물고기 분양 목록";
+                break;
+            case "REPTILES":
+                msg = "파충류 분양 목록";
+                break;
+        }
         userItemList = catalogService.getUserItemListByFilter(f_category, f_charge,f_order,"%" + f_search.toLowerCase()+"%");
 
         return new ForwardResolution(SALES_LIST);
@@ -243,7 +256,6 @@ public class UserSalesActionBean extends AbstractActionBean {
             String id = "SAL-" + Integer.toString(catalogService.getNextId("salenum"));
             userItem.setItemId(id);
             userItem.setProductId(id);
-            userItem.setUnitCost(userItem.getListPrice());
             userProduct.setProductId(id);
             catalogService.insertUserProduct(userProduct);
             catalogService.insertUserItem(userItem);
@@ -272,9 +284,9 @@ public class UserSalesActionBean extends AbstractActionBean {
                 img3.save(new File(path + time + img3.getFileName()));
                 userSalesService.insertImage(image);
             }
-
-
-            return viewSalesListAll();
+            clear();
+            userItemList = catalogService.getUserItemList();
+            return new ForwardResolution(SALES_LIST);
         }
 
     }
@@ -300,7 +312,6 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
 
-
         if(userProduct.getName() == null || userItem.getListPrice() == null || userItem.getAttribute4() == null
                 || userProduct.getName().length() < 1  || userItem.getAttribute4().length() < 1){
             setMessage("필수항목을 입력해 주세요!");
@@ -309,7 +320,9 @@ public class UserSalesActionBean extends AbstractActionBean {
         else {
             catalogService.updateUserItem(userItem);
             catalogService.updateUserProduct(userProduct);
-            return viewSalesListAll();
+            clear();
+            userItemList = catalogService.getUserItemList();
+            return new ForwardResolution(SALES_LIST);
         }
     }
 
@@ -321,8 +334,10 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution deleteSales(){
         catalogService.deleteUserItem(itemId);
         catalogService.deleteUserProduct(itemId);
+        userSalesService.updateAdoptStatus_del(itemId);
         clear();
-        return viewSalesListAll();
+        userItemList = catalogService.getUserItemList();
+        return new ForwardResolution(SALES_LIST);
     }
 
     /**
@@ -417,7 +432,8 @@ public class UserSalesActionBean extends AbstractActionBean {
         userAdopt = userSalesService.getAdopt(aid);
         userItem = catalogService.getUserItem(userAdopt.getAsid());
         userProduct = catalogService.getUserProduct(userAdopt.getAsid());
-        userImageList = userSalesService.getImageList(userItem.getItemId());
+        if(userItem != null)
+            userImageList = userSalesService.getImageList(userItem.getItemId());
         return new ForwardResolution(VIEW_ADOPT_ADT);
     }
 
@@ -471,7 +487,6 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution acceptAdopt() {
         userAdoptsList = userSalesService.getAdoptListBySid(itemId);
         for (UserAdopt adopt : userAdoptsList) userSalesService.refusalAdopt(adopt.getAid());
-
         userSalesService.acceptAdopt(aid);
         userItem = catalogService.getUserItem(userSalesService.getAdopt(aid).getAsid());
         userItem.setSaleStatus(0);
@@ -502,5 +517,6 @@ public class UserSalesActionBean extends AbstractActionBean {
         f_charge = "%";
         f_order = 0;
         f_search = "";
+        msg = "전체 분양 목록";
     }
 }

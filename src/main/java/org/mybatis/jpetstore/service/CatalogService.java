@@ -113,18 +113,6 @@ public class CatalogService {
     productMapper.setProductDescription(productId,description);
   }
 
-  public int getNextId(String name) {
-    Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
-    if (sequence == null) {
-      throw new RuntimeException(
-              "Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
-    }
-    Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
-    sequenceMapper.updateSequence(parameterObject);
-    return sequence.getNextId();
-  }
-
-
   public Item getUserItem(String itemId) {
     return itemMapper.getUserItem(itemId);
   }
@@ -144,4 +132,17 @@ public class CatalogService {
   public void deleteUserProduct(String itemId) { productMapper.deleteUserProduct(itemId); }
 
   public List<Item> getUserItemListByUsername(String username) { return itemMapper.getUserItemListByUsername(username); }
+
+
+  public int getNextId(String name) {
+    Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
+    if (sequence == null) {
+      throw new RuntimeException(
+              "Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
+    }
+    Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
+    sequenceMapper.updateSequence(parameterObject);
+    return sequence.getNextId();
+  }
+
 }

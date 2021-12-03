@@ -18,7 +18,9 @@ package org.mybatis.jpetstore.service;
 import java.util.List;
 
 import org.mybatis.jpetstore.domain.Board;
+import org.mybatis.jpetstore.domain.Sequence;
 import org.mybatis.jpetstore.mapper.BoardMapper;
+import org.mybatis.jpetstore.mapper.SequenceMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,9 +33,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoardService {
 
     private final BoardMapper boardMapper;
+    private final SequenceMapper sequenceMapper;
 
-    public BoardService(BoardMapper boardMapper) {
+    public BoardService(BoardMapper boardMapper, SequenceMapper sequenceMapper) {
         this.boardMapper = boardMapper;
+        this.sequenceMapper = sequenceMapper;
     }
 
     public List<Board> getBoardList() {
@@ -46,6 +50,7 @@ public class BoardService {
     }
     @Transactional
     public void insertBoard(Board board) {
+        board.setBnum(getNextId("boardnum"));
         boardMapper.insertBoard(board);
     }
 
@@ -56,4 +61,16 @@ public class BoardService {
     public void updateBoard(Board board) { boardMapper.updateBoard(board); }
 
     public Board getUpdateBoard(int boardId) { return boardMapper.getUpdateBoard(boardId); }
+
+    public int getNextId(String name) {
+
+        Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
+        if (sequence == null) {
+            throw new RuntimeException(
+                    "Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
+        }
+        Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
+        sequenceMapper.updateSequence(parameterObject);
+        return sequence.getNextId();
+    }
 }

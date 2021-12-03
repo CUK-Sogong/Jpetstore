@@ -62,8 +62,8 @@
 
     <insert id="insertBoard" parameterType="Board">
         INSERT INTO board
-            (userid,title,date,content)
-        VALUES (#{userId},#{title},NOW(),#{content})
+            (bnum, userid,title,date,content)
+        VALUES (#{bnum},#{userId},#{title},NOW(),#{content})
     </insert>
 
     <delete id="deleteBoard" parameterType="int">

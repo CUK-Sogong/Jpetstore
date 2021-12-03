@@ -87,8 +87,9 @@ public class BoardActionBean extends AbstractActionBean {
         boardList = boardService.getBoardList();
         pageList = boardService.getBoardListByPage(page*10);
         size = boardList.size()/10;
-        if(boardList.size()%10!=0)
+        if(boardList.size()%10!=0||boardList.size()==0)
             size++;
+
         return new ForwardResolution(BOARDLIST);
     }
 

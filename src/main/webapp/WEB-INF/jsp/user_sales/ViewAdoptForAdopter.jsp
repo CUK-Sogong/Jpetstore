@@ -60,7 +60,8 @@
         </tr>
     </table>
     <h3>분양 정보</h3>
-    <table align="center">
+    <c:if test="${actionBean.userItem != null}">
+        <table align="center">
         <tr>
             <td>아이디</td>
             <td>${actionBean.userItem.userId}</td>
@@ -111,6 +112,10 @@
             </tr>
         </c:forEach>
     </table>
+    </c:if>
+    <c:if test="${actionBean.userItem == null}">
+        분양이 삭제되었습니다.<br><br><br>
+    </c:if>
     <stripes:submit name="deleteAdopt" value="삭제"/>
 </stripes:form>
 </div>

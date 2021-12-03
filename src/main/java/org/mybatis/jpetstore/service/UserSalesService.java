@@ -93,6 +93,12 @@ public class UserSalesService {
     public UserAdopt getAdoptByUsernameAndItemId(String username, String itemId) {
         return userSalesMapper.getAdoptByUsernameAndItemId(username, itemId);
     }
+
+    public void updateAdoptStatus_del(String itemId) { userSalesMapper.updateAdoptStatus_del(itemId); }
+
+
+
+
     public int getNextId(String name) {
         Sequence sequence = sequenceMapper.getSequence(new Sequence(name, -1));
         if (sequence == null) {
@@ -103,5 +109,6 @@ public class UserSalesService {
         sequenceMapper.updateSequence(parameterObject);
         return sequence.getNextId();
     }
+
 
 }

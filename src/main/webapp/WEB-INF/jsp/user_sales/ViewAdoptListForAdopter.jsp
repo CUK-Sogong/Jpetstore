@@ -35,6 +35,7 @@
                     <c:if test="${UserAdopt.astatus==0}">거절</c:if>
                     <c:if test="${UserAdopt.astatus==1}">수락</c:if>
                     <c:if test="${UserAdopt.astatus==2}">대기</c:if>
+                    <c:if test="${UserAdopt.astatus==3}">삭제</c:if>
                 </td>
                 <td><fmt:formatDate value="${UserAdopt.date}" pattern="yyyy-MM-dd"/></td>
             </tr>
