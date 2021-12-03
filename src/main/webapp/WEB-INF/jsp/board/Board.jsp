@@ -58,13 +58,6 @@
                     삭제
                     <stripes:param name="boardId" value="${actionBean.board.bnum}" />
                 </stripes:link>
-                <script>
-                    function deleteConfirm(){
-                        var isDelete=comfirm("삭제하시겠습니까?");
-                        if(isDelete){
-                        }
-                    }
-                </script>
             </c:if>
         </c:if>
     </c:if>

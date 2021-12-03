@@ -6,4 +6,5 @@
 *.iml
 /build
 .mvn/wrapper/maven-wrapper.jar
-/src/main/webapp/WEB-INF/classes
+/src/main/WEB-INF
+/src/main/webapp/WEB-INF/classes/org

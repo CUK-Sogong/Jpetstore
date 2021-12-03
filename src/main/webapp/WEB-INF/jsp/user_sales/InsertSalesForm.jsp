@@ -23,13 +23,14 @@
         focus="" acceptcharset="UTF-8" enctype="multipart/form-data">
 <h2>분양등록</h2>
 <hr>
+    * : 필수 입력 사항
 <table align="center">
     <tr>
-        <td>분양자 정보</td>
+        <td>* 분양자 정보</td>
         <td>${actionBean.account.username}</td>
     </tr>
     <tr>
-        <td>종류</td>
+        <td>* 종류</td>
         <td>
             <stripes:select name="userProduct.categoryId">
                 <stripes:option value="DOGS">강아지</stripes:option>
@@ -41,11 +42,11 @@
         </td>
     </tr>
     <tr>
-        <td>품종</td>
+        <td>* 품종</td>
         <td><stripes:text name="userProduct.name" /></td>
     </tr>
     <tr>
-        <td>성별</td>
+        <td>* 성별</td>
         <td>
             <stripes:select name="userItem.attribute1">
                 <stripes:option>수컷</stripes:option>
@@ -55,11 +56,11 @@
         </td>
     </tr>
     <tr>
-        <td>개월 수</td>
+        <td>* 개월 수</td>
         <td><stripes:text name="userItem.attribute2" /></td>
     </tr>
     <tr>
-        <td>분양구분</td>
+        <td>* 분양구분</td>
         <td>
         <c:if test="${actionBean.check==0}">
             무료
@@ -70,7 +71,7 @@
         </td>
     </tr>
     <tr>
-        <td>분양가</td>
+        <td>* 분양가</td>
         <td>
             <c:if test="${actionBean.check==0}">
                 0
@@ -82,7 +83,7 @@
         </td>
     </tr>
     <tr>
-        <td>분양지역</td>
+        <td>* 분양지역</td>
         <td>
             <stripes:select name="userItem.attribute3">
                 <stripes:option>서울특별시</stripes:option>
@@ -105,21 +106,22 @@
     </tr>
     <tr>
         <td>이미지1</td>
-        <td><stripes:file name="img1"/></td>
+        <td><stripes:file name="img1" accept="image/*" /></td>
     </tr>
     <tr>
         <td>이미지2</td>
-        <td><stripes:file name="img2"/></td>
+        <td><stripes:file name="img2" accept="image/*" /></td>
     </tr>
     <tr>
         <td>이미지3</td>
-        <td><stripes:file name="img3"/></td>
+        <td><stripes:file name="img3" accept="image/*" /></td>
     </tr>
     <tr>
-        <td>특이사항</td>
+        <td>* 특이사항</td>
         <td><stripes:text name="userItem.attribute4" /></td>
     </tr>
 </table>
+    이미지는 변경할 수 없으니 신중히 입력해 주세요.<br>
 <stripes:submit name="insertSales" value="작성"/>
 </stripes:form>
 </div>

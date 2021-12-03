@@ -36,7 +36,6 @@ public class UserSalesActionBean extends AbstractActionBean {
     private static final String EDIT_SALES = "/WEB-INF/jsp/user_sales/EditSales.jsp";
     private static final String INFO_SALES = "/WEB-INF/jsp/user_sales/InfoSales.jsp";
     private static final String INSERT_ADOPT = "/WEB-INF/jsp/user_sales/InsertAdoptForm.jsp";
-    private static final String UPDATE_ADOPT = "/WEB-INF/jsp/user_sales/UpdateAdoptForm.jsp";
     private static final String VIEW_ADOPT_LIST_ADT = "/WEB-INF/jsp/user_sales/ViewAdoptListForAdopter.jsp";
     private static final String VIEW_ADOPT_ADT = "/WEB-INF/jsp/user_sales/ViewAdoptForAdopter.jsp";
     private static final String VIEW_ADOPT_LIST_SL = "/WEB-INF/jsp/user_sales/ViewAdoptListForSales.jsp";
@@ -275,7 +274,7 @@ public class UserSalesActionBean extends AbstractActionBean {
             }
 
 
-            return viewSalesList();
+            return viewSalesListAll();
         }
 
     }
@@ -310,7 +309,7 @@ public class UserSalesActionBean extends AbstractActionBean {
         else {
             catalogService.updateUserItem(userItem);
             catalogService.updateUserProduct(userProduct);
-            return viewSalesList();
+            return viewSalesListAll();
         }
     }
 
@@ -388,8 +387,11 @@ public class UserSalesActionBean extends AbstractActionBean {
      * @return the resolution
      */
     public Resolution deleteAdopt(){
+        HttpSession session = context.getRequest().getSession();
+        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
+        account = accountBean.getAccount();
         userSalesService.deleteAdopt(userAdopt.getAid());
-        userAdoptsList = userSalesService.getAdoptList();
+        userAdoptsList = userSalesService.getAdoptListByUsername(account.getUsername());
         return new ForwardResolution(VIEW_ADOPT_LIST_ADT);
     }
 

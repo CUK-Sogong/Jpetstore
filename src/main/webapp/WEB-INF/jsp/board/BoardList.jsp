@@ -40,7 +40,7 @@
       </tr>
       <c:forEach var="board" items="${actionBean.pageList}">
         <tr>
-          <td>${board.bnum+1}</td>
+          <td>${board.bnum}</td>
           <td><stripes:link
                   beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
                   event="viewContent">

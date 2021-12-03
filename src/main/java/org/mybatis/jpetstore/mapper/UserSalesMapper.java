@@ -1,8 +1,6 @@
 package org.mybatis.jpetstore.mapper;
 import org.mybatis.jpetstore.domain.Image;
 import org.mybatis.jpetstore.domain.UserAdopt;
-import org.mybatis.jpetstore.domain.Item;
-import org.mybatis.jpetstore.domain.Product;
 import java.util.List;
 
 public interface UserSalesMapper {

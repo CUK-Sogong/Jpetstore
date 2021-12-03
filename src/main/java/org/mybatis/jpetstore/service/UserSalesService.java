@@ -54,7 +54,7 @@ public class UserSalesService {
     public List<UserAdopt> getAdoptList() {
         return userSalesMapper.getAdoptList();
     }
-    @Transactional
+
     public List<UserAdopt> getAdoptListByUsername(String username) { return userSalesMapper.getAdoptListByUsername(username); }
     @Transactional
     public UserAdopt getAdopt(int aid) {
