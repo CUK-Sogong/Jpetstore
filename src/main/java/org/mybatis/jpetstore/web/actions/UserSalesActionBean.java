@@ -350,7 +350,6 @@ public class UserSalesActionBean extends AbstractActionBean {
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
         account = accountBean.getAccount();
         userItem = catalogService.getUserItem(itemId);
-        userProduct = catalogService.getUserProduct(itemId);
         userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(),itemId);
         account = accountService.getAccount(userItem.getUserId());
         userImageList = userSalesService.getImageList(itemId);
@@ -431,7 +430,6 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewAdoptAdt(){
         userAdopt = userSalesService.getAdopt(aid);
         userItem = catalogService.getUserItem(userAdopt.getAsid());
-        userProduct = catalogService.getUserProduct(userAdopt.getAsid());
         if(userItem != null)
             userImageList = userSalesService.getImageList(userItem.getItemId());
         return new ForwardResolution(VIEW_ADOPT_ADT);
@@ -463,7 +461,6 @@ public class UserSalesActionBean extends AbstractActionBean {
      */
     public Resolution viewAdoptListSl(){
         userItem = catalogService.getUserItem(itemId);
-        userProduct = catalogService.getUserProduct(itemId);
         userAdoptsList = userSalesService.getAdoptListBySid(itemId);
         userImageList = userSalesService.getImageList(userItem.getItemId());
         return new ForwardResolution(VIEW_ADOPT_LIST_SL);

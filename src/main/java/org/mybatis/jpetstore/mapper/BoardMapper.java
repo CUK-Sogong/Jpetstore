@@ -7,8 +7,6 @@ import java.util.List;
 public interface BoardMapper {
     List<Board> getBoardList();
 
-    List<Board> getBoardListByPage(int page);
-
     Board getBoardByBnum(int boardId);
 
     void insertBoard(Board board);

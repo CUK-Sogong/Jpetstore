@@ -38,7 +38,7 @@
         <th>작성일</th>
 
       </tr>
-      <c:forEach var="board" items="${actionBean.pageList}">
+      <c:forEach var="board" items="${actionBean.boardList}">
         <tr>
           <td>${board.bnum}</td>
           <td><stripes:link
@@ -52,14 +52,6 @@
         </tr>
       </c:forEach>
     </table>
-    <c:forEach var="i" begin="0" end="${actionBean.size-1}">
-      <a><stripes:link
-              beanclass="org.mybatis.jpetstore.web.actions.BoardActionBean"
-              event="viewBoard">
-        <stripes:param name="page" value="${i}" />
-        ${i+1}
-      </stripes:link></a>
-    </c:forEach>
     <br/>
     <c:if test="${sessionScope.accountBean != null}">
       <c:if test="${sessionScope.accountBean.authenticated}">

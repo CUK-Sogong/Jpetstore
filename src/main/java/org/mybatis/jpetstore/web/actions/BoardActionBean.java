@@ -85,11 +85,6 @@ public class BoardActionBean extends AbstractActionBean {
     @DefaultHandler
     public ForwardResolution viewBoard(){
         boardList = boardService.getBoardList();
-        pageList = boardService.getBoardListByPage(page*10);
-        size = boardList.size()/10;
-        if(boardList.size()%10!=0||boardList.size()==0)
-            size++;
-
         return new ForwardResolution(BOARDLIST);
     }
 
@@ -124,7 +119,7 @@ public class BoardActionBean extends AbstractActionBean {
     public ForwardResolution deleteBoard(){
         boardService.deleteBoard(boardId);
         boardList = boardService.getBoardList();
-        return viewBoard();
+        return new ForwardResolution(BOARDLIST);
     }
 
     public ForwardResolution updateBoardForm(){

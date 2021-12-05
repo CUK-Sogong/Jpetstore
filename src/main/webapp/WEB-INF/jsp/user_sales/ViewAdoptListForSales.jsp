@@ -45,13 +45,13 @@
         </tr>
         <tr>
             <td>종류</td>
-            <td>${actionBean.userProduct.categoryId}</td>
+            <td>${actionBean.userItem.product.categoryId}</td>
             <td>성별</td>
             <td>${actionBean.userItem.attribute1}</td>
         </tr>
         <tr>
             <td>품종</td>
-            <td>${actionBean.userProduct.name}</td>
+            <td>${actionBean.userItem.product.name}</td>
             <td>개월 수</td>
             <td>${actionBean.userItem.attribute2}</td>
         </tr>
