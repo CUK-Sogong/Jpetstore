@@ -40,7 +40,7 @@
       DESCN as description,
       CATEGORY as categoryId
     FROM PRODUCT
-    WHERE CATEGORY = #{value}
+    WHERE CATEGORY = #{value} AND PRODUCTID NOT LIKE '%SAL%'
   </select>
 
   <select id="searchProductList" resultType="Product">

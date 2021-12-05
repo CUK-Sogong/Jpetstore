@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: ktykty0722
-Build-Jdk: version 16.0.2
+Built-By: ktykt
+Build-Jdk: version 1.8.0_311
 Dependencies: jdk.unsupported
 
