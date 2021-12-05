@@ -4,8 +4,8 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 <div id="BackLink"><stripes:link
         beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-        event="viewSalesList">
-    Return to SALES LIST
+        event="viewAdoptListAdt">
+    Return to My Adopt LIST
 </stripes:link></div></br></br>
 <head>
     <style>

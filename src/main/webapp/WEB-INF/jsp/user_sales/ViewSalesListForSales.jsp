@@ -1,11 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/IncludeTop.jsp" %>
-<div id="BackLink"><stripes:link
-        beanclass="org.mybatis.jpetstore.web.actions.UserSalesActionBean"
-        event="viewSalesList">
-    Return to SALES LIST
-</stripes:link></div>
-</br></br>
 <style>
     table {
         text-align: center;
