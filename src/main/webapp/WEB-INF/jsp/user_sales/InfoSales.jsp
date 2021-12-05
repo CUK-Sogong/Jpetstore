@@ -65,7 +65,7 @@
         <td>분양가</td>
         <td>${actionBean.userItem.listPrice} $</td>
         <td>특이사항</td>
-        <td>${actionBean.userItem.attribute4}</td>
+        <td><pre>${actionBean.userItem.attribute4}</pre></td>
     </tr>
         <c:forEach var="img" items="${actionBean.userImageList}">
             <tr>

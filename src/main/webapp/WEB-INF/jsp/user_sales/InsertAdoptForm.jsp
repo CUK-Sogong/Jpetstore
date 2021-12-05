@@ -87,9 +87,22 @@
     </tr>
     <tr>
         <td>* 사유 및 각오</td>
-        <td>
-            <stripes:textarea name="userAdopt.anote"/>
+        <td><stripes:textarea id="test" name="userAdopt.anote" style="width:500px;height:200px;" />
+            <div id="test_cnt">(0 / 100)</div>
+            <script>
+                $(document).ready(function() {
+                    $('#test').on('keyup', function() {
+                        $('#test_cnt').html("("+$(this).val().length+" / 100)");
+
+                        if($(this).val().length >= 100) {
+                            $(this).val($(this).val().substring(0, 100));
+                            $('#test_cnt').html("(100 / 100)");
+                        }
+                    });
+                });
+            </script>
         </td>
+
     </tr>
 </table>
     <h3>반려동물 정보</h3>

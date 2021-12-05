@@ -25,7 +25,6 @@
             <td>내용 : </td>
             <td><stripes:textarea id="test" name="board.content" style="width:500px;height:200px;" />
                 <div id="test_cnt">(0 / 500)</div>
-
                 <script>
                     $(document).ready(function() {
                         $('#test').on('keyup', function() {
@@ -37,12 +36,6 @@
                             }
                         });
                     });
-                    <%--$(document).ready(function(){--%>
-                    <%--    $("#submit").click(function(){--%>
-                    <%--        if(${board.title.value} == ""){ alert("제목을 입력하세요."); ${board.title}.focus(); return false; }--%>
-                    <%--        if(${board.content.value} == ""){ alert("내용을 입력하세요."); ${board.content}.focus(); return false; }--%>
-                    <%--    });--%>
-                    <%--});--%>
                 </script>
             </td>
         </tr>

@@ -118,7 +118,21 @@
     </tr>
     <tr>
         <td>* 특이사항</td>
-        <td><stripes:text name="userItem.attribute4" /></td>
+        <td><stripes:textarea id="test" name="userItem.attribute4" style="width:500px;height:200px;" />
+            <div id="test_cnt">(0 / 100)</div>
+            <script>
+                $(document).ready(function() {
+                    $('#test').on('keyup', function() {
+                        $('#test_cnt').html("("+$(this).val().length+" / 100)");
+
+                        if($(this).val().length >= 100) {
+                            $(this).val($(this).val().substring(0, 100));
+                            $('#test_cnt').html("(100 / 100)");
+                        }
+                    });
+                });
+            </script>
+        </td>
     </tr>
 </table>
     이미지는 변경할 수 없으니 신중히 입력해 주세요.<br>

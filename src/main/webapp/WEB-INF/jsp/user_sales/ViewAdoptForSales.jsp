@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <td>사유 및 각오</td>
-            <td>${actionBean.userAdopt.anote}</td>
+            <td><pre>${actionBean.userAdopt.anote}</pre></td>
         </tr>
     </table>
     <c:if test="${actionBean.userAdopt.astatus == 2}">

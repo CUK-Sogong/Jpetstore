@@ -56,7 +56,7 @@
         </tr>
         <tr>
             <td>사유 및 각오</td>
-            <td>${actionBean.userAdopt.anote}</td>
+            <td><pre>${actionBean.userAdopt.anote}</pre></td>
         </tr>
     </table>
     <h3>분양 정보</h3>
@@ -103,7 +103,7 @@
             <td>분양가</td>
             <td>${actionBean.userItem.listPrice} $</td>
             <td>특이사항</td>
-            <td>${actionBean.userItem.attribute4}</td>
+            <td><pre>${actionBean.userItem.attribute4}</pre></td>
         </tr>
         <c:forEach var="img" items="${actionBean.userImageList}">
             <tr>
