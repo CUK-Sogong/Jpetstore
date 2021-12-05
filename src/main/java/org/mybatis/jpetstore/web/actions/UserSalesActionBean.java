@@ -348,11 +348,14 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSales(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        account = accountBean.getAccount();
+
         userItem = catalogService.getUserItem(itemId);
-        userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(),itemId);
-        account = accountService.getAccount(userItem.getUserId());
         userImageList = userSalesService.getImageList(itemId);
+        if(accountBean != null) {
+            account = accountBean.getAccount();
+            userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(), itemId);
+        }
+        account = accountService.getAccount(userItem.getUserId());
         return new ForwardResolution(INFO_SALES);
     }
 
