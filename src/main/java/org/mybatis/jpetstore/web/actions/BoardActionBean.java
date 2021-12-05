@@ -46,9 +46,6 @@ public class BoardActionBean extends AbstractActionBean {
     private int boardId;
     private Board board;
     private List<Board> boardList;
-    private List<Board> pageList;
-    private int size;
-    private int page=0;
 
     public int getBoardId() {
         return boardId;
@@ -69,18 +66,6 @@ public class BoardActionBean extends AbstractActionBean {
     public void setBoard(Board board) {
         this.board = board;
     }
-
-    public int getSize() { return size; }
-
-    public void setSize(int size) { this.size = size; }
-
-    public int getPage() { return page; }
-
-    public void setPage(int page) { this.page = page; }
-
-    public List<Board> getPageList() { return pageList; }
-
-    public void setPageList(List<Board> pageList) { this.pageList = pageList; }
 
     @DefaultHandler
     public ForwardResolution viewBoard(){

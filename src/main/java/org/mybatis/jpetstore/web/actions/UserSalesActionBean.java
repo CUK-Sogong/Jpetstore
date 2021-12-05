@@ -119,7 +119,7 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_charge(String f_charge) { this.f_charge = f_charge; }
 
-    public int isF_order() { return f_order; }
+    public int getF_order() { return f_order; }
 
     public void setF_order(int f_order) { this.f_order = f_order; }
 
