@@ -119,7 +119,7 @@ public class UserSalesActionBean extends AbstractActionBean {
 
     public void setF_charge(String f_charge) { this.f_charge = f_charge; }
 
-    public int isF_order() { return f_order; }
+    public int getF_order() { return f_order; }
 
     public void setF_order(int f_order) { this.f_order = f_order; }
 
@@ -348,11 +348,14 @@ public class UserSalesActionBean extends AbstractActionBean {
     public Resolution viewSales(){
         HttpSession session = context.getRequest().getSession();
         AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
-        account = accountBean.getAccount();
+
         userItem = catalogService.getUserItem(itemId);
-        userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(),itemId);
-        account = accountService.getAccount(userItem.getUserId());
         userImageList = userSalesService.getImageList(itemId);
+        if(accountBean != null) {
+            account = accountBean.getAccount();
+            userAdopt = userSalesService.getAdoptByUsernameAndItemId(account.getUsername(), itemId);
+        }
+        account = accountService.getAccount(userItem.getUserId());
         return new ForwardResolution(INFO_SALES);
     }
 
