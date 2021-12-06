@@ -53,7 +53,10 @@
         </tr>
         <tr>
             <td>반려동물 키움 경험</td>
-            <td>${actionBean.userAdopt.apetexp}</td>
+            <td>
+                <c:if test="${actionBean.userAdopt.apetexp==1}">있음</c:if>
+                <c:if test="${actionBean.userAdopt.apetexp==0}">없음</c:if>
+            </td>
         </tr>
         <tr>
             <td>사유 및 각오</td>
